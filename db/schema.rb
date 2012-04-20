@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420112254) do
+ActiveRecord::Schema.define(:version => 20120420140715) do
 
   create_table "crops", :force => true do |t|
     t.string   "name",       :null => false
@@ -29,6 +29,12 @@ ActiveRecord::Schema.define(:version => 20120420112254) do
     t.decimal  "kgL",        :precision => 7, :scale => 6, :default => 0.0, :null => false
     t.datetime "created_at",                                                :null => false
     t.datetime "updated_at",                                                :null => false
+  end
+
+  create_table "soil_moistures", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "soil_textures", :force => true do |t|

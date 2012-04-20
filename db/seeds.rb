@@ -47,3 +47,8 @@ SoilTexture.create(:name => "Fine")
 SoilTexture.create(:name => "Medium")
 SoilTexture.create(:name => "Coarse")
 
+SoilMoisture.delete_all
+SoilMoisture.create(:name => "Moist")
+SoilMoisture.create(:name => "Borderline")
+SoilMoisture.create(:name => "Dry")
+

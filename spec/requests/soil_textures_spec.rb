@@ -53,7 +53,7 @@ describe "SoilTextures" do
       page.should have_content("Soil texture was successfully updated.")
     end
     it "valid input is accepted" do
-      valid = Fertiliser.make
+      valid = SoilTexture.make
       fill_in "Name", :with => valid.name
       click_button "Update Soil texture"
       page.should have_content("Soil texture was successfully updated.")

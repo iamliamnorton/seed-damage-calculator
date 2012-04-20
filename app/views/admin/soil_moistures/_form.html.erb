@@ -1,0 +1,21 @@
+<%= form_for([:admin, @soil_moisture]) do |f| %>
+  <% if @soil_moisture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@soil_moisture.errors.count, "error") %> prohibited this soil_moisture from being saved:</h2>
+
+      <ul>
+      <% @soil_moisture.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

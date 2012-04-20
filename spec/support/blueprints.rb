@@ -18,3 +18,7 @@ end
 SoilTexture.blueprint do
   name    { "#{Faker::Lorem.words.first}-#{sn}" }
 end
+
+SoilMoisture.blueprint do
+  name    { "#{Faker::Lorem.words.first}-#{sn}" }
+end
