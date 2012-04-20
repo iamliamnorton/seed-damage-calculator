@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing fertilisers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>N</th>
+    <th>P</th>
+    <th>K</th>
+    <th>S</th>
+    <th>Mg</th>
+    <th>Kgl</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @fertilisers.each do |fertiliser| %>
+  <tr>
+    <td><%= fertiliser.name %></td>
+    <td><%= fertiliser.N %></td>
+    <td><%= fertiliser.P %></td>
+    <td><%= fertiliser.K %></td>
+    <td><%= fertiliser.S %></td>
+    <td><%= fertiliser.Mg %></td>
+    <td><%= fertiliser.kgL %></td>
+    <td><%= link_to 'Edit', edit_admin_fertiliser_path(fertiliser) %></td>
+    <td><%= link_to 'Destroy', [:admin, fertiliser], confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Fertiliser', new_admin_fertiliser_path %>

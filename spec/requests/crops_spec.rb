@@ -67,10 +67,11 @@ describe "Crops" do
       response.should raise_error
     end
     it "can destroy a crop that exists in the system" do
-      pending #cannot seem to click on the okay confirmation box
+      pending("cannot seem to click on the okay confirmation box")
       page.driver.browser.switch_to.alert.accept
       click_link "Destroy"
       page.should_not have_content(@valid_crop.name)
+      page.should have_content("Crop was successfully destroyed.")
     end
   end
 end

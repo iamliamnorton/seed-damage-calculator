@@ -11,12 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420004528) do
+ActiveRecord::Schema.define(:version => 20120420092023) do
 
   create_table "crops", :force => true do |t|
     t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "fertilisers", :force => true do |t|
+    t.string   "name"
+    t.decimal  "N",          :precision => 3, :scale => 2, :default => 0.0, :null => false
+    t.decimal  "P",          :precision => 3, :scale => 2, :default => 0.0, :null => false
+    t.decimal  "K",          :precision => 3, :scale => 2, :default => 0.0, :null => false
+    t.decimal  "S",          :precision => 3, :scale => 2, :default => 0.0, :null => false
+    t.decimal  "Mg",         :precision => 3, :scale => 2, :default => 0.0, :null => false
+    t.decimal  "kgL",        :precision => 7, :scale => 6, :default => 0.0, :null => false
+    t.datetime "created_at",                                                :null => false
+    t.datetime "updated_at",                                                :null => false
   end
 
 end

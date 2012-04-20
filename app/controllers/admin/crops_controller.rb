@@ -65,7 +65,7 @@ class Admin::CropsController < Admin::BaseController
     @crop.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_crops_url, notice: 'Crop was successfully destroyed.' }
+      format.html { redirect_to admin_crops_path, notice: 'Crop was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

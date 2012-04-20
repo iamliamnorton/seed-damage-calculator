@@ -1,0 +1,45 @@
+<%= form_for([:admin, @fertiliser]) do |f| %>
+  <% if @fertiliser.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fertiliser.errors.count, "error") %> prohibited this fertiliser from being saved:</h2>
+
+      <ul>
+      <% @fertiliser.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :N %><br />
+    <%= f.text_field :N %>
+  </div>
+  <div class="field">
+    <%= f.label :P %><br />
+    <%= f.text_field :P %>
+  </div>
+  <div class="field">
+    <%= f.label :K %><br />
+    <%= f.text_field :K %>
+  </div>
+  <div class="field">
+    <%= f.label :S %><br />
+    <%= f.text_field :S %>
+  </div>
+  <div class="field">
+    <%= f.label :Mg %><br />
+    <%= f.text_field :Mg %>
+  </div>
+  <div class="field">
+    <%= f.label :kgL %><br />
+    <%= f.text_field :kgL %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
