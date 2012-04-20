@@ -4,6 +4,7 @@ Fasdac::Application.routes.draw do
     root :to => "crops#index"
     resources :crops
     resources :fertilisers
+    resources :soil_textures
   end
   
   root :to => "home#index"
