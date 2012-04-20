@@ -1,4 +1,5 @@
 require 'machinist/active_record'
+require 'faker'
 
 # Add your blueprints here.
 #
@@ -7,3 +8,7 @@ require 'machinist/active_record'
 #     title { "Post #{sn}" }
 #     body  { "Lorem ipsum..." }
 #   end
+
+Crop.blueprint do
+  name    { "#{Faker::Lorem.words.first}-#{sn}" }
+end

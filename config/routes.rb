@@ -1,4 +1,9 @@
 Fasdac::Application.routes.draw do
+
+  namespace :admin do
+    root :to => "crops#index"
+    resources :crops
+  end
   
   root :to => "home#index"
 
