@@ -7,8 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<div id='wrap'>
+		<div id='main'>
+			<div id='menu'>
+				<%= render 'shared/navigation' %>
+				<div id='header'>
+				</div>
+			</div>
+			<div>
+				<p id="notice"><%= notice %></p>
+			</div>
+			<div id='content'>
+				<%= yield %>
+			</div>
+		</div>
+	</div>
+	<div id='footer'>
+		<hr>
+		<p>&copy; <%= Time.now.strftime("%Y") %> IPNI. All rights reserved. | <u>Site by</u></p>
+	</div>
 </body>
 </html>
