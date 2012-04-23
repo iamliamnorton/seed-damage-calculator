@@ -1,2 +1,72 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
+
+<%= form_tag request.url, :method => :post, :multipart => true do |f| %>
+	<div class="field">
+		<%= label_tag('Select Crop') %><br />
+		<%= select_tag(:crop_id, options_from_collection_for_select(@crops, 'id', 'name', params[:crop_id])) %><br /><br />
+	</div>
+	<div class="field">
+		<%= label_tag('Select Fertiliser') %><br />
+		<%= select_tag(:fertiliser_id, options_from_collection_for_select(@fertilisers, 'id', 'name', params[:fertiliser_id])) %><br /><br />
+	</div>
+	<div class="field">
+		<p>Metric/Imperial</p>
+		<p>Metric ></p><br />
+	</div>
+	<hr>
+	<div class="field">
+		<%= label_tag('Soil Moisture') %><br />
+		<%= select_tag(:soil_moisture_id, options_from_collection_for_select(@soil_moistures, 'id', 'name', params[:soil_moisture_id])) %><br /><br />
+	</div>
+	<div class="field">
+		<%= label_tag('Select Texture') %><br />
+		<%= select_tag(:soil_texture_id, options_from_collection_for_select(@soil_textures, 'id', 'name', params[:soil_texture_id])) %><br /><br />
+	</div>
+	<hr>
+	<div class="field">
+		<%= label_tag('Seed Furrow Opening Width (cm)') %><br />
+		<%= text_field_tag(:seed_furrow_opening_width, params[:seed_furrow_opening_width]) %><br /><br />
+	</div>
+	<div class="field">
+		<%= label_tag('Row Spacing (cm)') %><br />
+		<%= text_field_tag(:row_spacing, params[:row_spacing]) %><br /><br />
+	</div>
+	<div class="field">
+		<%= label_tag('Tolerated Stand Loss (%)') %><br />
+		<%= text_field_tag(:tol_stand_loss, params[:tol_stand_loss]) %><br /><br />
+	</div>
+	<hr>
+	<div class="actions">
+	  <%= submit_tag "Calculate", confirm: 'Do you agree to the terms of use?' %>
+	</div>
+	<div class="field">
+		<%= label_tag('kg/ha with the seed') %><br />
+		<%= text_field_tag(:result, @kg, :disabled => true) %>
+	</div>
+	<div class="field">
+		<%= label_tag('litres/ha') %><br />
+		<%= text_field_tag(:result, @litres, :disabled => true) %>
+	</div>
+	<hr>
+	<div class="field">
+		<%= label_tag('kg/ha of Nitrogen (N)') %><br />
+		<%= text_field_tag(:result, @nitrogen, :disabled => true) %>
+	</div>
+	<div class="field">
+		<%= label_tag('kg/ha of Phosphorus (P)') %><br />
+		<%= text_field_tag(:result, @phosphorus, :disabled => true) %>
+	</div>
+	<div class="field">
+		<%= label_tag('kg/ha of Potassium (K)') %><br />
+		<%= text_field_tag(:result, @potassium, :disabled => true) %>
+	</div>
+	<div class="field">
+		<%= label_tag('kg/ha of Sulphur (S)') %><br />
+		<%= text_field_tag(:result, @sulphur, :disabled => true) %>
+	</div>
+	<div class="field">
+		<%= label_tag('kg/ha of Magnesium (Mg)') %><br />
+		<%= text_field_tag(:result, @magnesium, :disabled => true) %>
+	</div>
+<% end %>
