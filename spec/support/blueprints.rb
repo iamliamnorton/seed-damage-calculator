@@ -6,19 +6,25 @@ Crop.blueprint do
 end
 
 Fertiliser.blueprint do
-  name    { "#{Faker::Lorem.words.first}-#{sn}" }
-  N       { rand().round(2) }
-  P       { rand().round(2) }
-  K       { rand().round(2) }
-  S       { rand().round(2) }
-  Mg      { rand().round(2) }
-  kgL     { rand().round(6) }
+  name            { "#{Faker::Lorem.words.first}-#{sn}" }
+  N               { rand().round(2) }
+  P               { rand().round(2) }
+  K               { rand().round(2) }
+  S               { rand().round(2) }
+  Mg              { rand().round(2) }
+  kgL             { rand().round(6) }
 end
 
 SoilTexture.blueprint do
-  name    { "#{Faker::Lorem.words.first}-#{sn}" }
+  name            { "#{Faker::Lorem.words.first}-#{sn}" }
 end
 
 SoilMoisture.blueprint do
-  name    { "#{Faker::Lorem.words.first}-#{sn}" }
+  name            { "#{Faker::Lorem.words.first}-#{sn}" }
+end
+
+SoilCoefficient.blueprint do
+  value           { rand().round(2) }
+  soil_texture
+  soil_moisture
 end

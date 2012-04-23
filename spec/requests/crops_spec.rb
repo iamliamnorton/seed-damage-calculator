@@ -63,12 +63,12 @@ describe "Crops" do
   describe "- when admin attempts to destroy a crop -" do
     it "cannot destroy a crop name that doesn't exist" do
       invalid_crop = Crop.make
-      get 'admin/crops#destroy', :id => invalid_crop.id
       response.should raise_error
     end
     it "can destroy a crop that exists in the system" do
       pending("cannot seem to click on the okay confirmation box")
       click_link "Destroy"
+      click_on 'Submit'
       page.should_not have_content(@valid_crop.name)
       page.should have_content("Crop was successfully destroyed.")
     end

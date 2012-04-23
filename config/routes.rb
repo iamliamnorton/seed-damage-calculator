@@ -6,6 +6,7 @@ Fasdac::Application.routes.draw do
     resources :fertilisers, :except => [:show]
     resources :soil_textures, :except => [:show]
     resources :soil_moistures, :except => [:show]
+    resources :soil_coefficients, :except => [:show]
   end
   
   root :to => "home#index"

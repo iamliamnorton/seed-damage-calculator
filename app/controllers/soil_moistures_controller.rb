@@ -1,2 +1,0 @@
-class SoilMoisturesController < ApplicationController
-end

@@ -1,2 +1,0 @@
-class FertilisersController < ApplicationController
-end

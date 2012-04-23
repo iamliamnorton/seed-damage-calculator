@@ -1,2 +1,0 @@
-class SoilTexturesController < ApplicationController
-end

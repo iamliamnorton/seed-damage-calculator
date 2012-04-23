@@ -43,12 +43,22 @@ Fertiliser.create(:name => "K Sulfate (0-0-50-17S)", :K => 0.51, :S => 0.19)
 Fertiliser.create(:name => "ATS", :N => 0.12, :S => 0.26, :kgL => 1.330073)
 
 SoilTexture.delete_all
-SoilTexture.create(:name => "Fine")
-SoilTexture.create(:name => "Medium")
-SoilTexture.create(:name => "Coarse")
+fine = SoilTexture.create(:name => "Fine")
+medium = SoilTexture.create(:name => "Medium")
+coarse = SoilTexture.create(:name => "Coarse")
 
 SoilMoisture.delete_all
-SoilMoisture.create(:name => "Moist")
-SoilMoisture.create(:name => "Borderline")
-SoilMoisture.create(:name => "Dry")
+moist = SoilMoisture.create(:name => "Moist")
+borderline = SoilMoisture.create(:name => "Borderline")
+dry = SoilMoisture.create(:name => "Dry")
 
+SoilCoefficient.delete_all
+SoilCoefficient.create(:value => 0.75, :soil_texture_id => fine.id, :soil_moisture_id => moist.id)
+SoilCoefficient.create(:value => 1, :soil_texture_id => fine.id, :soil_moisture_id => borderline.id)
+SoilCoefficient.create(:value => 1.5, :soil_texture_id => fine.id, :soil_moisture_id => dry.id)
+SoilCoefficient.create(:value => 1, :soil_texture_id => medium.id, :soil_moisture_id => moist.id)
+SoilCoefficient.create(:value => 1.5, :soil_texture_id => medium.id, :soil_moisture_id => borderline.id)
+SoilCoefficient.create(:value => 2, :soil_texture_id => medium.id, :soil_moisture_id => dry.id)
+SoilCoefficient.create(:value => 1.5, :soil_texture_id => coarse.id, :soil_moisture_id => moist.id)
+SoilCoefficient.create(:value => 2, :soil_texture_id => coarse.id, :soil_moisture_id => borderline.id)
+SoilCoefficient.create(:value => 2.5, :soil_texture_id => coarse.id, :soil_moisture_id => dry.id)
