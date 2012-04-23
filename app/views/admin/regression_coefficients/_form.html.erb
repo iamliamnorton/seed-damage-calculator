@@ -1,0 +1,29 @@
+<%= form_for([:admin, @regression_coefficient]) do |f| %>
+  <% if @regression_coefficient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@regression_coefficient.errors.count, "error") %> prohibited this regression_coefficient from being saved:</h2>
+
+      <ul>
+      <% @regression_coefficient.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :crop_id %><br />
+    <%= f.select :crop_id, options_from_collection_for_select(@crops, 'id', 'name', @regression_coefficient.crop_id) %>
+  </div>
+  <div class="field">
+    <%= f.label :fertiliser_id %><br />
+    <%= f.select :fertiliser_id, options_from_collection_for_select(@fertilisers, 'id', 'name', @regression_coefficient.fertiliser_id) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

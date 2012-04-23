@@ -7,6 +7,7 @@ Fasdac::Application.routes.draw do
     resources :soil_textures, :except => [:show]
     resources :soil_moistures, :except => [:show]
     resources :soil_coefficients, :except => [:show]
+    resources :regression_coefficients, :except => [:show]
   end
   
   root :to => "home#index"

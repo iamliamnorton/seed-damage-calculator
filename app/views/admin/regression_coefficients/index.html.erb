@@ -1,0 +1,25 @@
+<h1>Listing regression_coefficients</h1>
+
+<table>
+  <tr>
+    <th>Value</th>
+    <th>Crop</th>
+    <th>Fertiliser</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @regression_coefficients.each do |regression_coefficient| %>
+  <tr>
+    <td><%= regression_coefficient.value %></td>
+    <td><%= regression_coefficient.crop.name %></td>
+    <td><%= regression_coefficient.fertiliser.name %></td>
+    <td><%= link_to 'Edit', edit_admin_regression_coefficient_path(regression_coefficient) %></td>
+    <td><%= link_to 'Destroy', [:admin, regression_coefficient], confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Regression coefficient', new_admin_regression_coefficient_path %>

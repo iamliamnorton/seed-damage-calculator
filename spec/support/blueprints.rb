@@ -28,3 +28,9 @@ SoilCoefficient.blueprint do
   soil_texture
   soil_moisture
 end
+
+RegressionCoefficient.blueprint do
+  value           { Random.new.rand(-5..5) + rand() }
+  crop
+  fertiliser
+end
