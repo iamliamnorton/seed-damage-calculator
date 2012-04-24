@@ -1,4 +1,4 @@
-class Admin::RegressionCoefficientsController < ApplicationController
+class Admin::RegressionCoefficientsController < Admin::BaseController
   # GET /regression_coefficients
   # GET /regression_coefficients.json
   def index

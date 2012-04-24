@@ -1,4 +1,4 @@
-class Admin::SoilCoefficientsController < ApplicationController
+class Admin::SoilCoefficientsController < Admin::BaseController
   # GET /soil_coefficients
   # GET /soil_coefficients.json
   def index

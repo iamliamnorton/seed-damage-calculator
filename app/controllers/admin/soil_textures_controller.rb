@@ -1,4 +1,4 @@
-class Admin::SoilTexturesController < ApplicationController
+class Admin::SoilTexturesController < Admin::BaseController
   # GET /soil_textures
   # GET /soil_textures.json
   def index

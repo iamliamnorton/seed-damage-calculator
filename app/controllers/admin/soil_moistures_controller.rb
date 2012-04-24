@@ -1,4 +1,4 @@
-class Admin::SoilMoisturesController < ApplicationController
+class Admin::SoilMoisturesController < Admin::BaseController
   # GET /soil_moistures
   # GET /soil_moistures.json
   def index

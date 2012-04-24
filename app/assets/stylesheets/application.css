@@ -1,25 +1,17 @@
-/* Common Styles */
-html{height: 100%;}
-body{margin:0px 10px 0px 10px;font-size:100%;height: 100%;background-color: #fff;color: #333;font-family: verdana, arial, helvetica, sans-serif;font-size: 13px;line-height: 18px;}
-
-#wrap {min-height: 100%;}
-#main {overflow:auto;padding-bottom: 150px;}
-#header{width:100%;}
-
-#menu ul{float:center;margin-top:20px;margin-right:20px;padding:0;list-style-type:none;text-align:center;}
-#menu ul li {display: inline;}
-#menu ul li a{text-decoration:none;padding: .2em 1em;color:#000;background-color:#FFBB99;}
-#menu ul li a:hover{color:#fff;background-color:#CC1122;}
-#menu ul li a{text-decoration:none;padding: .2em 1em;color:#fff;background-color:#003e7e;}
-#menu ul li a:hover{color:#000;background-color:#78bde8;}
-
-#content{margin-top:10px;display: inline;width:100%;}
-
-#footer {position: relative;margin-top: -50px;height: 50px;clear:both;}
-#footer p{text-align:center;}
-
-/*Default table settings*/
-th{background-color:#000;color:#fff;}/*color_header */
-tr:nth-of-type(even){background-color:#F3F3F3;}/*table_stripe*/
-tr:nth-of-type(odd){background-color:#ddd;}/*table_stripe*/
-td:nth-child(n+2){text-align:right;}/*right-align */
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require normalize
+ *= require layout
+ *= require navigation
+ *= require notifications
+ *= require forms
+*/

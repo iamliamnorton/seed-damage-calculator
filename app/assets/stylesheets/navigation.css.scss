@@ -1,0 +1,26 @@
+nav#main_nav { 
+	float: right;
+	margin-top: 44px;
+
+	li {
+		background: #fff; 
+		display: inline-block; 
+		margin: 0 2px; 
+		padding: 4px 6px;
+		a, a:link, a:visited { 
+			color: #000;
+			text-decoration: none;
+		}
+		&.active {
+			background: #fff;
+			margin-bottom: -1px;
+			a,
+			a:link,
+			a:visited {
+				color: #000; 
+				font-weight: bold;
+				font-style: italic;
+			}
+		}
+	}
+}

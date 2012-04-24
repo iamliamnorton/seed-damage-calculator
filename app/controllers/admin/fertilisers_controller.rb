@@ -1,4 +1,4 @@
-class Admin::FertilisersController < ApplicationController
+class Admin::FertilisersController < Admin::BaseController
   # GET /fertilisers
   # GET /fertilisers.json
   def index
