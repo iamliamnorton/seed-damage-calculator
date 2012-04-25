@@ -3,78 +3,75 @@
 <p>Please select the appropriate variables from the input form and press the calculate button.</p>
 
 <section id="input">
-
-<%= form_tag request.url, :method => :post, :multipart => true do |f| %>
-  <fieldset>
-	<legend>Input</legend>
-	<ol>
-	  <li>
-		<%= label_tag('Select Crop:') %>
-		<%= select_tag(:crop_id, options_from_collection_for_select(@crops, 'id', 'name', params[:crop_id])) %>
-	  </li>
-	  <li>
-		<%= label_tag('Select Fertiliser:') %>
-		<%= select_tag(:fertiliser_id, options_from_collection_for_select(@fertilisers, 'id', 'name', params[:fertiliser_id])) %>
-	  </li>
-	  <li>
-		<%= label_tag('Soil Moisture:') %>
-		<%= select_tag(:soil_moisture_id, options_from_collection_for_select(@soil_moistures, 'id', 'name', params[:soil_moisture_id])) %>
-	  </li>
-	  <li>
-		<%= label_tag('Soil Texture:') %>
-		<%= select_tag(:soil_texture_id, options_from_collection_for_select(@soil_textures, 'id', 'name', params[:soil_texture_id])) %>
-	  </li>
-	  <li>
-		<%= label_tag('Seed Furrow Opening Width (cm):') %>
-		<%= text_field_tag(:seed_furrow_opening_width, params[:seed_furrow_opening_width]) %>
-	  </li>
-	  <li>
-		<%= label_tag('Row Spacing (cm):') %>
-		<%= text_field_tag(:row_spacing, params[:row_spacing]) %>
-	  </li>
-	  <li>
-		<%= label_tag('Tolerated Stand Loss (%):') %>
-		<%= text_field_tag(:tol_stand_loss, params[:tol_stand_loss]) %>
-	  </li>
-		<li>
-	  	<%= submit_tag "Calculate", confirm: 'Do you agree to the terms of use?' %>
-		</li>
-
-	</ol>
-  </fieldset>	
+  <%= form_tag request.url do |f| %>
+    <fieldset>
+    	<legend>Input</legend>
+      	<ol>
+      	  <li>
+        		<%= label_tag(:crop_id) %>
+        		<%= select_tag(:crop_id, options_from_collection_for_select(@crops, 'id', 'name', params[:crop_id])) %><br /><br />
+      	  </li>
+      	  <li>
+        		<%= label_tag(:fertiliser_id) %>
+        		<%= select_tag(:fertiliser_id, options_from_collection_for_select(@fertilisers, 'id', 'name', params[:fertiliser_id])) %><br /><br />
+      	  </li>
+      	  <li>
+        		<%= label_tag(:soil_moisture_id) %>
+        		<%= select_tag(:soil_moisture_id, options_from_collection_for_select(@soil_moistures, 'id', 'name', params[:soil_moisture_id])) %><br /><br />
+      	  </li>
+      	  <li>
+        		<%= label_tag(:soil_texture_id) %>
+        		<%= select_tag(:soil_texture_id, options_from_collection_for_select(@soil_textures, 'id', 'name', params[:soil_texture_id])) %><br /><br />
+      	  </li>
+      	  <li>
+        		<%= label_tag(:seed_furrow_opening_width) %>
+        		<%= text_field_tag(:seed_furrow_opening_width, params[:seed_furrow_opening_width]) %><br /><br />
+      	  </li>
+      	  <li>
+        		<%= label_tag(:row_spacing) %>
+        		<%= text_field_tag(:row_spacing, params[:row_spacing]) %><br /><br />
+      	  </li>
+      	  <li>
+        		<%= label_tag(:tol_stand_loss) %>
+        		<%= text_field_tag(:tol_stand_loss, params[:tol_stand_loss]) %><br /><br />
+      	  </li>
+      	</ol>
+    </fieldset>	
+    <%= submit_tag "Calculate", confirm: 'By using this calculator, you agree to the terms of use in the disclaimer' %>
+  <% end %>
 </section>
 <section id="output">
 	<fieldset>
-	<legend>Output</legend>
-	<ol>
-		<li>
-			<%= label_tag('kg/ha with the seed') %>
-			<%= text_field_tag(:result, @kg, :disabled => true) %>
-		</li>
-		<li>
-			<%= label_tag('litres/ha') %>
-			<%= text_field_tag(:result, @litres, :disabled => true) %>
-		</li>
-		<li>
-			<%= label_tag('kg/ha of Nitrogen (N)') %>
-			<%= text_field_tag(:result, @nitrogen, :disabled => true) %>
-		</li>
-		<li>
-			<%= label_tag('kg/ha of Phosphorus (P)') %>
-			<%= text_field_tag(:result, @phosphorus, :disabled => true) %>
-		</li>
-		<li>
-			<%= label_tag('kg/ha of Potassium (K)') %>
-			<%= text_field_tag(:result, @potassium, :disabled => true) %>
-		</li>
-		<li>
-			<%= label_tag('kg/ha of Sulphur (S)') %>
-			<%= text_field_tag(:result, @sulphur, :disabled => true) %>
-		</li>
-		<li>
-			<%= label_tag('kg/ha of Magnesium (Mg)') %>
-			<%= text_field_tag(:result, @magnesium, :disabled => true) %>
-		</li>
+  	<legend>Output</legend>
+  	<ol>
+  		<li>
+  			<%= label_tag('kg/ha with the seed') %>
+  			<%= text_field_tag(:result, @kg, :disabled => true) %>
+  		</li>
+  		<li>
+  			<%= label_tag('litres/ha') %>
+  			<%= text_field_tag(:result, @litres, :disabled => true) %>
+  		</li>
+  		<li>
+  			<%= label_tag('kg/ha of Nitrogen (N)') %>
+  			<%= text_field_tag(:result, @nitrogen, :disabled => true) %>
+  		</li>
+  		<li>
+  			<%= label_tag('kg/ha of Phosphorus (P)') %>
+  			<%= text_field_tag(:result, @phosphorus, :disabled => true) %>
+  		</li>
+  		<li>
+  			<%= label_tag('kg/ha of Potassium (K)') %>
+  			<%= text_field_tag(:result, @potassium, :disabled => true) %>
+  		</li>
+  		<li>
+  			<%= label_tag('kg/ha of Sulphur (S)') %>
+  			<%= text_field_tag(:result, @sulphur, :disabled => true) %>
+  		</li>
+  		<li>
+  			<%= label_tag('kg/ha of Magnesium (Mg)') %>
+  			<%= text_field_tag(:result, @magnesium, :disabled => true) %>
+  		</li>
+  	</ol>
 	</fieldset>
 </section>
-<% end %>
