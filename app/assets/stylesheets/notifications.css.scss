@@ -27,14 +27,12 @@
   &.notice {
     background: {
       color: #006302;
-      image: image-url("notification_check.png");
     }
   }
 
   &.alert {
     background: {
       color: #920202;
-      image: image-url("notification_x.png");
     }
   }
 }

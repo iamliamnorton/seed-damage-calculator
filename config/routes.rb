@@ -1,4 +1,8 @@
 Fasdac::Application.routes.draw do
+  
+  match 'calculator' => 'calculator#index', :via => :post
+
+  resource :calculator, :only => [:index]
 
   namespace :admin do
     root :to => "crops#index"
@@ -10,7 +14,7 @@ Fasdac::Application.routes.draw do
     resources :regression_coefficients, :except => [:show]
   end
   
-  root :to => "home#index"
+  root :to => "calculator#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
