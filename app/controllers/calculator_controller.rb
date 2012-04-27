@@ -5,12 +5,12 @@ class CalculatorController < ApplicationController
       @calculator = Calculator.new(params[:calculator])
       @kg = @calculator.calculate_result
       @fertiliser = Fertiliser.find_by_id(@calculator.fertiliser_id)
-      @litres = @kg / @fertiliser.kgL if @fertiliser.kgL > 0
+      @litres = (@kg / @fertiliser.kgL).round(3) if @fertiliser.kgL > 0
       @nitrogen = @kg * @fertiliser.N
       @phosphorus = @kg * @fertiliser.P
       @potassium = @kg * @fertiliser.K
       @sulphur = @kg * @fertiliser.S
-      @magnesium = @kg * @fertiliser.Mg        
+      @magnesium = @kg * @fertiliser.Mg    
     elsif 
       @calculator = Calculator.new
       @kg = ''

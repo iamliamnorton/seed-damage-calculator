@@ -1,48 +1,38 @@
 <%= form_for(@calculator, :url => calculator_path) do |f| %>
-  <% if @calculator.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@calculator.errors.count, "error") %> prohibited this calculator from being saved:</h2>
-
-      <ul>
-      <% @calculator.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
   <fieldset>
-    <legend><b>Input</b></legend>
-      <div class="field">
-        <%= f.label :crop_id %><br />
-        <%= f.select :crop_id, options_from_collection_for_select(@crops, 'id', 'name', @calculator.crop_id) %>
-      </div>
-      <div class="field">
-        <%= f.label :fertiliser_id %><br />
-        <%= f.select :fertiliser_id, options_from_collection_for_select(@fertilisers, 'id', 'name', @calculator.fertiliser_id) %>
-      </div>
-      <div class="field">
-        <%= f.label :soil_moisture_id %><br />
-        <%= f.select :soil_moisture_id, options_from_collection_for_select(@soil_moistures, 'id', 'name', @calculator.soil_moisture_id) %>
-      </div>
-      <div class="field">
-        <%= f.label :soil_texture_id %><br />
-        <%= f.select :soil_texture_id, options_from_collection_for_select(@soil_textures, 'id', 'name', @calculator.soil_texture_id) %>
-      </div>
-      <div class="field">
-        <%= f.label :seed_furrow_opening_width %><br />
-        <%= f.number_field :seed_furrow_opening_width %>
-      </div>
-      <div class="field">
-        <%= f.label :row_spacing %><br />
-        <%= f.number_field :row_spacing %>
-      </div>
-      <div class="field">
-        <%= f.label :tolerated_stand_loss %><br />
-        <%= f.number_field :tolerated_stand_loss %>
-      </div>
-      <div class="actions">
-        <%= f.submit "Calculate", confirm: 'By using this calculator you agree to the terms of use in the disclaimer' %>
-      </div>
+    <legend><b>Calculation Variables:</b></legend>
+      <ol>
+        <li>
+          <%= f.label :crop_id %>
+          <%= f.select :crop_id, options_from_collection_for_select(@crops, 'id', 'name', @calculator.crop_id) %><br /><br />
+        </li>
+        <li>
+          <%= f.label :fertiliser_id %>
+          <%= f.select :fertiliser_id, options_from_collection_for_select(@fertilisers, 'id', 'name', @calculator.fertiliser_id) %><br /><br />
+        </li>
+        <li>
+          <%= f.label :soil_moisture_id %>
+          <%= f.select :soil_moisture_id, options_from_collection_for_select(@soil_moistures, 'id', 'name', @calculator.soil_moisture_id) %><br /><br />
+        </li>
+        <li>
+          <%= f.label :soil_texture_id %>
+          <%= f.select :soil_texture_id, options_from_collection_for_select(@soil_textures, 'id', 'name', @calculator.soil_texture_id) %><br /><br />
+        </li>
+        <li>
+          <%= f.label :seed_furrow_opening_width, "Seed furrow opening width (cm)" %>
+          <%= f.number_field :seed_furrow_opening_width %><br /><br />
+        </li>
+        <li>
+          <%= f.label :row_spacing, "Row spacing (cm)" %>
+          <%= f.number_field :row_spacing %><br /><br />
+        </li>
+        <li>
+          <%= f.label :tolerated_stand_loss, "Tolerated stand loss (%)" %>
+          <%= f.number_field :tolerated_stand_loss %><br /><br />
+        </li>
+        <li>
+          <%= f.submit "Calculate", confirm: 'By using this calculator you agree to the terms of use in the disclaimer' %>
+        </li>
+      </ol>
   </fieldset>
 <% end %>

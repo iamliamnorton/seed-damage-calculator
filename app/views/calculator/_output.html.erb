@@ -1,0 +1,34 @@
+<ol>
+	<li>
+		<%= label_tag('result', 'Kg/ha with the seed' ) %><br/>
+		<%= text_field_tag(:result, @kg, :disabled => true) %><br /><br />
+	</li>
+	<li>
+		<%= label_tag('litres', 'Litres/ha') %><br/>
+		<%= text_field_tag(:litres, @litres, :disabled => true) %><br /><br /><br />
+	</li>
+	<li>
+		<%= label_tag('nitrogen', 'Kg/ha of Nitrogen (N)') %><br/>
+		<%= text_field_tag(:nitrogen, @nitrogen, :disabled => true) %><br /><br />
+	</li>
+	<li>
+		<%= label_tag('phosphorus', 'Kg/ha of Phosphorus (P)') %><br/>
+		<%= text_field_tag(:phosphorus, @phosphorus, :disabled => true) %><br /><br />
+	</li>
+	<li>
+		<%= label_tag('potassium', 'Kg/ha of Potassium (K)') %><br/>
+		<%= text_field_tag(:potassium, @potassium, :disabled => true) %><br /><br />
+	</li>
+	<li>
+		<%= label_tag('sulphur', 'Kg/ha of Sulphur (S)') %><br/>
+		<%= text_field_tag(:sulphur, @sulphur, :disabled => true) %><br /><br />
+	</li>
+	<li>
+		<%= label_tag('magnesium', 'Kg/ha of Magnesium (Mg)') %><br/>
+		<%= text_field_tag(:magnesium, @magnesium, :disabled => true) %><br /><br />
+	</li>
+	<li>
+	  <%= submit_tag "Print Results" %>
+	</li>
+</ol>
+
