@@ -1,6 +1,4 @@
 Fasdac::Application.routes.draw do
-  
-  match 'calculator' => 'calculator#index', :via => :post
 
   resource :calculator, :only => [:index]
 
@@ -15,6 +13,11 @@ Fasdac::Application.routes.draw do
   end
   
   root :to => "calculator#index"
+  
+  match 'calculator' => 'calculator#index', :via => :post
+  match 'calculator' => 'calculator#index', :via => :get  
+  match '/theorem' => "pages#theorem", :via => :get
+  match '/disclaimer' => "pages#disclaimer", :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
