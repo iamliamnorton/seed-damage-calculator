@@ -23,6 +23,8 @@ class Calculator
     soil_coefficient = SoilCoefficient.where(:soil_moisture_id => self.soil_moisture_id, :soil_texture_id => self.soil_texture_id).first.value
     numerator = 30 * self.seed_furrow_opening_width.to_i * -1 * self.tolerated_stand_loss.to_i
     denominator = regression_coefficient * self.row_spacing.to_i * soil_coefficient
-    return (numerator / denominator).round(2)
+    result = numerator / denominator
+    result = result * 1.1208511 if I18n.locale == :metric
+    return result.round(2)
   end
 end

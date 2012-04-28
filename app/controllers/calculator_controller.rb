@@ -9,7 +9,7 @@ class CalculatorController < ApplicationController
         @calculator = Calculator.new(params[:calculator])
         @result = @calculator.calculate_result
         @fertiliser = Fertiliser.find_by_id(@calculator.fertiliser_id)
-        @liquid_weight = (@result / @fertiliser.liquid_weight).round(3) if @fertiliser.liquid_weight > 0
+        @liquid_weight = (@result / @fertiliser.liquid_weight).round(3) if @fertiliser.liquid_weight.to_f > 0
         @nitrogen = @result * @fertiliser.N
         @phosphorus = @result * @fertiliser.P
         @potassium = @result * @fertiliser.K
