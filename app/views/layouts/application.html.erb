@@ -11,12 +11,7 @@
 	<div class="container">
 	  <%= render 'layouts/header' %>
 		<section id="content">
-			<% if notice %>
-		  	<p class="notification notice"><%= notice %></p>
-		  <% end %>
-			<% if alert %>
-				<p class="notification alert"><%= alert %></p>
-		  <% end %>
+		  <%= render 'layouts/notifications' %>
 		  
 			<%= yield %>
 			
