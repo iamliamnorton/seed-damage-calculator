@@ -1,7 +1,5 @@
 Fasdac::Application.routes.draw do
-
-  resource :calculator, :only => [:index]
-
+    
   namespace :admin do
     root :to => "crops#index"
     resources :crops, :except => [:show]
@@ -11,13 +9,16 @@ Fasdac::Application.routes.draw do
     resources :soil_coefficients, :except => [:show]
     resources :regression_coefficients, :except => [:show]
   end
-  
+    
+  scope '(:locale)' do
+    resource :calculator, :only => [:index]
+    match 'calculator' => 'calculator#index', :via => :post
+    match 'calculator' => 'calculator#index', :via => :get  
+    match '/theorem' => "pages#theorem", :via => :get
+    match '/disclaimer' => "pages#disclaimer", :via => :get
+  end
+    
   root :to => "calculator#index"
-  
-  match 'calculator' => 'calculator#index', :via => :post
-  match 'calculator' => 'calculator#index', :via => :get  
-  match '/theorem' => "pages#theorem", :via => :get
-  match '/disclaimer' => "pages#disclaimer", :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,68 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+metric:
+  
+  activerecord:
+    models:
+      calculator:                 "Calculator"
+      crop:                       "Crop"
+      fertiliser:                 "Fertiliser"
+      regression_coefficient:     "Regression coefficient"
+      soil_coefficient:           "Soil coefficient"
+      soil_texture:               "Soil texture"
+      soil_moisture:              "Soil moisture"
+    attributes:
+      calculator:
+      crop:
+        name:                     "Name"
+      fertiliser:
+        name:                     "Name"
+        N:                        "N"
+        P:                        "P"
+        K:                        "K"
+        S:                        "S"
+        Mg:                       "Mg"
+        liquid_weight:            "Liquid weight"
+      regression_coefficient:
+        value:                    "Value"
+        crop:                     "Crop"
+        fertiliser:               "Fertiliser"
+      soil_coefficient:
+        value:                    "Value"
+        soil_texture:             "Soil texture"
+        soil_moisture:            "Soil moisture"
+      soil_texture:
+        name:                     "Name"
+      soil_moisture:
+        name:                     "Name"
+    errors:
+      messages:
+        blank:                    "can't be blank"
+        taken:                    "has already been taken"
+        not_a_number:             "is not a number"
+        greater_than:             "must be greater than %{count}"
+        greater_than_or_equal_to: "must be greater than or equal to %{count}"
+        less_than:                "must be less than %{count}"
+        less_than_or_equal_to:    "must be less than or equal to %{count}"
+        invalid:                  "is invalid"
+
+  layouts:
+    application:
+      title:          "Fertiliser And Seed Decision Aid Calculator"
+      
+  calculator:
+    index:
+      title:          "Fertiliser And Seed Decision Aid Calculator"
+    input_form:
+      fert:           "Fertiliser"
+      furrow:         "Seed furrow opening width (cm)"
+      spacing:        "Row spacing (cm)"
+    output:
+      result:         "Kg/ha with the seed"
+      liquid_weight:  "Litres/ha"
+      nitrogen:       "Kg/ha of Nitrogen (N)"
+      phosphorus:     "Kg/ha of Phosphorus (P)"
+      potassium:      "Kg/ha of Potassium (K)"
+      sulphur:        "Kg/ha of Sulphur (S)"
+      magnesium:      "Kg/ha of Magnesium (Mg)"

@@ -12,7 +12,7 @@ Fertiliser.blueprint do
   K               { rand().round(2) }
   S               { rand().round(2) }
   Mg              { rand().round(2) }
-  kgL             { rand().round(6) }
+  liquid_weight   { rand().round(6) }
 end
 
 SoilTexture.blueprint do

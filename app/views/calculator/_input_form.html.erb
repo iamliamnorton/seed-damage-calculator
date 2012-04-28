@@ -7,7 +7,7 @@
           <%= f.select :crop_id, options_from_collection_for_select(@crops, 'id', 'name', @calculator.crop_id) %><br /><br />
         </li>
         <li>
-          <%= f.label :fertiliser_id %>
+          <%= f.label :fertiliser_id, t('.fert') %>
           <%= f.select :fertiliser_id, options_from_collection_for_select(@fertilisers, 'id', 'name', @calculator.fertiliser_id) %><br /><br />
         </li>
         <li>
@@ -19,11 +19,11 @@
           <%= f.select :soil_texture_id, options_from_collection_for_select(@soil_textures, 'id', 'name', @calculator.soil_texture_id) %><br /><br />
         </li>
         <li>
-          <%= f.label :seed_furrow_opening_width, "Seed furrow opening width (cm)" %>
+          <%= f.label :seed_furrow_opening_width, t('.furrow') %>
           <%= f.number_field :seed_furrow_opening_width %><br /><br />
         </li>
         <li>
-          <%= f.label :row_spacing, "Row spacing (cm)" %>
+          <%= f.label :row_spacing, t('.spacing') %>
           <%= f.number_field :row_spacing %><br /><br />
         </li>
         <li>

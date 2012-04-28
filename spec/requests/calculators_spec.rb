@@ -59,5 +59,14 @@ describe "Calculators" do
       pending("need to get this functionality created first")
     end
   end
-
+  
+  describe "the locale selecter", :js => true do
+    it "is defaulted to metric" do
+      page.should have_content("Fertiliser And Seed Decision Aid Calculator")
+    end
+    it "can be changed to imperial" do
+      select "Imperial", :from => "set_locale"
+      page.should have_content("Fertilizer And Seed Decision Aid Calculator")
+    end
+  end
 end
