@@ -1,5 +1,7 @@
 <h1>Listing regression_coefficients</h1>
 
+<p>Click on a value to change it. Valid values are between -10 and 10 and will round to 3 digits of precision.</p>
+
 <table>
   <tr>
     <th></th>
@@ -11,12 +13,7 @@
     <tr>
       <td><b><%= fertiliser.name %></b></td>
       <% @crops.each do |crop| %>
-        <% if !RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).nil? %>
-          <td><%= RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first.value %></td>
-        <% else %>
-          <td></td>
-        <% end %>
-
+        <td><%= best_in_place RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first, :value, :path => [:admin, RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first]%></td>
       <% end %>
     </tr>
   <% end %>
