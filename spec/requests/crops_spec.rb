@@ -32,6 +32,15 @@ describe "Crops" do
       click_button "Create Crop"
       page.should have_content("Crop was successfully created.")
     end
+    it "a new crop should produce corresponding regression_coefficients" do
+      assert_equal(0, RegressionCoefficient.count)
+      fertiliser = Fertiliser.make!
+      new_crop = Crop.make
+      fill_in "Name", :with => new_crop.name
+      click_button "Create Crop"
+      page.should have_content("Crop was successfully created.")
+      assert_equal(1, RegressionCoefficient.count)
+    end
   end
   
   describe "- when admin attempts to update a crop -" do
@@ -70,6 +79,9 @@ describe "Crops" do
       click_link "Destroy"
       page.should_not have_content(@valid_crop.name)
       page.should have_content("Crop was successfully destroyed.")
+    end
+    it "destroys all corresponding regression_coefficients" do
+      pending("cannot seem to click on the okay confirmation box")
     end
   end
 end

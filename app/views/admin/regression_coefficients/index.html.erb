@@ -2,6 +2,32 @@
 
 <table>
   <tr>
+    <th></th>
+    <% @crops.each do |crop| %>
+      <th><%= crop.name %></th>
+    <% end %>
+  </tr>
+  <% @fertilisers.each do |fertiliser| %>
+    <tr>
+      <td><b><%= fertiliser.name %></b></td>
+      <% @crops.each do |crop| %>
+        <% if !RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).nil? %>
+          <td><%= RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first.value %></td>
+        <% else %>
+          <td></td>
+        <% end %>
+
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<% #delete the lines below when this is working properly!!! %>
+<br /><br />
+    
+
+<table>
+  <tr>
     <th>Value</th>
     <th>Crop</th>
     <th>Fertiliser</th>
@@ -22,5 +48,4 @@
 
 <br />
 
-<%= link_to 'New Regression coefficient', new_admin_regression_coefficient_path %> |
 <%= link_to 'Back', admin_root_path %>

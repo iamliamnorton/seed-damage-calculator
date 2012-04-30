@@ -33,6 +33,15 @@ describe "Fertilisers" do
       click_button "Create Fertiliser"
       page.should have_content("Fertiliser was successfully created.")
     end
+    it "a new fertiliser should produce corresponding regression_coefficients" do
+      assert_equal(0, RegressionCoefficient.count)
+      crop = Crop.make!
+      new_fertiliser = Fertiliser.make
+      fill_in "Name", :with => new_fertiliser.name
+      click_button "Create Fertiliser"
+      page.should have_content("Fertiliser was successfully created.")
+      assert_equal(1, RegressionCoefficient.count)
+    end
   end
   
   describe "- when admin attempts to update a fertiliser -" do

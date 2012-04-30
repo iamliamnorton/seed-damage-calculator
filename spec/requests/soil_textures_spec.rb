@@ -32,6 +32,15 @@ describe "SoilTextures" do
       click_button "Create Soil texture"
       page.should have_content("Soil texture was successfully created.")
     end
+    it "a new soil_texture should produce corresponding soil_coefficients" do
+      assert_equal(0, SoilCoefficient.count)
+      soil_moisture = SoilMoisture.make!
+      new_soil_texture = SoilTexture.make
+      fill_in "Name", :with => new_soil_texture.name
+      click_button "Create Soil texture"
+      page.should have_content("Soil texture was successfully created.")
+      assert_equal(1, SoilCoefficient.count)
+    end
   end
   
   describe "- when admin attempts to update a soil_texture -" do

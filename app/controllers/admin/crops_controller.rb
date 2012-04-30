@@ -30,9 +30,13 @@ class Admin::CropsController < Admin::BaseController
   # POST /crops.json
   def create
     @crop = Crop.new(params[:crop])
+    @fertilisers = Fertiliser.all
 
     respond_to do |format|
       if @crop.save
+        @fertilisers.each do |fertiliser|
+          RegressionCoefficient.create(:crop_id => @crop.id, :fertiliser_id => fertiliser.id)
+        end
         format.html { redirect_to admin_crops_path, notice: 'Crop was successfully created.' }
         format.json { render json: @crop, status: :created, location: @crop }
       else

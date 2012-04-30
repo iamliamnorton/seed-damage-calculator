@@ -3,6 +3,8 @@ class Admin::SoilCoefficientsController < Admin::BaseController
   # GET /soil_coefficients.json
   def index
     @soil_coefficients = SoilCoefficient.all
+    @soil_moistures = SoilMoisture.all
+    @soil_textures = SoilTexture.all
 
     respond_to do |format|
       format.html # index.html.erb

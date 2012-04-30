@@ -3,6 +3,8 @@ class Admin::RegressionCoefficientsController < Admin::BaseController
   # GET /regression_coefficients.json
   def index
     @regression_coefficients = RegressionCoefficient.all
+    @crops = Crop.order('name')
+    @fertilisers = Fertiliser.all
 
     respond_to do |format|
       format.html # index.html.erb

@@ -30,9 +30,13 @@ class Admin::SoilMoisturesController < Admin::BaseController
   # POST /soil_moistures.json
   def create
     @soil_moisture = SoilMoisture.new(params[:soil_moisture])
+    @soil_textures = SoilTexture.all
 
     respond_to do |format|
       if @soil_moisture.save
+        @soil_textures.each do |soil_texture|
+          SoilCoefficient.create(:soil_texture_id => soil_texture.id, :soil_moisture_id => @soil_moisture.id)
+        end
         format.html { redirect_to admin_soil_moistures_path, notice: 'Soil moisture was successfully created.' }
         format.json { render json: @soil_moisture, status: :created, location: @soil_moisture }
       else

@@ -6,8 +6,8 @@ Fasdac::Application.routes.draw do
     resources :fertilisers, :except => [:show]
     resources :soil_textures, :except => [:show]
     resources :soil_moistures, :except => [:show]
-    resources :soil_coefficients, :except => [:show]
-    resources :regression_coefficients, :except => [:show]
+    resources :soil_coefficients, :only => [:index, :edit, :update]
+    resources :regression_coefficients, :only => [:index, :edit, :update]
   end
     
   scope '(:locale)' do
