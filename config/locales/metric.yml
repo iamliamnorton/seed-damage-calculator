@@ -3,49 +3,52 @@
 
 metric:
   
-  activerecord:
-    models:
-      calculator:                 "Calculator"
-      crop:                       "Crop"
-      fertiliser:                 "Fertiliser"
-      regression_coefficient:     "Regression coefficient"
-      soil_coefficient:           "Soil coefficient"
-      soil_texture:               "Soil texture"
-      soil_moisture:              "Soil moisture"
-    attributes:
-      calculator:
-      crop:
-        name:                     "Name"
-      fertiliser:
-        name:                     "Name"
-        N:                        "N"
-        P:                        "P"
-        K:                        "K"
-        S:                        "S"
-        Mg:                       "Mg"
-        liquid_weight:            "Liquid weight"
-      regression_coefficient:
-        value:                    "Value"
-        crop:                     "Crop"
-        fertiliser:               "Fertiliser"
-      soil_coefficient:
-        value:                    "Value"
-        soil_texture:             "Soil texture"
-        soil_moisture:            "Soil moisture"
-      soil_texture:
-        name:                     "Name"
-      soil_moisture:
-        name:                     "Name"
-    errors:
-      messages:
-        blank:                    "can't be blank"
-        taken:                    "has already been taken"
-        not_a_number:             "is not a number"
-        greater_than:             "must be greater than %{count}"
-        greater_than_or_equal_to: "must be greater than or equal to %{count}"
-        less_than:                "must be less than %{count}"
-        less_than_or_equal_to:    "must be less than or equal to %{count}"
-        invalid:                  "is invalid"
+  models:
+    calculator:                 "Calculator"
+    crop:                       "Crop"
+    fertiliser:                 "Fertiliser"
+    regression_coefficient:     "Regression coefficient"
+    soil_coefficient:           "Soil coefficient"
+    soil_texture:               "Soil texture"
+    soil_moisture:              "Soil moisture"
+  attributes:
+    calculator:
+      seed_furrow_opening_width:  "Seed furrow opening width"
+      row_spacing:                "Row spacing"
+      tolerated_stand_loss:       "Tolerated stand loss"
+    crop:
+      name:                     "Name"
+    fertiliser:
+      name:                     "Name"
+      N:                        "N"
+      P:                        "P"
+      K:                        "K"
+      S:                        "S"
+      Mg:                       "Mg"
+      liquid_weight:            "Liquid weight"
+    regression_coefficient:
+      value:                    "Value"
+      crop:                     "Crop"
+      fertiliser:               "Fertiliser"
+    soil_coefficient:
+      value:                    "Value"
+      soil_texture:             "Soil texture"
+      soil_moisture:            "Soil moisture"
+    soil_texture:
+      name:                     "Name"
+    soil_moisture:
+      name:                     "Name"
+  errors:
+    format:                     "%{attribute} %{message}"
+    messages:
+      blank:                    "can't be blank"
+      taken:                    "has already been taken"
+      not_a_number:             "is not a number"
+      greater_than:             "must be greater than %{count}"
+      greater_than_or_equal_to: "must be greater than or equal to %{count}"
+      less_than:                "must be less than %{count}"
+      less_than_or_equal_to:    "must be less than or equal to %{count}"
+      invalid:                  "is invalid"
 
   layouts:
     application:

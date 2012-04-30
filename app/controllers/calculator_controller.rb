@@ -36,7 +36,11 @@ class CalculatorController < ApplicationController
         if @calculator.valid?
           format.html { redirect_to root_path(:calculator => params[:calculator]), notice: 'Calculation was successfully completed.' }
         else
-          format.html { redirect_to root_path(:calculator => params[:calculator]), alert: 'Calculation was not successfully completed.' }
+          errors = ''
+          @calculator.errors.full_messages.each do |msg|
+            errors = errors += msg + " "
+          end
+          format.html { redirect_to root_path(:calculator => params[:calculator]), alert: "Calculation was not successfully completed. #{errors}" }
         end
       end
     end
