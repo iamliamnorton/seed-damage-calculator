@@ -25,6 +25,6 @@ class Calculator
     denominator = regression_coefficient * self.row_spacing.to_i * soil_coefficient
     result = numerator / denominator
     result = result * 1.1208511 if I18n.locale == :metric
-    return result.round(2)
+    return result
   end
 end

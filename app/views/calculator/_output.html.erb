@@ -28,7 +28,7 @@
 		<%= text_field_tag(:magnesium, @magnesium, :disabled => true) %><br /><br />
 	</li>
 	<li>
-	  <p>Print out to pdf </p>
+	  <p>Print to pdf <%= link_to "here", calculator_path(@calculator, :format => 'pdf') %></p>
 	</li>
 </ol>
 

@@ -2,7 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Fertiliser Seed Calculator</title>
+  <title><%= yield(:title) %></title>
+  <% if !yield(:description).blank? %>
+    <meta name="description" content="<%= yield(:description) %>" />
+  <% end %>
+  <% if !yield(:keywords).blank? %>
+    <meta name="keywords" content="<%= yield(:keywords) %>" />
+  <% end %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
