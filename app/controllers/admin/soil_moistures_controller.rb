@@ -69,7 +69,7 @@ class Admin::SoilMoisturesController < Admin::BaseController
     @soil_moisture.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_soil_moistures_path }
+      format.html { redirect_to admin_soil_moistures_path, notice: 'Soil moisture was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

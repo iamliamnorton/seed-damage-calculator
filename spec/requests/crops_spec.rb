@@ -70,18 +70,25 @@ describe "Crops" do
   end
   
   describe "- when admin attempts to destroy a crop -" do
+    before(:each) do
+      page.driver.browser.basic_authorize('admin', 'admin')
+      visit admin_crops_path
+    end
     it "cannot destroy a crop name that doesn't exist" do
       invalid_crop = Crop.make
       response.should raise_error
     end
     it "can destroy a crop that exists in the system" do
-      pending("cannot seem to click on the okay confirmation box")
       click_link "Destroy"
       page.should_not have_content(@valid_crop.name)
       page.should have_content("Crop was successfully destroyed.")
     end
     it "destroys all corresponding regression_coefficients" do
-      pending("cannot seem to click on the okay confirmation box")
+      valid_fertiliser = Fertiliser.make!
+      valid_regression_coeff = RegressionCoefficient.make!(:crop => @valid_crop, :fertiliser => valid_fertiliser)
+      assert_equal(1, RegressionCoefficient.count)
+      click_link "Destroy"
+      assert_equal(0, RegressionCoefficient.count)
     end
   end
 end

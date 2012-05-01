@@ -72,17 +72,26 @@ describe "Fertilisers" do
   end
   
   describe "- when admin attempts to destroy a fertiliser -" do
+    before(:each) do
+      page.driver.browser.basic_authorize('admin', 'admin')
+      visit admin_fertilisers_path
+    end
     it "cannot destroy a fertiliser name that doesn't exist" do
       invalid_fertiliser = Fertiliser.make
       get 'admin/fertilisers#destroy', :id => invalid_fertiliser.id
       response.should raise_error
     end
     it "can destroy a fertiliser that exists in the system" do
-      pending("cannot seem to click on the okay confirmation box")
-      page.driver.browser.switch_to.alert.accept
       click_link "Destroy"
       page.should_not have_content(@valid_fertiliser.name)
       page.should have_content("Fertiliser was successfully destroyed.")
+    end
+    it "destroys all corresponding regression_coefficients" do
+      valid_crop = Crop.make!
+      valid_regression_coeff = RegressionCoefficient.make!(:crop => valid_crop, :fertiliser => @valid_fertiliser)
+      assert_equal(1, RegressionCoefficient.count)
+      click_link "Destroy"
+      assert_equal(0, RegressionCoefficient.count)
     end
   end
 end

@@ -57,6 +57,8 @@ describe "Calculators" do
     end
     it "results CANNOT be printed to PDF" do
       pending("need to get this functionality created first")
+      click_button "Calculate"
+      page.should have_content("Calculation was not successfully completed.")
     end
   end
   

@@ -15,4 +15,6 @@
  *= require notifications
  *= require forms
  *= require tables
+ *= require admin/soil_coefficients
+ *= require admin/regression_coefficients
 */

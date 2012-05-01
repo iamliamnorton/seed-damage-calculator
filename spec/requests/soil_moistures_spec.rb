@@ -70,17 +70,26 @@ describe "SoilMoistures" do
   end
   
   describe "- when admin attempts to destroy a soil_moisture -" do
+    before(:each) do
+      page.driver.browser.basic_authorize('admin', 'admin')
+      visit admin_soil_moistures_path
+    end
     it "cannot destroy a soil_moisture name that doesn't exist" do
       invalid_soil_moisture = SoilMoisture.make
       get 'admin/soil_moistures#destroy', :id => invalid_soil_moisture.id
       response.should raise_error
     end
     it "can destroy a soil_moisture that exists in the system" do
-      pending("cannot seem to click on the okay confirmation box")
-      page.driver.browser.switch_to.alert.accept
       click_link "Destroy"
       page.should_not have_content(@valid_soil_moisture.name)
       page.should have_content("Soil moisture was successfully destroyed.")
+    end
+    it "destroys all corresponding soil_coefficients" do
+      valid_soil_texture = SoilTexture.make!
+      valid_soil_coeff = SoilCoefficient.make!(:soil_moisture => @valid_soil_moisture, :soil_texture => valid_soil_texture)
+      assert_equal(1, SoilCoefficient.count)
+      click_link "Destroy"
+      assert_equal(0, SoilCoefficient.count)
     end
   end
 
