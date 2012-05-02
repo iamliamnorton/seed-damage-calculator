@@ -13,6 +13,7 @@
     <tr>
       <td><b><%= fertiliser.name %></b></td>
       <% @crops.each do |crop| %>
+        <% #the below code will need refactoring %>
         <td><%= best_in_place RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first, :value, :path => [:admin, RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first]%></td>
       <% end %>
     </tr>

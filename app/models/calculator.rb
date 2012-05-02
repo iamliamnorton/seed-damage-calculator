@@ -27,4 +27,52 @@ class Calculator
     result = result * 1.1208511 if I18n.locale == :metric
     return result
   end
+  
+  def calculate_liquid_weight(result)
+    fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
+    if fertiliser.liquid_weight.to_f > 0
+      liquid_weight = (result / fertiliser.liquid_weight).round(1)
+    end
+    return liquid_weight
+  end
+  
+  def calculate_nitrogen(result)
+    fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
+    if fertiliser.N.to_f > 0
+      nitrogen = (result * fertiliser.N).round(1)
+    end
+    return nitrogen
+  end
+  
+  def calculate_phosphorus(result)
+    fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
+    if fertiliser.P.to_f > 0
+      phosphorus = (result * fertiliser.P).round(1)
+    end
+    return phosphorus
+  end
+  
+  def calculate_potassium(result)
+    fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
+    if fertiliser.K.to_f > 0
+      potassium = (result * fertiliser.K).round(1)
+    end
+    return potassium
+  end
+  
+  def calculate_sulphur(result)
+    fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
+    if fertiliser.S.to_f > 0
+      sulphur = (result * fertiliser.S).round(1)
+    end
+    return sulphur
+  end
+  
+  def calculate_magnesium(result)
+    fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
+    if fertiliser.Mg.to_f > 0
+      magnesium = (result * fertiliser.Mg).round(1)
+    end
+    return magnesium
+  end
 end
