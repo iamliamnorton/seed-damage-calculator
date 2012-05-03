@@ -56,7 +56,9 @@ class Calculator
   def calculate_phosphorus(result)
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
     if fertiliser.P.to_f > 0 && self.valid?
-      phosphorus = (result * fertiliser.P).round(1)
+      phosphorus = result * fertiliser.P
+      phosphorus = phosphorus * 0.4364 if I18n.locale == :metric
+      phosphorus = phosphorus.round(1)
     end
     return phosphorus
   end
@@ -64,7 +66,9 @@ class Calculator
   def calculate_potassium(result)
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
     if fertiliser.K.to_f > 0 && self.valid?
-      potassium = (result * fertiliser.K).round(1)
+      potassium = result * fertiliser.K
+      potassium = potassium * 0.83 if I18n.locale == :metric
+      potassium = potassium.round(1)
     end
     return potassium
   end
