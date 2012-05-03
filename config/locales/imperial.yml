@@ -62,6 +62,7 @@ imperial:
       spacing:        "Row spacing (in)"
     output:
       result:         "Lbs/ac with the seed"
+      sbu:            "Seed Bed Utilization"
       liquid_weight:  "Gal/ac"
       nitrogen:       "Lbs/ac of Nitrogen (N)"
       phosphorus:     "Lbs/ac of Phosphorus (P)"

@@ -7,6 +7,7 @@ class CalculatorController < ApplicationController
     if params[:calculator]
       @calculator = Calculator.new(params[:calculator])
       @result = @calculator.calculate_result
+      @sbu = @calculator.calculate_sbu
       @liquid_weight = @calculator.calculate_liquid_weight(@result)
       @nitrogen = @calculator.calculate_nitrogen(@result)
       @phosphorus = @calculator.calculate_phosphorus(@result)

@@ -63,6 +63,7 @@ metric:
       spacing:        "Row spacing (cm)"
     output:
       result:         "Kg/ha with the seed"
+      sbu:            "Seed Bed Utilization"
       liquid_weight:  "Litres/ha"
       nitrogen:       "Kg/ha of Nitrogen (N)"
       phosphorus:     "Kg/ha of Phosphorus (P)"

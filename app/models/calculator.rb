@@ -30,6 +30,13 @@ class Calculator
     return result
   end
   
+  def calculate_sbu
+    if self.valid?
+      sbu = (self.seed_furrow_opening_width.to_f / self.row_spacing.to_f).round(2)
+    end
+    return sbu
+  end
+  
   def calculate_liquid_weight(result)
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
     if fertiliser.liquid_weight.to_f > 0 && self.valid?
