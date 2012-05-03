@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  def theorem
+  def theory
   end
 
   def disclaimer

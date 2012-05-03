@@ -14,7 +14,7 @@ Fasdac::Application.routes.draw do
     resource :calculator, :only => [:index]
     match 'calculator' => 'calculator#index', :via => :post
     match 'calculator' => 'calculator#index', :via => :get  
-    match '/theorem' => "pages#theorem", :via => :get
+    match '/theory' => "pages#theory", :via => :get
     match '/disclaimer' => "pages#disclaimer", :via => :get
   end
     
