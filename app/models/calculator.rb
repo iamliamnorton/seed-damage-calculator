@@ -23,14 +23,16 @@ class Calculator
     soil_coefficient = SoilCoefficient.where(:soil_moisture_id => self.soil_moisture_id, :soil_texture_id => self.soil_texture_id).first.value
     numerator = 30 * self.seed_furrow_opening_width.to_i * -1 * self.tolerated_stand_loss.to_i
     denominator = regression_coefficient * self.row_spacing.to_i * soil_coefficient
-    result = numerator / denominator
-    result = result * 1.1208511 if I18n.locale == :metric
+    if self.valid?
+      result = numerator / denominator
+      result = result * 1.1208511 if I18n.locale == :metric
+    end
     return result
   end
   
   def calculate_liquid_weight(result)
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
-    if fertiliser.liquid_weight.to_f > 0
+    if fertiliser.liquid_weight.to_f > 0 && self.valid?
       liquid_weight = (result / fertiliser.liquid_weight).round(1)
     end
     return liquid_weight
@@ -38,7 +40,7 @@ class Calculator
   
   def calculate_nitrogen(result)
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
-    if fertiliser.N.to_f > 0
+    if fertiliser.N.to_f > 0 && self.valid?
       nitrogen = (result * fertiliser.N).round(1)
     end
     return nitrogen
@@ -46,7 +48,7 @@ class Calculator
   
   def calculate_phosphorus(result)
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
-    if fertiliser.P.to_f > 0
+    if fertiliser.P.to_f > 0 && self.valid?
       phosphorus = (result * fertiliser.P).round(1)
     end
     return phosphorus
@@ -54,7 +56,7 @@ class Calculator
   
   def calculate_potassium(result)
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
-    if fertiliser.K.to_f > 0
+    if fertiliser.K.to_f > 0 && self.valid?
       potassium = (result * fertiliser.K).round(1)
     end
     return potassium
@@ -62,7 +64,7 @@ class Calculator
   
   def calculate_sulphur(result)
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
-    if fertiliser.S.to_f > 0
+    if fertiliser.S.to_f > 0 && self.valid?
       sulphur = (result * fertiliser.S).round(1)
     end
     return sulphur
@@ -70,7 +72,7 @@ class Calculator
   
   def calculate_magnesium(result)
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
-    if fertiliser.Mg.to_f > 0
+    if fertiliser.Mg.to_f > 0 && self.valid?
       magnesium = (result * fertiliser.Mg).round(1)
     end
     return magnesium

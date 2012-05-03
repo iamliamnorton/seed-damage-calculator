@@ -13,7 +13,7 @@ class CalculatorController < ApplicationController
       @potassium = @calculator.calculate_potassium(@result)
       @sulphur = @calculator.calculate_sulphur(@result)
       @magnesium = @calculator.calculate_magnesium(@result)
-      @result = @result.round(1)    #rounded here so precision of other results is not affected
+      @result = @result.round(1) if !@result.nil?    #rounded here so precision of other results is not affected
     else
       @calculator = Calculator.new
     end

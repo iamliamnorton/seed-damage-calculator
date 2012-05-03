@@ -1,34 +1,37 @@
+<%= form_for(request.url) do |f| %>
 <ol>
 	<li>
-		<%= label_tag('result', t('.result') ) %><br/>
-		<%= text_field_tag(:result, @result, :disabled => true) %><br /><br />
+		<%= label_tag :result, t('.result') %><br/>
+		<%= text_field_tag :result, @result, :disabled => true %><br /><br />
 	</li>
 	<li>
-		<%= label_tag( 'liquid_weight', t('.liquid_weight') ) %><br/>
-		<%= text_field_tag(:liquid_weight, @liquid_weight, :disabled => true) %><br /><br /><br />
+		<%= label_tag :liquid_weight, t('.liquid_weight') %><br/>
+		<%= text_field_tag :liquid_weight, @liquid_weight, :disabled => true %><br /><br /><br />
 	</li>
 	<li>
-		<%= label_tag('nitrogen', t('.nitrogen') ) %><br/>
-		<%= text_field_tag(:nitrogen, @nitrogen, :disabled => true) %><br /><br />
+		<%= label_tag :nitrogen, t('.nitrogen') %><br/>
+		<%= text_field_tag :nitrogen, @nitrogen, :disabled => true %><br /><br />
 	</li>
 	<li>
-		<%= label_tag('phosphorus', t('.phosphorus') ) %><br/>
-		<%= text_field_tag(:phosphorus, @phosphorus, :disabled => true) %><br /><br />
+		<%= label_tag :phosphorus, t('.phosphorus') %><br/>
+		<%= text_field_tag :phosphorus, @phosphorus, :disabled => true %><br /><br />
 	</li>
 	<li>
-		<%= label_tag('potassium', t('.potassium') ) %><br/>
-		<%= text_field_tag(:potassium, @potassium, :disabled => true) %><br /><br />
+		<%= label_tag :potassium, t('.potassium') %><br/>
+		<%= text_field_tag :potassium, @potassium, :disabled => true %><br /><br />
 	</li>
 	<li>
-		<%= label_tag('sulphur', t('.sulphur') ) %><br/>
-		<%= text_field_tag(:sulphur, @sulphur, :disabled => true) %><br /><br />
+		<%= label_tag :sulphur, t('.sulphur') %><br/>
+		<%= text_field_tag :sulphur, @sulphur, :disabled => true %><br /><br />
 	</li>
 	<li>
-		<%= label_tag('magnesium', t('.magnesium') ) %><br/>
-		<%= text_field_tag(:magnesium, @magnesium, :disabled => true) %><br /><br />
+		<%= label_tag :magnesium, t('.magnesium') %><br/>
+		<%= text_field_tag :magnesium, @magnesium, :disabled => true %><br /><br />
 	</li>
 	<li>
-	  <p><%= link_to "Print to PDF", calculator_path(@calculator, :format => :pdf) %></p>
+	  <%= submit_tag "Print PDF", :disabled => true %>
 	</li>
 </ol>
+<% end %>
+
 
