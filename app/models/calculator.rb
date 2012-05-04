@@ -32,7 +32,8 @@ class Calculator
   
   def calculate_sbu
     if self.valid?
-      sbu = (self.seed_furrow_opening_width.to_f / self.row_spacing.to_f).round(2)
+      sbu = (self.seed_furrow_opening_width.to_f / self.row_spacing.to_f) * 100
+      sbu = sbu.round(0)
     end
     return sbu
   end

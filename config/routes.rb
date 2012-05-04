@@ -16,6 +16,7 @@ Fasdac::Application.routes.draw do
     match 'calculator' => 'calculator#index', :via => :get  
     match '/theory' => "pages#theory", :via => :get
     match '/disclaimer' => "pages#disclaimer", :via => :get
+    match '/definitions' => "pages#definitions", :via => :get
   end
     
   root :to => "calculator#index"

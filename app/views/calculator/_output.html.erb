@@ -6,7 +6,7 @@
 	</li>
 	<li>
 	  <%= label_tag :sbu, t('.sbu') %><br/>
-		<%= text_field_tag :sbu, @sbu, :disabled => true %><br /><br />
+		<%= text_field_tag :sbu, @sbu, :disabled => true %> <%= link_to "?", definitions_path, :target => "_blank" %><br /><br />
 	</li>
 	<li>
 		<%= label_tag :liquid_weight, t('.liquid_weight') %><br/>
@@ -37,5 +37,3 @@
 	</li>
 </ol>
 <% end %>
-
-
