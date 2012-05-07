@@ -12,15 +12,15 @@
         </li>
         <li>
           <%= f.label :soil_moisture_id %>
-          <%= f.select :soil_moisture_id, options_from_collection_for_select(@soil_moistures, 'id', 'name', @calculator.soil_moisture_id) %> <%= link_to "?", definitions_path, :target => "_blank" %><br /><br />
+          <%= f.select :soil_moisture_id, options_from_collection_for_select(@soil_moistures, 'id', 'name', @calculator.soil_moisture_id) %> <%= link_to image_tag('info_button.png'), definitions_path, :target => "_blank" %><br /><br />
         </li>
         <li>
           <%= f.label :soil_texture_id %>
-          <%= f.select :soil_texture_id, options_from_collection_for_select(@soil_textures, 'id', 'name', @calculator.soil_texture_id) %> <%= link_to "?", definitions_path, :target => "_blank" %><br /><br />
+          <%= f.select :soil_texture_id, options_from_collection_for_select(@soil_textures, 'id', 'name', @calculator.soil_texture_id) %> <%= link_to image_tag('info_button.png'), definitions_path, :target => "_blank" %><br /><br />
         </li>
         <li>
           <%= f.label :seed_furrow_opening_width, t('.furrow') %>
-          <%= f.number_field :seed_furrow_opening_width %> <%= link_to "?", definitions_path, :target => "_blank" %><br /><br />
+          <%= f.number_field :seed_furrow_opening_width %> <%= link_to image_tag('info_button.png'), definitions_path, :target => "_blank" %><br /><br />
         </li>
         <li>
           <%= f.label :row_spacing, t('.spacing') %>
@@ -28,7 +28,7 @@
         </li>
         <li>
           <%= f.label :tolerated_stand_loss, "Tolerated stand loss (%)" %>
-          <%= f.number_field :tolerated_stand_loss %> <%= link_to "?", definitions_path, :target => "_blank" %><br /><br />
+          <%= f.number_field :tolerated_stand_loss %> <%= link_to image_tag('info_button.png'), definitions_path, :target => "_blank" %><br /><br />
         </li>
         <li>
           <%= f.submit "Calculate", confirm: 'By using this calculator you agree to the terms of use in the disclaimer' %>

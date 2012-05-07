@@ -25,7 +25,7 @@ sorghum = Crop.create(:name => "Sorghum")
 sunflower = Crop.create(:name => "Sunflower")
 
 Fertiliser.delete_all
-urea = Fertiliser.create(:name => "Urea(46-0-0)", :N => 0.46)
+urea = Fertiliser.create(:name => "Urea (46-0-0)", :N => 0.46)
 nbpt = Fertiliser.create(:name => "Urea+NBPT", :N => 0.46)
 twentyeight = Fertiliser.create(:name => "28-0-0", :N => 0.28, :liquid_weight => 1.276151)
 amnit = Fertiliser.create(:name => "Am.Nit (34-0-0)", :N => 0.34)
@@ -40,7 +40,7 @@ four = Fertiliser.create(:name => "4-10-10", :N => 0.04, :P => 0.1, :K => 0.1, :
 kcl = Fertiliser.create(:name => "KCL (0-0-60)", :K => 0.6)
 ksmg = Fertiliser.create(:name => "KSMg (0-0-22-22S-11Mg)", :K => 0.26, :S => 0.18, :Mg => 0.11)
 ksulfate = Fertiliser.create(:name => "K Sulfate (0-0-50-17S)", :K => 0.51, :S => 0.19)
-ats = Fertiliser.create(:name => "ATS", :N => 0.12, :S => 0.26, :liquid_weight => 1.330073)
+ats = Fertiliser.create(:name => "ATS (12-0-0-26S)", :N => 0.12, :S => 0.26, :liquid_weight => 1.330073)
 
 SoilTexture.delete_all
 fine = SoilTexture.create(:name => "Fine")
