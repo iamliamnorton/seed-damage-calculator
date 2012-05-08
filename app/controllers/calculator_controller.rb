@@ -27,9 +27,6 @@ class CalculatorController < ApplicationController
       respond_to do |format|
         if @calculator.valid?
           format.html { redirect_to root_path(:calculator => params[:calculator]), notice: 'Calculation was successfully completed.' }
-          format.pdf {
-            render  :pdf => "output"
-          }
         else
           # This will have to be redone, need a better way of showing errors in the calculator form
           errors = ''

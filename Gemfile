@@ -7,7 +7,7 @@ gem 'rails', '3.2.1'
 
 gem 'pg'
 gem 'best_in_place'
-gem 'wicked_pdf'
+gem 'prawn_rails'
 
 group :development, :test do
   gem 'ruby-debug19'

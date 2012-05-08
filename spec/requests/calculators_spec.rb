@@ -36,9 +36,6 @@ describe "Calculators" do
       click_button "Calculate"
       page.should have_content("Calculation was successfully completed.")
     end
-    it "results can be printed to PDF" do
-      pending("need to get this functionality created first")
-    end
   end
   
   describe "when invalid input exists" do
@@ -52,11 +49,6 @@ describe "Calculators" do
       fill_in "calculator_tolerated_stand_loss", :with => 5
     end
     it "results are printed to the screen" do
-      click_button "Calculate"
-      page.should have_content("Calculation was not successfully completed.")
-    end
-    it "results CANNOT be printed to PDF" do
-      pending("need to get this functionality created first")
       click_button "Calculate"
       page.should have_content("Calculation was not successfully completed.")
     end

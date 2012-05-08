@@ -57,6 +57,17 @@ metric:
   calculator:
     index:
       title:          "Fertiliser And Seed Decision Aid Calculator"
+      fert:           "Fertiliser"
+      furrow:         "Seed furrow opening width (cm)"
+      spacing:        "Row spacing (cm)"
+      result:         "kg/ha with the seed"
+      sbu:            "seed bed utilization (%)"
+      liquid_weight:  "litres/ha"
+      nitrogen:       "kg/ha of Nitrogen (N)"
+      phosphorus:     "kg/ha of Phosphorus (P)"
+      potassium:      "kg/ha of Potassium (K)"
+      sulphur:        "kg/ha of Sulphur (S)"
+      magnesium:      "kg/ha of Magnesium (Mg)"
     input_form:
       fert:           "Fertiliser"
       furrow:         "Seed furrow opening width (cm)"

@@ -60,10 +60,10 @@ class Admin::SoilCoefficientsController < Admin::BaseController
     respond_to do |format|
       if @soil_coefficient.update_attributes(params[:soil_coefficient])
         format.html { redirect_to admin_soil_coefficients_path, notice: 'Soil coefficient was successfully updated.' }
-        format.json { head :no_content }
+        format.json { respond_with_bip(@soil_coefficient) }
       else
         format.html { render action: "edit" }
-        format.json { render json: @soil_coefficient.errors, status: :unprocessable_entity }
+        format.json { respond_with_bip(@soil_coefficient) }
       end
     end
   end

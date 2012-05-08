@@ -56,6 +56,17 @@ imperial:
   calculator:
     index:
       title:          "Fertilizer And Seed Decision Aid Calculator"
+      fert:           "Fertilizer"
+      furrow:         "Seed furrow opening width (in)"
+      spacing:        "Row spacing (in)"
+      result:         "lbs/ac with the seed"
+      sbu:            "seed bed utilization (%)"
+      liquid_weight:  "gal/ac"
+      nitrogen:       "lbs/ac of Nitrogen (N)"
+      phosphorus:     "lbs/ac of Phosphorus (P<sub>2</sub>O<sub>5</sub>)"
+      potassium:      "lbs/ac of Potassium (K<sub>2</sub>O)"
+      sulphur:        "lbs/ac of Sulphur (S)"
+      magnesium:      "lbs/ac of Magnesium (Mg)"
     input_form:
       fert:           "Fertilizer"
       furrow:         "Seed furrow opening width (in)"
