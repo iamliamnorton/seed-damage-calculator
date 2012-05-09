@@ -43,10 +43,11 @@ prawn_document() do |pdf|
     pdf.table(output_data)
     
   else 
-    pdf.text "Calculation was not successfully completed.", :size => 15, :style => :bold
+    pdf.text "Calculation was not successfully completed.", :size => 15, :style => :bold, :align => :center
   end
   
-  pdf.move_down(30)
-  pdf.text "These results are subject to the terms and conditions. Please visit the fasdac.herokuapp.com web site for details.", :align => :center
+  pdf.move_down(60)
+  pdf.text "These results are subject to the terms and conditions.", :align => :center
+  pdf.text "Please visit <u><link>seed-damage-calculator.herokuapp.com</link></u> for details.", :align => :center, :inline_format => true
   
 end

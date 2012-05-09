@@ -55,7 +55,8 @@ imperial:
       
   calculator:
     index:
-      title:          "Fertilizer And Seed Decision Aid Calculator"
+      title:          "Seed Damage Calculator"
+      description:    "This calculator can be used as a guide to determine the maximum fertilizer material to apply with seed."
       fert:           "Fertilizer"
       furrow:         "Seed furrow opening width (in)"
       spacing:        "Row spacing (in)"
