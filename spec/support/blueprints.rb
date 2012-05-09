@@ -6,7 +6,8 @@ Crop.blueprint do
 end
 
 Fertiliser.blueprint do
-  name            { "#{Faker::Lorem.words.first}-#{sn}" }
+  metric_name     { "#{Faker::Lorem.words.first}-#{sn}" }
+  imperial_name   { "#{Faker::Lorem.words.first}-#{sn}" }
   N               { rand().round(2) }
   P               { rand().round(2) }
   K               { rand().round(2) }

@@ -6,7 +6,8 @@
 
 <table>
   <tr>
-    <th>Name</th>
+    <th>Metric name</th>
+    <th>Imperial name</th>
     <th>N</th>
     <th>P</th>
     <th>K</th>
@@ -19,7 +20,8 @@
 
 <% @fertilisers.each do |fertiliser| %>
   <tr>
-    <td><%= fertiliser.name %></td>
+    <td><%= fertiliser.metric_name %></td>
+    <td><%= fertiliser.imperial_name %></td>
     <td><%= fertiliser.N %></td>
     <td><%= fertiliser.P %></td>
     <td><%= fertiliser.K %></td>

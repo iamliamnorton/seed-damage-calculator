@@ -14,22 +14,23 @@ describe "Fertilisers" do
     end
     it "empty input is not accepted" do
       click_button "Create Fertiliser"
-      page.should have_content("Name can't be blank")
+      page.should have_content("Metric name can't be blank")
     end
     it "invalid input is not accepted" do
-      fill_in "Name", :with => "A"
+      fill_in "Metric name", :with => "A"
       fill_in "N", :with => "A"
       click_button "Create Fertiliser"
       page.should have_content("N is not a number")
     end
     it "a duplicate fertiliser is not accepted" do
-      fill_in "Name", :with => @valid_fertiliser.name
+      fill_in "Metric name", :with => @valid_fertiliser.metric_name
       click_button "Create Fertiliser"
-      page.should have_content("Name has already been taken")
+      page.should have_content("Metric name has already been taken")
     end
     it "valid input is accepted" do
       new_valid_fertiliser = Fertiliser.make
-      fill_in "Name", :with => new_valid_fertiliser.name
+      fill_in "Metric name", :with => new_valid_fertiliser.metric_name;
+      fill_in "Imperial name", :with => new_valid_fertiliser.imperial_name
       click_button "Create Fertiliser"
       page.should have_content("Fertiliser was successfully created.")
     end
@@ -37,7 +38,8 @@ describe "Fertilisers" do
       assert_equal(0, RegressionCoefficient.count)
       crop = Crop.make!
       new_fertiliser = Fertiliser.make
-      fill_in "Name", :with => new_fertiliser.name
+      fill_in "Metric name", :with => new_fertiliser.metric_name
+      fill_in "Imperial name", :with => new_fertiliser.imperial_name
       click_button "Create Fertiliser"
       page.should have_content("Fertiliser was successfully created.")
       assert_equal(1, RegressionCoefficient.count)
@@ -49,12 +51,12 @@ describe "Fertilisers" do
       visit edit_admin_fertiliser_path(@valid_fertiliser)
     end
     it "empty input is not accepted" do
-      fill_in "Name", :with => ""
+      fill_in "Metric name", :with => ""
       click_button "Update Fertiliser"
-      page.should have_content("Name can't be blank")
+      page.should have_content("Metric name can't be blank")
     end
     it "invalid input is not accepted" do
-      fill_in "Name", :with => "N"
+      fill_in "Metric name", :with => "N"
       fill_in "N", :with => "A"
       click_button "Update Fertiliser"
       page.should have_content("N is not a number")
@@ -65,7 +67,8 @@ describe "Fertilisers" do
     end
     it "valid input is accepted" do
       valid = Fertiliser.make
-      fill_in "Name", :with => valid.name
+      fill_in "Metric name", :with => valid.metric_name
+      fill_in "Imperial name", :with => valid.imperial_name
       click_button "Update Fertiliser"
       page.should have_content("Fertiliser was successfully updated.")
     end
@@ -83,7 +86,7 @@ describe "Fertilisers" do
     end
     it "can destroy a fertiliser that exists in the system" do
       click_link "Destroy"
-      page.should_not have_content(@valid_fertiliser.name)
+      page.should_not have_content(@valid_fertiliser.metric_name)
       page.should have_content("Fertiliser was successfully destroyed.")
     end
     it "destroys all corresponding regression_coefficients" do

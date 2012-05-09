@@ -11,7 +11,7 @@
   </tr>
   <% @fertilisers.each do |fertiliser| %>
     <tr>
-      <td><b><%= fertiliser.name %></b></td>
+      <td><b><%= fertiliser.metric_name %></b></td>
       <% @crops.each do |crop| %>
         <% #the below code will need refactoring %>
         <td><%= best_in_place RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first, :value, :path => [:admin, RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first]%></td>
@@ -20,9 +20,12 @@
   <% end %>
 </table>
 
+<br />
+
+<%= link_to 'Back', admin_root_path %>
+
 <% #delete the lines below when this is working properly!!! %>
 <br /><br />
-    
 
 <table>
   <tr>
@@ -37,7 +40,7 @@
   <tr>
     <td><%= regression_coefficient.value %></td>
     <td><%= regression_coefficient.crop.name %></td>
-    <td><%= regression_coefficient.fertiliser.name %></td>
+    <td><%= regression_coefficient.fertiliser.metric_name %></td>
     <td><%= link_to 'Edit', edit_admin_regression_coefficient_path(regression_coefficient) %></td>
     <td><%= link_to 'Destroy', [:admin, regression_coefficient], confirm: 'Are you sure?', method: :delete %></td>
   </tr>

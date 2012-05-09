@@ -8,7 +8,11 @@
         </li>
         <li>
           <%= f.label :fertiliser_id, t('.fert') %>
-          <%= f.select :fertiliser_id, options_from_collection_for_select(@fertilisers, 'id', 'name', @calculator.fertiliser_id) %><br /><br />
+          <% if I18n.locale == :metric %>
+            <%= f.select :fertiliser_id, options_from_collection_for_select(@fertilisers, 'id', 'metric_name', @calculator.fertiliser_id) %><br /><br />
+          <% else %>
+            <%= f.select :fertiliser_id, options_from_collection_for_select(@fertilisers, 'id', 'imperial_name', @calculator.fertiliser_id) %><br /><br />
+          <% end %>
         </li>
         <li>
           <%= f.label :soil_moisture_id %>

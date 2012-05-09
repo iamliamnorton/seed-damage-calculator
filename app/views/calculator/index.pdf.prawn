@@ -9,15 +9,27 @@ prawn_document() do |pdf|
     
     @result = @calculator.calculate_result
     
-    input_data = [
-      ["Crop" , Crop.find_by_id(@calculator.crop_id).name],
-      [t('.fert'), Fertiliser.find_by_id(@calculator.fertiliser_id).name],
-      ["Soil Moisture", SoilMoisture.find_by_id(@calculator.soil_moisture_id).name],
-      ["Soil Texture", SoilTexture.find_by_id(@calculator.soil_texture_id).name],
-      [t('.furrow'), @calculator.seed_furrow_opening_width],
-      [t('.spacing'), @calculator.row_spacing],
-      ["Tolerated Stand Loss", @calculator.tolerated_stand_loss + "%"]
-    ]
+    if I18n.locale == :metric
+      input_data = [
+        ["Crop" , Crop.find_by_id(@calculator.crop_id).name],
+        [t('.fert'), Fertiliser.find_by_id(@calculator.fertiliser_id).metric_name],
+        ["Soil Moisture", SoilMoisture.find_by_id(@calculator.soil_moisture_id).name],
+        ["Soil Texture", SoilTexture.find_by_id(@calculator.soil_texture_id).name],
+        [t('.furrow'), @calculator.seed_furrow_opening_width],
+        [t('.spacing'), @calculator.row_spacing],
+        ["Tolerated Stand Loss", @calculator.tolerated_stand_loss + "%"]
+      ]
+    else
+      input_data = [
+        ["Crop" , Crop.find_by_id(@calculator.crop_id).name],
+        [t('.fert'), Fertiliser.find_by_id(@calculator.fertiliser_id).imperial_name],
+        ["Soil Moisture", SoilMoisture.find_by_id(@calculator.soil_moisture_id).name],
+        ["Soil Texture", SoilTexture.find_by_id(@calculator.soil_texture_id).name],
+        [t('.furrow'), @calculator.seed_furrow_opening_width],
+        [t('.spacing'), @calculator.row_spacing],
+        ["Tolerated Stand Loss", @calculator.tolerated_stand_loss + "%"]
+      ]
+    end
     
     output_data = [
       [t('.result'), @result.round(1).to_s],

@@ -25,7 +25,7 @@ describe "Calculators" do
   describe "when valid input exists" do
     before(:each) do
       select @crop_1.name, :from => "calculator_crop_id"
-      select @fertiliser_1.name, :from => "calculator_fertiliser_id"
+      select @fertiliser_1.metric_name, :from => "calculator_fertiliser_id"
       select @soil_moist.name, :from => "calculator_soil_moisture_id"
       select @soil_fine.name, :from => "calculator_soil_texture_id"
       fill_in "calculator_seed_furrow_opening_width", :with => 3
@@ -41,7 +41,7 @@ describe "Calculators" do
   describe "when invalid input exists" do
     before(:each) do
       select @crop_1.name, :from => "calculator_crop_id"
-      select @fertiliser_1.name, :from => "calculator_fertiliser_id"
+      select @fertiliser_1.metric_name, :from => "calculator_fertiliser_id"
       select @soil_moist.name, :from => "calculator_soil_moisture_id"
       select @soil_fine.name, :from => "calculator_soil_texture_id"
       fill_in "calculator_seed_furrow_opening_width", :with => 3
@@ -56,11 +56,13 @@ describe "Calculators" do
   
   describe "the locale selecter", :js => true do
     it "is defaulted to metric" do
-      page.should have_content("Fertiliser And Seed Decision Aid Calculator")
+      page.should have_content("Fertiliser")
+      page.should_not have_content("Fertilizer")
     end
     it "can be changed to imperial" do
       select "Imperial", :from => "set_locale"
-      page.should have_content("Fertilizer And Seed Decision Aid Calculator")
+      page.should have_content("Fertilizer")
+      page.should_not have_content("Fertiliser")
     end
   end
 end

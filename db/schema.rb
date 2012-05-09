@@ -20,7 +20,8 @@ ActiveRecord::Schema.define(:version => 20120423022943) do
   end
 
   create_table "fertilisers", :force => true do |t|
-    t.string   "name"
+    t.string   "metric_name"
+    t.string   "imperial_name"
     t.decimal  "N",             :precision => 3, :scale => 2, :default => 0.0, :null => false
     t.decimal  "P",             :precision => 3, :scale => 2, :default => 0.0, :null => false
     t.decimal  "K",             :precision => 3, :scale => 2, :default => 0.0, :null => false
