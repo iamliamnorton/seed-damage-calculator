@@ -1,6 +1,6 @@
-<% content_for :title, "Fertiliser Seed Calculator - Theory" %>
-<% content_for :description, "Theory behind the fertiliser and seed decision aid calculator." %>
-<% content_for :keywords, "estimating fertilizer rates, estimating fertiliser rates, decision aid, fertilizer decision aid, fertiliser decision aid, fertilizer, fertilizer rates, fertilizer seed ratio, fertiliser, fertiliser rates, fertiliser seed ratio, fertiliser calculator, fertilizer calculator" %>
+<% content_for :title, "Fertilizer Seed Calculator - Theory" %>
+<% content_for :description, "Theory behind the fertilizer and seed decision aid calculator." %>
+<% content_for :keywords, "fertilizer application, estimating fertilizer rates, fertilizer decision aid, fertilizer, fertilizer rates, fertilizer seed ratio, fertilizer seed ratio, fertilizer calculator, safe rates of fertilizer applied with the seed, safe rates of fertilizer applied with seed" %>
 <%= currently_at 'Theory' %>
 
 <h1>Theory</h1>
@@ -22,9 +22,22 @@
 </p>
 
 <p>
-  <%= link_to image_tag("pdficon_large.png"), "final_report.pdf" %> 
+  This tool uses regression coefficients (crop stand upon fertilizer rate) that were developed using published studies from North America. Coefficients are adjusted for soil texture and soil moisture based on data collected under standardised conditions.<br />
+  The tool uses the equation:<br /><br />
+  <strong>F = 30S (-T)/CRMX</strong><br /><br />
+  Where:<br />
+  F = fertilizer material (lb/ac or kg/ha).<br />
+  S = seed furrow opening (in or cm).<br />
+  T = tolerated stand loss, as a percent, due to fertilizer applied with seed over typical stands, where no fertilizer is applied.<br />
+  C = negative regression coefficient for the selected crop X fertilizer (%/lb/ac or %/kg/ha).<br />
+  R = row spacing (in or cm).<br />
+  MX = planting soil moisture and soil texture coefficients.<br />
+</p>
+
+<p>
+  <%= link_to image_tag("pdficon_large.png"), "Gelderman_Report.pdf" %> 
   <strong>Decision Aid for Estimating Seed-Placed Fertilizer Rates - Final Report</strong>
-  can be downloaded <%= link_to "here", "final_report.pdf" %>.
+  can be downloaded <%= link_to "here", "Gelderman_Report.pdf" %>.
 </p>
 
 <p>
@@ -32,14 +45,17 @@
     Acknowledgements
   </strong>
 </p>
-  <ul>
-    <li>
-      The International Plant Nutrient Institute (IPNI) for its support with this work.
-    </li>
-    <li>
-      Joseph Schumacher (SDSU) for his help with assembling this program.
-    </li>
-    <li>
-      D. Andrews, C. Morris, A. Bly (SDSU) for their very capable technical support.
-    </li>
-  </ul>
+<ul>
+  <li>
+    The International Plant Nutrient Institute (IPNI) for its support with this work.
+  </li>
+  <li>
+    Joseph Schumacher (SDSU) for his help with assembling this program.
+  </li>
+  <li>
+    D. Andrews, C. Morris, A. Bly (SDSU) for their very capable technical support.
+  </li>
+  <li>
+    Dr C Dowling (Backpaddock P/L) for adapting the units to a metric format.
+  </li>
+</ul>
