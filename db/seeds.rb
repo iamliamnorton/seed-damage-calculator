@@ -26,7 +26,6 @@ sunflower = Crop.create(:name => "Sunflower")
 
 Fertiliser.delete_all
 urea = Fertiliser.create(:metric_name => "Urea (46-0-0)", :imperial_name => "Urea (46-0-0)", :N => 0.46)
-nbpt = Fertiliser.create(:metric_name => "Urea + NBPT", :imperial_name => "Urea + NBPT", :N => 0.46)
 twentyeight = Fertiliser.create(:metric_name => "UAN (28-0-0)", :imperial_name => "UAN (28-0-0)", :N => 0.28, :liquid_weight => 1.276151)
 amnit = Fertiliser.create(:metric_name => "Am.Nit (34-0-0)", :imperial_name => "Am.Nit (34-0-0)", :N => 0.34)
 dap = Fertiliser.create(:metric_name => "DAP (18-46-0)", :imperial_name => "DAP (18-20-0)", :N => 0.18, :P => 0.46)
@@ -66,7 +65,6 @@ SoilCoefficient.create(:value => 2.5, :soil_texture_id => coarse.id, :soil_moist
 RegressionCoefficient.delete_all
 
 RegressionCoefficient.create(:value => -0.965, :crop_id => corn.id, :fertiliser_id => urea.id)
-RegressionCoefficient.create(:value => -0.434, :crop_id => corn.id, :fertiliser_id => nbpt.id)
 RegressionCoefficient.create(:value => -0.236, :crop_id => corn.id, :fertiliser_id => twentyeight.id)
 RegressionCoefficient.create(:value => -0.215, :crop_id => corn.id, :fertiliser_id => amnit.id)
 RegressionCoefficient.create(:value => -0.236, :crop_id => corn.id, :fertiliser_id => dap.id)
@@ -83,7 +81,6 @@ RegressionCoefficient.create(:value => -0.095, :crop_id => corn.id, :fertiliser_
 RegressionCoefficient.create(:value => -0.300, :crop_id => corn.id, :fertiliser_id => ats.id)
 
 RegressionCoefficient.create(:value => -3.330, :crop_id => soybean.id, :fertiliser_id => urea.id)
-RegressionCoefficient.create(:value => -3.403, :crop_id => soybean.id, :fertiliser_id => nbpt.id)
 RegressionCoefficient.create(:value => -1.703, :crop_id => soybean.id, :fertiliser_id => twentyeight.id)
 RegressionCoefficient.create(:value => -2.378, :crop_id => soybean.id, :fertiliser_id => amnit.id)
 RegressionCoefficient.create(:value => -1.080, :crop_id => soybean.id, :fertiliser_id => dap.id)
@@ -100,7 +97,6 @@ RegressionCoefficient.create(:value => -0.693, :crop_id => soybean.id, :fertilis
 RegressionCoefficient.create(:value => -4.001, :crop_id => soybean.id, :fertiliser_id => ats.id)
 
 RegressionCoefficient.create(:value => -1.436, :crop_id => wheat.id, :fertiliser_id => urea.id)
-RegressionCoefficient.create(:value => -0.951, :crop_id => wheat.id, :fertiliser_id => nbpt.id)
 RegressionCoefficient.create(:value => -0.258, :crop_id => wheat.id, :fertiliser_id => twentyeight.id)
 RegressionCoefficient.create(:value => -0.893, :crop_id => wheat.id, :fertiliser_id => amnit.id)
 RegressionCoefficient.create(:value => -0.541, :crop_id => wheat.id, :fertiliser_id => dap.id)
@@ -117,7 +113,6 @@ RegressionCoefficient.create(:value => -0.474, :crop_id => wheat.id, :fertiliser
 RegressionCoefficient.create(:value => -1.169, :crop_id => wheat.id, :fertiliser_id => ats.id)
 
 RegressionCoefficient.create(:value => -1.468, :crop_id => durum.id, :fertiliser_id => urea.id)
-RegressionCoefficient.create(:value => -0.900, :crop_id => durum.id, :fertiliser_id => nbpt.id)
 RegressionCoefficient.create(:value => -0.396, :crop_id => durum.id, :fertiliser_id => twentyeight.id)
 RegressionCoefficient.create(:value => -1.107, :crop_id => durum.id, :fertiliser_id => amnit.id)
 RegressionCoefficient.create(:value => -0.617, :crop_id => durum.id, :fertiliser_id => dap.id)
@@ -134,7 +129,6 @@ RegressionCoefficient.create(:value => -0.569, :crop_id => durum.id, :fertiliser
 RegressionCoefficient.create(:value => -0.934, :crop_id => durum.id, :fertiliser_id => ats.id)
 
 RegressionCoefficient.create(:value => -6.373, :crop_id => alfalfa.id, :fertiliser_id => urea.id)
-RegressionCoefficient.create(:value => -2.225, :crop_id => alfalfa.id, :fertiliser_id => nbpt.id)
 RegressionCoefficient.create(:value => -2.821, :crop_id => alfalfa.id, :fertiliser_id => twentyeight.id)
 RegressionCoefficient.create(:value => -2.924, :crop_id => alfalfa.id, :fertiliser_id => amnit.id)
 RegressionCoefficient.create(:value => -1.074, :crop_id => alfalfa.id, :fertiliser_id => dap.id)
@@ -151,7 +145,6 @@ RegressionCoefficient.create(:value => -0.970, :crop_id => alfalfa.id, :fertilis
 RegressionCoefficient.create(:value => -4.418, :crop_id => alfalfa.id, :fertiliser_id => ats.id)
 
 RegressionCoefficient.create(:value => -1.207, :crop_id => barley.id, :fertiliser_id => urea.id)
-RegressionCoefficient.create(:value => -0.772, :crop_id => barley.id, :fertiliser_id => nbpt.id)
 RegressionCoefficient.create(:value => -0.281, :crop_id => barley.id, :fertiliser_id => twentyeight.id)
 RegressionCoefficient.create(:value => -0.432, :crop_id => barley.id, :fertiliser_id => amnit.id)
 RegressionCoefficient.create(:value => -0.477, :crop_id => barley.id, :fertiliser_id => dap.id)
@@ -168,7 +161,6 @@ RegressionCoefficient.create(:value => -0.212, :crop_id => barley.id, :fertilise
 RegressionCoefficient.create(:value => -1.306, :crop_id => barley.id, :fertiliser_id => ats.id)
 
 RegressionCoefficient.create(:value => -4.457, :crop_id => canola.id, :fertiliser_id => urea.id)
-RegressionCoefficient.create(:value => -2.509, :crop_id => canola.id, :fertiliser_id => nbpt.id)
 RegressionCoefficient.create(:value => -1.873, :crop_id => canola.id, :fertiliser_id => twentyeight.id)
 RegressionCoefficient.create(:value => -3.034, :crop_id => canola.id, :fertiliser_id => amnit.id)
 RegressionCoefficient.create(:value => -1.567, :crop_id => canola.id, :fertiliser_id => dap.id)
@@ -185,7 +177,6 @@ RegressionCoefficient.create(:value => -1.177, :crop_id => canola.id, :fertilise
 RegressionCoefficient.create(:value => -2.920, :crop_id => canola.id, :fertiliser_id => ats.id)
 
 RegressionCoefficient.create(:value => -3.201, :crop_id => cotton.id, :fertiliser_id => urea.id)
-RegressionCoefficient.create(:value => -2.291, :crop_id => cotton.id, :fertiliser_id => nbpt.id)
 RegressionCoefficient.create(:value => -0.640, :crop_id => cotton.id, :fertiliser_id => twentyeight.id)
 RegressionCoefficient.create(:value => -0.621, :crop_id => cotton.id, :fertiliser_id => amnit.id)
 RegressionCoefficient.create(:value => -0.645, :crop_id => cotton.id, :fertiliser_id => dap.id)
@@ -202,7 +193,6 @@ RegressionCoefficient.create(:value => -0.564, :crop_id => cotton.id, :fertilise
 RegressionCoefficient.create(:value => -2.090, :crop_id => cotton.id, :fertiliser_id => ats.id)
 
 RegressionCoefficient.create(:value => -7.208, :crop_id => flax.id, :fertiliser_id => urea.id)
-RegressionCoefficient.create(:value => -2.194, :crop_id => flax.id, :fertiliser_id => nbpt.id)
 RegressionCoefficient.create(:value => -2.495, :crop_id => flax.id, :fertiliser_id => twentyeight.id)
 RegressionCoefficient.create(:value => -2.479, :crop_id => flax.id, :fertiliser_id => amnit.id)
 RegressionCoefficient.create(:value => -1.153, :crop_id => flax.id, :fertiliser_id => dap.id)
@@ -219,7 +209,6 @@ RegressionCoefficient.create(:value => -0.954, :crop_id => flax.id, :fertiliser_
 RegressionCoefficient.create(:value => -1.981, :crop_id => flax.id, :fertiliser_id => ats.id)
 
 RegressionCoefficient.create(:value => -2.706, :crop_id => lentil.id, :fertiliser_id => urea.id)
-RegressionCoefficient.create(:value => -1.504, :crop_id => lentil.id, :fertiliser_id => nbpt.id)
 RegressionCoefficient.create(:value => -1.290, :crop_id => lentil.id, :fertiliser_id => twentyeight.id)
 RegressionCoefficient.create(:value => -1.825, :crop_id => lentil.id, :fertiliser_id => amnit.id)
 RegressionCoefficient.create(:value => -1.141, :crop_id => lentil.id, :fertiliser_id => dap.id)
@@ -236,7 +225,6 @@ RegressionCoefficient.create(:value => -0.824, :crop_id => lentil.id, :fertilise
 RegressionCoefficient.create(:value => -2.856, :crop_id => lentil.id, :fertiliser_id => ats.id)
 
 RegressionCoefficient.create(:value => -2.903, :crop_id => mustard.id, :fertiliser_id => urea.id)
-RegressionCoefficient.create(:value => -2.150, :crop_id => mustard.id, :fertiliser_id => nbpt.id)
 RegressionCoefficient.create(:value => -2.017, :crop_id => mustard.id, :fertiliser_id => twentyeight.id)
 RegressionCoefficient.create(:value => -2.604, :crop_id => mustard.id, :fertiliser_id => amnit.id)
 RegressionCoefficient.create(:value => -1.182, :crop_id => mustard.id, :fertiliser_id => dap.id)
@@ -253,7 +241,6 @@ RegressionCoefficient.create(:value => -1.398, :crop_id => mustard.id, :fertilis
 RegressionCoefficient.create(:value => -4.540, :crop_id => mustard.id, :fertiliser_id => ats.id)
 
 RegressionCoefficient.create(:value => -1.634, :crop_id => oat.id, :fertiliser_id => urea.id)
-RegressionCoefficient.create(:value => -0.978, :crop_id => oat.id, :fertiliser_id => nbpt.id)
 RegressionCoefficient.create(:value => -0.551, :crop_id => oat.id, :fertiliser_id => twentyeight.id)
 RegressionCoefficient.create(:value => -0.807, :crop_id => oat.id, :fertiliser_id => amnit.id)
 RegressionCoefficient.create(:value => -0.545, :crop_id => oat.id, :fertiliser_id => dap.id)
@@ -270,7 +257,6 @@ RegressionCoefficient.create(:value => -0.507, :crop_id => oat.id, :fertiliser_i
 RegressionCoefficient.create(:value => -1.889, :crop_id => oat.id, :fertiliser_id => ats.id)
 
 RegressionCoefficient.create(:value => -1.489, :crop_id => pea.id, :fertiliser_id => urea.id)
-RegressionCoefficient.create(:value => -1.236, :crop_id => pea.id, :fertiliser_id => nbpt.id)
 RegressionCoefficient.create(:value => -0.799, :crop_id => pea.id, :fertiliser_id => twentyeight.id)
 RegressionCoefficient.create(:value => -1.062, :crop_id => pea.id, :fertiliser_id => amnit.id)
 RegressionCoefficient.create(:value => -0.703, :crop_id => pea.id, :fertiliser_id => dap.id)
@@ -287,7 +273,6 @@ RegressionCoefficient.create(:value => -0.449, :crop_id => pea.id, :fertiliser_i
 RegressionCoefficient.create(:value => -4.557, :crop_id => pea.id, :fertiliser_id => ats.id)
 
 RegressionCoefficient.create(:value => -3.175, :crop_id => safflower.id, :fertiliser_id => urea.id)
-RegressionCoefficient.create(:value => -2.186, :crop_id => safflower.id, :fertiliser_id => nbpt.id)
 RegressionCoefficient.create(:value => -1.539, :crop_id => safflower.id, :fertiliser_id => twentyeight.id)
 RegressionCoefficient.create(:value => -2.271, :crop_id => safflower.id, :fertiliser_id => amnit.id)
 RegressionCoefficient.create(:value => -1.082, :crop_id => safflower.id, :fertiliser_id => dap.id)
@@ -304,7 +289,6 @@ RegressionCoefficient.create(:value => -0.693, :crop_id => safflower.id, :fertil
 RegressionCoefficient.create(:value => -2.976, :crop_id => safflower.id, :fertiliser_id => ats.id)
 
 RegressionCoefficient.create(:value => -2.521, :crop_id => sorghum.id, :fertiliser_id => urea.id)
-RegressionCoefficient.create(:value => -0.925, :crop_id => sorghum.id, :fertiliser_id => nbpt.id)
 RegressionCoefficient.create(:value => -0.825, :crop_id => sorghum.id, :fertiliser_id => twentyeight.id)
 RegressionCoefficient.create(:value => -1.038, :crop_id => sorghum.id, :fertiliser_id => amnit.id)
 RegressionCoefficient.create(:value => -0.862, :crop_id => sorghum.id, :fertiliser_id => dap.id)
@@ -321,7 +305,6 @@ RegressionCoefficient.create(:value => -0.984, :crop_id => sorghum.id, :fertilis
 RegressionCoefficient.create(:value => -1.774, :crop_id => sorghum.id, :fertiliser_id => ats.id)
 
 RegressionCoefficient.create(:value => -2.258, :crop_id => sunflower.id, :fertiliser_id => urea.id)
-RegressionCoefficient.create(:value => -0.857, :crop_id => sunflower.id, :fertiliser_id => nbpt.id)
 RegressionCoefficient.create(:value => -0.556, :crop_id => sunflower.id, :fertiliser_id => twentyeight.id)
 RegressionCoefficient.create(:value => -0.993, :crop_id => sunflower.id, :fertiliser_id => amnit.id)
 RegressionCoefficient.create(:value => -0.306, :crop_id => sunflower.id, :fertiliser_id => dap.id)

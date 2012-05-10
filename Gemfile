@@ -8,6 +8,7 @@ gem 'rails', '3.2.1'
 gem 'pg'
 gem 'best_in_place'
 gem 'prawn_rails'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'ruby-debug19'

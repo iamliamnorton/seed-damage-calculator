@@ -83,6 +83,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.18)
     multi_json (1.3.4)
+    newrelic_rpm (3.3.2.1)
     nokogiri (1.5.2)
     pdf-reader (1.1.0)
       Ascii85 (~> 1.0.0)
@@ -185,6 +186,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   machinist
+  newrelic_rpm
   pg
   prawn_rails
   rails (= 3.2.1)
