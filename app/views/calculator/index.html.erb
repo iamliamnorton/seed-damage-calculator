@@ -4,12 +4,14 @@
 <%= currently_at 'Calculator' %>
 
 <h1><%= t('.title') %></h1>
+
+<%= render 'layouts/social_links' %> 
+
 <p><%= t('.description')%></p><br />
 
 <section id="input">
   <%= render 'input_form' %>
 </section>
-
 <section id='output'>
   <%= render 'output' %> 
 </section>
