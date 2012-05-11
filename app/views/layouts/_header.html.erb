@@ -1,9 +1,11 @@
 <header id="page_header" role="banner"> 
 	<nav id="utility">
-	  <%= form_tag calculator_path, class: 'locale' do %>
-	    <%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.locale.to_s), onchange: 'this.form.submit()' %>
-	    <%= submit_tag 'submit' %>
-	    <%= javascript_tag "$('.locale input').hide()" %>
+	  <% if request.url == root_url || request.url == calculator_url %>
+      <%= form_tag calculator_path, class: 'locale' do %>
+        <%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.locale.to_s), onchange: 'this.form.submit()' %>
+        <%= submit_tag 'submit' %>
+        <%= javascript_tag "$('.locale input').hide()" %>
+      <% end %>
 	  <% end %>
 	</nav>
 	<%= link_to( image_tag("sdsu_logo.jpg", alt: "SDSU Logo", id: "sdsu_logo"), "http://www.sdstate.edu", title: "South Dakota State University" ) %>

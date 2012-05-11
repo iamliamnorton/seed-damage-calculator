@@ -9,7 +9,7 @@ class Admin::BaseController < ApplicationController
       session[:admin] = true
       md5_of_password = Digest::MD5.hexdigest(password)
       if Rails.env == "production"
-          #production server code
+          #staging & production server code
           username == ENV['APP_USERNAME'] && password == ENV['APP_PASSWORD']
       else
           #development server code
