@@ -1,6 +1,12 @@
 nav#main_nav { 
 	float: right;
 	padding-top: 44px;
+	
+	form {
+	  background-color: #000; 
+	  padding: 0px;
+	  margin: 0px;
+	}
 
 	li {
 		background: #fff; 
@@ -10,6 +16,12 @@ nav#main_nav {
 		a, a:link, a:visited { 
 			color: #000;
 			text-decoration: none;
+		}
+		&.locale {
+		  background: #fff;
+  		display: inline-block; 
+  		margin-right: 2px; 
+  		padding: 0px;
 		}
 		&.active {
 			background: #fff;

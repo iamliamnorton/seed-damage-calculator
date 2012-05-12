@@ -16,6 +16,7 @@ imperial:
       seed_furrow_opening_width:  "Seed furrow opening width"
       row_spacing:                "Row spacing"
       tolerated_stand_loss:       "Tolerated stand loss"
+      terms_of_service:           "Terms of service"
     crop:
       name:                     "Name"
     fertiliser:
@@ -48,6 +49,7 @@ imperial:
       less_than:                "must be less than %{count}"
       less_than_or_equal_to:    "must be less than or equal to %{count}"
       invalid:                  "is invalid"
+      accepted:                 "is not accepted"
 
   layouts:
     application:
@@ -72,6 +74,7 @@ imperial:
       fert:           "Fertilizer"
       furrow:         "Seed furrow opening width (in)"
       spacing:        "Row spacing (in)"
+      terms:          "I agree to the terms of use for this web site"
     output:
       result:         "lbs/ac with the seed"
       sbu:            "seed bed utilization (%)"

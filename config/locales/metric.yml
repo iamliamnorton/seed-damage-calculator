@@ -16,6 +16,7 @@ metric:
       seed_furrow_opening_width:  "Seed furrow opening width"
       row_spacing:                "Row spacing"
       tolerated_stand_loss:       "Tolerated stand loss"
+      terms_of_service:           "Terms of service"
     crop:
       name:                     "Name"
     fertiliser:
@@ -49,6 +50,7 @@ metric:
       less_than:                "must be less than %{count}"
       less_than_or_equal_to:    "must be less than or equal to %{count}"
       invalid:                  "is invalid"
+      accepted:                 "is not accepted"
 
   layouts:
     application:
@@ -73,6 +75,7 @@ metric:
       fert:           "Fertiliser"
       furrow:         "Seed furrow opening width (cm)"
       spacing:        "Row spacing (cm)"
+      terms:          "I agree to the terms of use for this web site"
     output:
       result:         "kg/ha with the seed"
       sbu:            "seed bed utilization (%)"

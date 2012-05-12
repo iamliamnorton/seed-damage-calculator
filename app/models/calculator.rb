@@ -7,6 +7,7 @@ class Calculator
                 :seed_furrow_opening_width, :row_spacing, :tolerated_stand_loss
   
   validates :seed_furrow_opening_width, :row_spacing, :tolerated_stand_loss, presence: true, :numericality => { :greater_than_or_equal_to => 0, :less_than_or_equal_to => 100 }
+  validates :terms_of_service, :acceptance => true
   
   def initialize(attributes = {})
     attributes.each do |name, value|

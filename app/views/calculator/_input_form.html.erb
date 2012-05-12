@@ -36,7 +36,11 @@
           <%= f.number_field :tolerated_stand_loss %> <%= link_to image_tag('info_button.png'), definitions_path(:anchor => "Tolerated Stand Loss"), :target => "_blank" %><br /><br />
         </li>
         <li>
-          <%= f.submit "Calculate", confirm: 'By using this calculator you agree to the terms of use in the disclaimer' %>
+          <%= f.check_box :terms_of_service %>
+          <%= f.label :terms_of_service, t('.terms'), :class => 'terms' %><br /><br />
+        </li>
+        <li>
+          <%= f.submit "Calculate" %>
         </li>
       </ol>
   </fieldset>
