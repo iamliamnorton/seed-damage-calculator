@@ -59,7 +59,7 @@ metric:
   calculator:
     index:
       title:          "Seed Damage Calculator"
-      description:    "This calculator can be used as a guide to determine the maximum fertiliser material to apply with seed."
+      description:    "This calculator can be used as a guide to the maximum amount of fertiliser that can be applied in the same furrow as seed. It is a guide only."
       fert:           "Fertiliser"
       furrow:         "Seed furrow opening width (cm)"
       spacing:        "Row spacing (cm)"
@@ -77,7 +77,7 @@ metric:
       spacing:        "Row spacing (cm)"
       terms:          "I agree to the terms of use for this web site"
     output:
-      result:         "kg/ha with the seed"
+      result:         "Maximium kg/ha of fertilizer product with seed"
       sbu:            "seed bed utilization (%)"
       liquid_weight:  "litres/ha"
       nitrogen:       "kg/ha of Nitrogen (N)"

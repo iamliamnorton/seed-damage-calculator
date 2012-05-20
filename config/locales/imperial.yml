@@ -58,7 +58,7 @@ imperial:
   calculator:
     index:
       title:          "Seed Damage Calculator"
-      description:    "This calculator can be used as a guide to determine the maximum fertilizer material to apply with seed."
+      description:    "This calculator can be used as a guide to the maximum amount of fertilizer that can be applied in the same furrow as seed. It is a guide only."
       fert:           "Fertilizer"
       furrow:         "Seed furrow opening width (in)"
       spacing:        "Row spacing (in)"
@@ -76,7 +76,7 @@ imperial:
       spacing:        "Row spacing (in)"
       terms:          "I agree to the terms of use for this web site"
     output:
-      result:         "lbs/ac with the seed"
+      result:         "Maximium lbs/ac of fertilizer product with seed"
       sbu:            "seed bed utilization (%)"
       liquid_weight:  "gal/ac"
       nitrogen:       "lbs/ac of Nitrogen (N)"
