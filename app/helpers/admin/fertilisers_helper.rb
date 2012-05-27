@@ -1,2 +1,0 @@
-module Admin::FertilisersHelper
-end
