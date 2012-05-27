@@ -73,5 +73,5 @@ class Admin::SoilMoisturesController < Admin::BaseController
       format.json { head :no_content }
     end
   end
-  
+
 end

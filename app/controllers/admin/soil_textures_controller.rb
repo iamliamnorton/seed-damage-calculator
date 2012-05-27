@@ -73,5 +73,5 @@ class Admin::SoilTexturesController < Admin::BaseController
       format.json { head :no_content }
     end
   end
-  
+
 end

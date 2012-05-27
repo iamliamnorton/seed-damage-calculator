@@ -1,7 +1,7 @@
 require 'digest'
 
 class Admin::BaseController < ApplicationController
-  
+
   before_filter :authenticate
 
   def authenticate
@@ -17,5 +17,5 @@ class Admin::BaseController < ApplicationController
       end
     end
   end
-  
+
 end

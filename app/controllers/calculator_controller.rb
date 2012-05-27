@@ -1,5 +1,5 @@
 class CalculatorController < ApplicationController
-  
+
   def index
     if params[:set_locale]
       redirect_to calculator_path(:locale => params[:set_locale], :calculator => params[:calculator])
@@ -22,7 +22,7 @@ class CalculatorController < ApplicationController
     @fertilisers = Fertiliser.all
     @soil_moistures = SoilMoisture.all
     @soil_textures = SoilTexture.all
-    
+
     if request.post? && params[:calculator]
       respond_to do |format|
         if @calculator.valid?

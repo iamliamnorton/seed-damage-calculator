@@ -14,15 +14,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div class="container">
-	  <%= render 'layouts/header' %>
-		<section id="content">
-		  <%= render 'layouts/notifications' %>
-		  
-			<%= yield %>
-			
-		</section>
-	</div>
-	<%= render 'layouts/footer' %>		
+  <div class="container">
+    <%= render 'layouts/header' %>
+    <section id="content">
+      <%= render 'layouts/notifications' %>
+      <%= yield %>
+    </section>
+  </div>
+  <%= render 'layouts/footer' %>
 </body>
 </html>

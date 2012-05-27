@@ -8,7 +8,7 @@ class PagesController < ApplicationController
 
   def disclaimer
   end
-  
+
   def definitions
   end
 end

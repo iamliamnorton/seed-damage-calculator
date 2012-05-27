@@ -9,7 +9,7 @@ Fasdac::Application.routes.draw do
     resources :soil_coefficients, :only => [:index, :edit, :update]
     resources :regression_coefficients, :only => [:index, :edit, :update]
   end
-    
+
   scope '(:locale)' do
     resource :calculator, :only => [:index]
     match 'calculator' => 'calculator#index', :via => :post
@@ -18,7 +18,7 @@ Fasdac::Application.routes.draw do
     match '/disclaimer' => "pages#disclaimer", :via => :get
     match '/definitions' => "pages#definitions", :via => :get
   end
-    
+
   root :to => "calculator#index"
 
   # The priority is based upon order of creation:

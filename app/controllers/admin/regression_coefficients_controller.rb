@@ -38,7 +38,7 @@ class Admin::RegressionCoefficientsController < Admin::BaseController
     @regression_coefficient = RegressionCoefficient.new(params[:regression_coefficient])
     @crops = Crop.all
     @fertilisers = Fertiliser.all
-    
+
     respond_to do |format|
       if @regression_coefficient.save
         format.html { redirect_to admin_regression_coefficients_path, notice: 'Regression coefficient was successfully created.' }

@@ -2,13 +2,13 @@ class Calculator
   include ActiveModel::Validations
   include ActiveModel::Conversion
   extend ActiveModel::Naming
-  
-  attr_accessor :crop_id, :fertiliser_id, :soil_moisture_id, :soil_texture_id, 
+
+  attr_accessor :crop_id, :fertiliser_id, :soil_moisture_id, :soil_texture_id,
                 :seed_furrow_opening_width, :row_spacing, :tolerated_stand_loss
-  
+
   validates :seed_furrow_opening_width, :row_spacing, :tolerated_stand_loss, presence: true, :numericality => { :greater_than_or_equal_to => 0, :less_than_or_equal_to => 100 }
   validates :terms_of_service, :acceptance => true
-  
+
   def initialize(attributes = {})
     attributes.each do |name, value|
       send("#{name}=", value)
@@ -18,7 +18,7 @@ class Calculator
   def persisted?
     false
   end
-  
+
   def calculate_result
     regression_coefficient = RegressionCoefficient.where(:crop_id => self.crop_id, :fertiliser_id => self.fertiliser_id).first.value
     soil_coefficient = SoilCoefficient.where(:soil_moisture_id => self.soil_moisture_id, :soil_texture_id => self.soil_texture_id).first.value
@@ -30,7 +30,7 @@ class Calculator
     end
     return result
   end
-  
+
   def calculate_sbu
     if self.valid?
       sbu = (self.seed_furrow_opening_width.to_f / self.row_spacing.to_f) * 100
@@ -38,7 +38,7 @@ class Calculator
     end
     return sbu
   end
-  
+
   def calculate_liquid_weight(result)
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
     if fertiliser.liquid_weight.to_f > 0 && self.valid?
@@ -46,7 +46,7 @@ class Calculator
     end
     return liquid_weight
   end
-  
+
   def calculate_nitrogen(result)
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
     if fertiliser.N.to_f > 0 && self.valid?
@@ -54,7 +54,7 @@ class Calculator
     end
     return nitrogen
   end
-  
+
   def calculate_phosphorus(result)
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
     if fertiliser.P.to_f > 0 && self.valid?
@@ -64,7 +64,7 @@ class Calculator
     end
     return phosphorus
   end
-  
+
   def calculate_potassium(result)
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
     if fertiliser.K.to_f > 0 && self.valid?
@@ -74,7 +74,7 @@ class Calculator
     end
     return potassium
   end
-  
+
   def calculate_sulphur(result)
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
     if fertiliser.S.to_f > 0 && self.valid?
@@ -82,7 +82,7 @@ class Calculator
     end
     return sulphur
   end
-  
+
   def calculate_magnesium(result)
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
     if fertiliser.Mg.to_f > 0 && self.valid?

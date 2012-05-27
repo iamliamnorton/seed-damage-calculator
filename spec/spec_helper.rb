@@ -1,3 +1,12 @@
+require 'simplecov'
+SimpleCov.start 'rails'
+
+SimpleCov.at_exit do
+puts "Coverage is #{SimpleCov.result.covered_percent}"
+puts "Your coverage has dipped bellow 100%" if SimpleCov.result.covered_percent < 100
+SimpleCov.result.format!
+end
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
