@@ -40,7 +40,7 @@ class Admin::CropsController < Admin::BaseController
         format.html { redirect_to admin_crops_path, notice: 'Crop was successfully created.' }
         format.json { render json: @crop, status: :created, location: @crop }
       else
-        format.html { render action: "new" }
+        format.html { render :new }
         format.json { render json: @crop.errors, status: :unprocessable_entity }
       end
     end
@@ -56,7 +56,7 @@ class Admin::CropsController < Admin::BaseController
         format.html { redirect_to admin_crops_path, notice: 'Crop was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render :edit }
         format.json { render json: @crop.errors, status: :unprocessable_entity }
       end
     end

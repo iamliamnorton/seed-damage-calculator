@@ -40,7 +40,7 @@ class Admin::SoilMoisturesController < Admin::BaseController
         format.html { redirect_to admin_soil_moistures_path, notice: 'Soil moisture was successfully created.' }
         format.json { render json: @soil_moisture, status: :created, location: @soil_moisture }
       else
-        format.html { render action: "new" }
+        format.html { render :new }
         format.json { render json: @soil_moisture.errors, status: :unprocessable_entity }
       end
     end
@@ -56,7 +56,7 @@ class Admin::SoilMoisturesController < Admin::BaseController
         format.html { redirect_to admin_soil_moistures_path, notice: 'Soil moisture was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render :edit }
         format.json { render json: @soil_moisture.errors, status: :unprocessable_entity }
       end
     end

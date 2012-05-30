@@ -44,7 +44,7 @@ class Admin::SoilCoefficientsController < Admin::BaseController
         format.html { redirect_to admin_soil_coefficients_path, notice: 'Soil coefficient was successfully created.' }
         format.json { render json: @soil_coefficient, status: :created, location: @soil_coefficient }
       else
-        format.html { render action: "new" }
+        format.html { render :new }
         format.json { render json: @soil_coefficient.errors, status: :unprocessable_entity }
       end
     end
@@ -62,7 +62,7 @@ class Admin::SoilCoefficientsController < Admin::BaseController
         format.html { redirect_to admin_soil_coefficients_path, notice: 'Soil coefficient was successfully updated.' }
         format.json { respond_with_bip(@soil_coefficient) }
       else
-        format.html { render action: "edit" }
+        format.html { render :edit }
         format.json { respond_with_bip(@soil_coefficient) }
       end
     end

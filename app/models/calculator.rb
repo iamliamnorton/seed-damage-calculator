@@ -17,6 +17,7 @@ class Calculator
     attributes.each do |name, value|
       send("#{name}=", value)
     end
+    self.persisted?
   end
 
   def persisted?

@@ -44,7 +44,7 @@ class Admin::RegressionCoefficientsController < Admin::BaseController
         format.html { redirect_to admin_regression_coefficients_path, notice: 'Regression coefficient was successfully created.' }
         format.json { render json: @regression_coefficient, status: :created, location: @regression_coefficient }
       else
-        format.html { render action: "new" }
+        format.html { render :new }
         format.json { render json: @regression_coefficient.errors, status: :unprocessable_entity }
       end
     end
@@ -62,7 +62,7 @@ class Admin::RegressionCoefficientsController < Admin::BaseController
         format.html { redirect_to admin_regression_coefficients_path, notice: 'Regression coefficient was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render :edit }
         format.json { render json: @regression_coefficient.errors, status: :unprocessable_entity }
       end
     end

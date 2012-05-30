@@ -40,7 +40,7 @@ class Admin::FertilisersController < Admin::BaseController
         format.html { redirect_to admin_fertilisers_path, notice: 'Fertiliser was successfully created.' }
         format.json { render json: @fertiliser, status: :created, location: @fertiliser }
       else
-        format.html { render action: "new" }
+        format.html { render :new }
         format.json { render json: @fertiliser.errors, status: :unprocessable_entity }
       end
     end
@@ -56,7 +56,7 @@ class Admin::FertilisersController < Admin::BaseController
         format.html { redirect_to admin_fertilisers_path, notice: 'Fertiliser was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render :edit }
         format.json { render json: @fertiliser.errors, status: :unprocessable_entity }
       end
     end

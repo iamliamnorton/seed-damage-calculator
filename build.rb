@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-# Build.rb - ruby bash script by Liam Norton
-# My continuous integration and build script
+# build.rb - ruby bash script by Liam Norton
+# my continuous integration and build script
 
 puts "* Installing the dependencies specified in the project Gemfile"
 system("bundle", "install")
@@ -24,5 +24,6 @@ system('rails_best_practices .')
 # exit 1 if $?.exitstatus > 0
 
 puts "* Running specs and checking test coverage with simplecov"
+system('rm -rf coverage')
 system('rake spec')
 exit 1 if $?.exitstatus > 0
