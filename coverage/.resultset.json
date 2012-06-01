@@ -44,54 +44,6 @@
         null,
         null
       ],
-      "/users/liamnorton/Workspace/fasdac/app/helpers/application_helper.rb": [
-        1,
-        null
-      ],
-      "/users/liamnorton/Workspace/fasdac/app/helpers/admin/base_helper.rb": [
-        1,
-        null
-      ],
-      "/users/liamnorton/Workspace/fasdac/app/helpers/admin/crops_helper.rb": [
-        1,
-        null
-      ],
-      "/users/liamnorton/Workspace/fasdac/app/helpers/admin/fertilisers_helper.rb": [
-        1,
-        null
-      ],
-      "/users/liamnorton/Workspace/fasdac/app/helpers/admin/home_helper.rb": [
-        1,
-        null
-      ],
-      "/users/liamnorton/Workspace/fasdac/app/helpers/admin/regression_coefficients_helper.rb": [
-        1,
-        null
-      ],
-      "/users/liamnorton/Workspace/fasdac/app/helpers/admin/soil_coefficients_helper.rb": [
-        1,
-        null
-      ],
-      "/users/liamnorton/Workspace/fasdac/app/helpers/admin/soil_moistures_helper.rb": [
-        1,
-        null
-      ],
-      "/users/liamnorton/Workspace/fasdac/app/helpers/admin/soil_textures_helper.rb": [
-        1,
-        null
-      ],
-      "/users/liamnorton/Workspace/fasdac/app/helpers/calculators_helper.rb": [
-        1,
-        null
-      ],
-      "/users/liamnorton/Workspace/fasdac/app/helpers/crops_helper.rb": [
-        1,
-        null
-      ],
-      "/users/liamnorton/Workspace/fasdac/app/helpers/fertilisers_helper.rb": [
-        1,
-        null
-      ],
       "/users/liamnorton/Workspace/fasdac/app/helpers/navigation_helper.rb": [
         1,
         null,
@@ -105,26 +57,6 @@
         2,
         null,
         null,
-        null
-      ],
-      "/users/liamnorton/Workspace/fasdac/app/helpers/pages_helper.rb": [
-        1,
-        null
-      ],
-      "/users/liamnorton/Workspace/fasdac/app/helpers/regression_coefficients_helper.rb": [
-        1,
-        null
-      ],
-      "/users/liamnorton/Workspace/fasdac/app/helpers/soil_coefficients_helper.rb": [
-        1,
-        null
-      ],
-      "/users/liamnorton/Workspace/fasdac/app/helpers/soil_moistures_helper.rb": [
-        1,
-        null
-      ],
-      "/users/liamnorton/Workspace/fasdac/app/helpers/soil_textures_helper.rb": [
-        1,
         null
       ],
       "/users/liamnorton/Workspace/fasdac/app/controllers/admin/crops_controller.rb": [
@@ -829,6 +761,6 @@
         null
       ]
     },
-    "timestamp": 1338547026
+    "timestamp": 1338547466
   }
 }
