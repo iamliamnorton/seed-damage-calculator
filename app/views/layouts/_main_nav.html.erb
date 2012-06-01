@@ -1,7 +1,7 @@
 <% content_for :main_navigation do %>
   <nav id="main_nav" role="navigation">
     <ul>
-      <% if request.url == root_url || request.url == calculator_url || request.path == "/" || request.path == "/calculator" %>
+      <% if request.path == "/" || request.path == "/calculator" %>
         <li class='locale'>
           <%= form_tag calculator_path, class: 'locale' do %>
             <%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.locale.to_s), onchange: 'this.form.submit()' %>

@@ -1,10 +1,21 @@
 class Admin::SoilCoefficientsController < Admin::BaseController
+
+  before_filter :load_soil_coefficient, :only => [:edit, :update, :destroy]
+  before_filter :load_soil_attributes, :except => [:destroy]
+
+  def load_soil_coefficient
+     @soil_coefficient = SoilCoefficient.find(params[:id])
+  end
+
+  def load_soil_attributes
+     @soil_moistures = SoilMoisture.all
+     @soil_textures = SoilTexture.all
+  end
+
   # GET /soil_coefficients
   # GET /soil_coefficients.json
   def index
     @soil_coefficients = SoilCoefficient.all
-    @soil_moistures = SoilMoisture.all
-    @soil_textures = SoilTexture.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,8 +27,6 @@ class Admin::SoilCoefficientsController < Admin::BaseController
   # GET /soil_coefficients/new.json
   def new
     @soil_coefficient = SoilCoefficient.new
-    @soil_moistures = SoilMoisture.all
-    @soil_textures = SoilTexture.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -27,17 +36,12 @@ class Admin::SoilCoefficientsController < Admin::BaseController
 
   # GET /soil_coefficients/1/edit
   def edit
-    @soil_coefficient = SoilCoefficient.find(params[:id])
-    @soil_moistures = SoilMoisture.all
-    @soil_textures = SoilTexture.all
   end
 
   # POST /soil_coefficients
   # POST /soil_coefficients.json
   def create
     @soil_coefficient = SoilCoefficient.new(params[:soil_coefficient])
-    @soil_moistures = SoilMoisture.all
-    @soil_textures = SoilTexture.all
 
     respond_to do |format|
       if @soil_coefficient.save
@@ -53,10 +57,6 @@ class Admin::SoilCoefficientsController < Admin::BaseController
   # PUT /soil_coefficients/1
   # PUT /soil_coefficients/1.json
   def update
-    @soil_coefficient = SoilCoefficient.find(params[:id])
-    @soil_moistures = SoilMoisture.all
-    @soil_textures = SoilTexture.all
-
     respond_to do |format|
       if @soil_coefficient.update_attributes(params[:soil_coefficient])
         format.html { redirect_to admin_soil_coefficients_path, notice: 'Soil coefficient was successfully updated.' }
@@ -71,7 +71,6 @@ class Admin::SoilCoefficientsController < Admin::BaseController
   # DELETE /soil_coefficients/1
   # DELETE /soil_coefficients/1.json
   def destroy
-    @soil_coefficient = SoilCoefficient.find(params[:id])
     @soil_coefficient.destroy
 
     respond_to do |format|

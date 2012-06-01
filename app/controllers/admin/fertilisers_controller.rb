@@ -1,4 +1,11 @@
 class Admin::FertilisersController < Admin::BaseController
+
+  before_filter :load_fertiliser, :only => [:edit, :update, :destroy]
+
+  def load_fertiliser
+     @fertiliser = Fertiliser.find(params[:id])
+  end
+
   # GET /fertilisers
   # GET /fertilisers.json
   def index
@@ -23,7 +30,6 @@ class Admin::FertilisersController < Admin::BaseController
 
   # GET /fertilisers/1/edit
   def edit
-    @fertiliser = Fertiliser.find(params[:id])
   end
 
   # POST /fertilisers
@@ -49,8 +55,6 @@ class Admin::FertilisersController < Admin::BaseController
   # PUT /fertilisers/1
   # PUT /fertilisers/1.json
   def update
-    @fertiliser = Fertiliser.find(params[:id])
-
     respond_to do |format|
       if @fertiliser.update_attributes(params[:fertiliser])
         format.html { redirect_to admin_fertilisers_path, notice: 'Fertiliser was successfully updated.' }
@@ -65,7 +69,6 @@ class Admin::FertilisersController < Admin::BaseController
   # DELETE /fertilisers/1
   # DELETE /fertilisers/1.json
   def destroy
-    @fertiliser = Fertiliser.find(params[:id])
     @fertiliser.destroy
 
     respond_to do |format|

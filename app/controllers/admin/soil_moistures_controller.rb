@@ -1,4 +1,11 @@
 class Admin::SoilMoisturesController < Admin::BaseController
+
+  before_filter :load_soil_moisture, :only => [:edit, :update, :destroy]
+
+  def load_soil_moisture
+     @soil_moisture = SoilMoisture.find(params[:id])
+  end
+
   # GET /soil_moistures
   # GET /soil_moistures.json
   def index
@@ -23,7 +30,6 @@ class Admin::SoilMoisturesController < Admin::BaseController
 
   # GET /soil_moistures/1/edit
   def edit
-    @soil_moisture = SoilMoisture.find(params[:id])
   end
 
   # POST /soil_moistures
@@ -49,8 +55,6 @@ class Admin::SoilMoisturesController < Admin::BaseController
   # PUT /soil_moistures/1
   # PUT /soil_moistures/1.json
   def update
-    @soil_moisture = SoilMoisture.find(params[:id])
-
     respond_to do |format|
       if @soil_moisture.update_attributes(params[:soil_moisture])
         format.html { redirect_to admin_soil_moistures_path, notice: 'Soil moisture was successfully updated.' }
@@ -65,7 +69,6 @@ class Admin::SoilMoisturesController < Admin::BaseController
   # DELETE /soil_moistures/1
   # DELETE /soil_moistures/1.json
   def destroy
-    @soil_moisture = SoilMoisture.find(params[:id])
     @soil_moisture.destroy
 
     respond_to do |format|

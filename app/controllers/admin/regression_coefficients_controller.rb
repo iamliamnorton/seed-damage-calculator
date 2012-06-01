@@ -1,10 +1,21 @@
 class Admin::RegressionCoefficientsController < Admin::BaseController
+
+  before_filter :load_regression_coefficient, :only => [:edit, :update, :destroy]
+  before_filter :load_other_attributes, :except => [:destroy]
+
+  def load_regression_coefficient
+     @regression_coefficient = RegressionCoefficient.find(params[:id])
+  end
+
+  def load_other_attributes
+     @crops = Crop.order('name')
+     @fertilisers = Fertiliser.all
+  end
+
   # GET /regression_coefficients
   # GET /regression_coefficients.json
   def index
     @regression_coefficients = RegressionCoefficient.all
-    @crops = Crop.order('name')
-    @fertilisers = Fertiliser.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,8 +27,6 @@ class Admin::RegressionCoefficientsController < Admin::BaseController
   # GET /regression_coefficients/new.json
   def new
     @regression_coefficient = RegressionCoefficient.new
-    @crops = Crop.all
-    @fertilisers = Fertiliser.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -27,17 +36,12 @@ class Admin::RegressionCoefficientsController < Admin::BaseController
 
   # GET /regression_coefficients/1/edit
   def edit
-    @regression_coefficient = RegressionCoefficient.find(params[:id])
-    @crops = Crop.all
-    @fertilisers = Fertiliser.all
   end
 
   # POST /regression_coefficients
   # POST /regression_coefficients.json
   def create
     @regression_coefficient = RegressionCoefficient.new(params[:regression_coefficient])
-    @crops = Crop.all
-    @fertilisers = Fertiliser.all
 
     respond_to do |format|
       if @regression_coefficient.save
@@ -53,10 +57,6 @@ class Admin::RegressionCoefficientsController < Admin::BaseController
   # PUT /regression_coefficients/1
   # PUT /regression_coefficients/1.json
   def update
-    @regression_coefficient = RegressionCoefficient.find(params[:id])
-    @crops = Crop.all
-    @fertilisers = Fertiliser.all
-
     respond_to do |format|
       if @regression_coefficient.update_attributes(params[:regression_coefficient])
         format.html { redirect_to admin_regression_coefficients_path, notice: 'Regression coefficient was successfully updated.' }
@@ -71,7 +71,6 @@ class Admin::RegressionCoefficientsController < Admin::BaseController
   # DELETE /regression_coefficients/1
   # DELETE /regression_coefficients/1.json
   def destroy
-    @regression_coefficient = RegressionCoefficient.find(params[:id])
     @regression_coefficient.destroy
 
     respond_to do |format|

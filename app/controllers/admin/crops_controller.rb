@@ -1,4 +1,11 @@
 class Admin::CropsController < Admin::BaseController
+
+  before_filter :load_crop, :only => [:edit, :update, :destroy]
+
+  def load_crop
+     @crop = Crop.find(params[:id])
+  end
+
   # GET /crops
   # GET /crops.json
   def index
@@ -23,7 +30,6 @@ class Admin::CropsController < Admin::BaseController
 
   # GET /crops/1/edit
   def edit
-    @crop = Crop.find(params[:id])
   end
 
   # POST /crops
@@ -49,8 +55,6 @@ class Admin::CropsController < Admin::BaseController
   # PUT /crops/1
   # PUT /crops/1.json
   def update
-    @crop = Crop.find(params[:id])
-
     respond_to do |format|
       if @crop.update_attributes(params[:crop])
         format.html { redirect_to admin_crops_path, notice: 'Crop was successfully updated.' }
@@ -65,7 +69,6 @@ class Admin::CropsController < Admin::BaseController
   # DELETE /crops/1
   # DELETE /crops/1.json
   def destroy
-    @crop = Crop.find(params[:id])
     @crop.destroy
 
     respond_to do |format|
