@@ -54,15 +54,15 @@ describe "Calculators" do
     end
   end
   
-  describe "the locale selecter", :js => true do
-    it "is defaulted to metric" do
-      page.should have_content("Fertiliser")
-      page.should_not have_content("Fertilizer")
-    end
-    it "can be changed to imperial" do
-      select "Imperial", :from => "set_locale"
-      page.should have_content("Fertilizer")
-      page.should_not have_content("Fertiliser")
-    end
-  end
+  # describe "the locale selecter", :js => true do
+  #   it "is defaulted to metric" do
+  #     page.should have_content("Fertiliser")
+  #     page.should_not have_content("Fertilizer")
+  #   end
+  #   it "can be changed to imperial" do
+  #     select "Imperial", :from => "set_locale"
+  #     page.should have_content("Fertilizer")
+  #     page.should_not have_content("Fertiliser")
+  #   end
+  # end
 end

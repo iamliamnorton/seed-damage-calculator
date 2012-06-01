@@ -24,6 +24,6 @@ system('rails_best_practices .')
 # exit 1 if $?.exitstatus > 0
 
 puts "* Running specs and checking test coverage with simplecov"
-system('rm -rf coverage')
+# system('rm -rf coverage')
 system('rake spec')
 exit 1 if $?.exitstatus > 0
