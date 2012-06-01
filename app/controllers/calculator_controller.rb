@@ -1,9 +1,9 @@
 class CalculatorController < ApplicationController
 
   def index
-    if params[:set_locale]
-      redirect_to calculator_path(:locale => params[:set_locale], :calculator => params[:calculator])
-    end
+
+    redirect_to calculator_path(:locale => params[:set_locale], :calculator => params[:calculator]) if params[:set_locale]
+
     if params[:calculator]
       @calculator = Calculator.new(params[:calculator])
       @result = @calculator.calculate_result

@@ -337,6 +337,8 @@
         1,
         1,
         1,
+        1,
+        1,
         null
       ],
       "/users/liamnorton/Workspace/fasdac/app/controllers/admin/soil_coefficients_controller.rb": [
@@ -424,6 +426,8 @@
         null
       ],
       "/users/liamnorton/Workspace/fasdac/app/models/soil_coefficient.rb": [
+        1,
+        1,
         1,
         1,
         1,
@@ -614,20 +618,20 @@
         1,
         null,
         1,
-        2,
-        0,
         null,
         2,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
+        null,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         null,
         2,
         null,
@@ -771,6 +775,6 @@
         null
       ]
     },
-    "timestamp": 1338550764
+    "timestamp": 1338552174
   }
 }
