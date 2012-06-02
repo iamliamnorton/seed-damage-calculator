@@ -25,12 +25,13 @@ describe "Calculators" do
   describe "when valid input exists" do
     before(:each) do
       select @crop_1.name, :from => "calculator_crop_id"
-      select @fertiliser_1.metric_name, :from => "calculator_fertiliser_id"
+      select @fertiliser_1.imperial_name, :from => "calculator_fertiliser_id"
       select @soil_moist.name, :from => "calculator_soil_moisture_id"
       select @soil_fine.name, :from => "calculator_soil_texture_id"
       fill_in "calculator_seed_furrow_opening_width", :with => 3
       fill_in "calculator_row_spacing", :with => 10
       fill_in "calculator_tolerated_stand_loss", :with => 5
+      check('calculator_terms_of_service')
     end
     it "results are printed to the screen" do
       click_button "Calculate"
@@ -41,16 +42,33 @@ describe "Calculators" do
   describe "when invalid input exists" do
     before(:each) do
       select @crop_1.name, :from => "calculator_crop_id"
-      select @fertiliser_1.metric_name, :from => "calculator_fertiliser_id"
+      select @fertiliser_1.imperial_name, :from => "calculator_fertiliser_id"
       select @soil_moist.name, :from => "calculator_soil_moisture_id"
       select @soil_fine.name, :from => "calculator_soil_texture_id"
       fill_in "calculator_seed_furrow_opening_width", :with => 3
       fill_in "calculator_row_spacing", :with => 1000
       fill_in "calculator_tolerated_stand_loss", :with => 5
+      check('calculator_terms_of_service')
     end
     it "results are printed to the screen" do
       click_button "Calculate"
       page.should have_content("Calculation was not successfully completed.")
+    end
+  end
+  
+  describe "when invalid input exists" do
+    before(:each) do
+      select @crop_1.name, :from => "calculator_crop_id"
+      select @fertiliser_1.imperial_name, :from => "calculator_fertiliser_id"
+      select @soil_moist.name, :from => "calculator_soil_moisture_id"
+      select @soil_fine.name, :from => "calculator_soil_texture_id"
+      fill_in "calculator_seed_furrow_opening_width", :with => 3
+      fill_in "calculator_row_spacing", :with => 50
+      fill_in "calculator_tolerated_stand_loss", :with => 5
+    end
+    it "results are printed to the screen" do
+      click_button "Calculate"
+      page.should have_content("Terms of service must be accepted")
     end
   end
   

@@ -76,6 +76,7 @@ describe "Crops" do
     end
     it "cannot destroy a crop name that doesn't exist" do
       invalid_crop = Crop.make
+      get 'admin/crops#destroy', :id => invalid_crop.id
       response.should raise_error
     end
     it "can destroy a crop that exists in the system" do
