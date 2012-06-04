@@ -21,7 +21,7 @@ class CalculatorController < ApplicationController
           @calculator.errors.full_messages.each do |msg|
             errors += msg + "\n"
           end
-          format.html { redirect_to calculator_path(:calculator => params[:calculator]), alert: "Calculation was not successfully completed. #{errors}" }
+          format.html { redirect_to calculator_path(:locale => params[:set_locale], :calculator => params[:calculator]), alert: "Calculation was not successfully completed. #{errors}" }
         end
       end
     end
