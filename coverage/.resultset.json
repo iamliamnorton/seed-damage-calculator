@@ -352,7 +352,6 @@
         2,
         2,
         null,
-        null,
         null
       ],
       "/users/liamnorton/Workspace/fasdac/app/models/soil_moisture.rb": [
@@ -416,7 +415,6 @@
         2,
         2,
         2,
-        null,
         null,
         null
       ],
@@ -576,6 +574,6 @@
         null
       ]
     },
-    "timestamp": 1338797337
+    "timestamp": 1338799491
   }
 }

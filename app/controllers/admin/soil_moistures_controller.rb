@@ -52,5 +52,4 @@ class Admin::SoilMoisturesController < Admin::BaseController
     flash[:notice] = 'Soil moisture was successfully destroyed.'
     redirect_to admin_soil_moistures_path
   end
-
 end

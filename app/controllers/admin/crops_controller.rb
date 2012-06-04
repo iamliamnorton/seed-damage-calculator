@@ -30,7 +30,7 @@ class Admin::CropsController < Admin::BaseController
         RegressionCoefficient.create(:crop_id => @crop.id, :fertiliser_id => fertiliser.id)
       end
       flash[:notice] = 'Crop was successfully created.'
-      redirect_to admin_crops_path,
+      redirect_to admin_crops_path
     else
       render :new
     end

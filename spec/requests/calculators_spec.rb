@@ -74,6 +74,7 @@ describe "Calculators" do
   
   # describe "the locale selecter", :js => true do
   #   it "is defaulted to metric" do
+  #     # select "Metric", :from => "set_locale"  
   #     page.should have_content("Fertiliser")
   #     page.should_not have_content("Fertilizer")
   #   end

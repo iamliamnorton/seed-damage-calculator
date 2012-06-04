@@ -52,5 +52,4 @@ class Admin::SoilTexturesController < Admin::BaseController
     flash[:notice] = 'Soil texture was successfully destroyed.'
     redirect_to admin_soil_textures_path
   end
-
 end
