@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "Calculators" do
   
   before(:each) do
+    I18n.locale = :imperial
     @crop_1 = Crop.make!
     @crop_2 = Crop.make!
     @fertiliser_1 = Fertiliser.make!
@@ -68,7 +69,27 @@ describe "Calculators" do
     end
     it "results are printed to the screen" do
       click_button "Calculate"
-      page.should have_content("Terms of service must be accepted")
+      page.should have_content("Terms of service is not accepted")
+    end
+  end
+  
+  describe "can change locales within the app" do
+    it "can choose the metric locale" do
+      I18n.locale = :metric
+      visit calculator_path
+      page.should have_content("This calculator can be used as a guide to the maximum amount of fertiliser that can be applied in the same furrow as seed.")
+    end
+    
+    it "can choose the imperial locale" do
+      I18n.locale = :imperial
+      visit calculator_path
+      page.should have_content("This calculator can be used as a guide to the maximum amount of fertilizer that can be applied in the same furrow as seed.")
+    end
+    
+    it "defaults to metric if no locale is set" do
+      I18n.locale = nil
+      visit calculator_path
+      page.should have_content("This calculator can be used as a guide to the maximum amount of fertiliser that can be applied in the same furrow as seed.")
     end
   end
   
