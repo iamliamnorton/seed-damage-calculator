@@ -7,25 +7,13 @@ class Admin::SoilTexturesController < Admin::BaseController
   end
 
   # GET /soil_textures
-  # GET /soil_textures.json
   def index
     @soil_textures = SoilTexture.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @soil_textures }
-    end
   end
 
   # GET /soil_textures/new
-  # GET /soil_textures/new.json
   def new
     @soil_texture = SoilTexture.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @soil_texture }
-    end
   end
 
   # GET /soil_textures/1/edit
@@ -33,48 +21,36 @@ class Admin::SoilTexturesController < Admin::BaseController
   end
 
   # POST /soil_textures
-  # POST /soil_textures.json
   def create
     @soil_texture = SoilTexture.new(params[:soil_texture])
     @soil_moistures = SoilMoisture.all
 
-    respond_to do |format|
-      if @soil_texture.save
-        @soil_moistures.each do |soil_moisture|
-          SoilCoefficient.create(:soil_texture_id => @soil_texture.id, :soil_moisture_id => soil_moisture.id)
-        end
-        format.html { redirect_to admin_soil_textures_path, notice: 'Soil texture was successfully created.' }
-        format.json { render json: @soil_texture, status: :created, location: @soil_texture }
-      else
-        format.html { render :new }
-        format.json { render json: @soil_texture.errors, status: :unprocessable_entity }
+    if @soil_texture.save
+      @soil_moistures.each do |soil_moisture|
+        SoilCoefficient.create(:soil_texture_id => @soil_texture.id, :soil_moisture_id => soil_moisture.id)
       end
+      flash[:notice] = 'Soil texture was successfully created.'
+      redirect_to admin_soil_textures_path
+    else
+      render :new
     end
   end
 
   # PUT /soil_textures/1
-  # PUT /soil_textures/1.json
   def update
-    respond_to do |format|
-      if @soil_texture.update_attributes(params[:soil_texture])
-        format.html { redirect_to admin_soil_textures_path, notice: 'Soil texture was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render :edit }
-        format.json { render json: @soil_texture.errors, status: :unprocessable_entity }
-      end
+    if @soil_texture.update_attributes(params[:soil_texture])
+      flash[:notice] = 'Soil texture was successfully updated.'
+      redirect_to admin_soil_textures_path
+    else
+      render :edit
     end
   end
 
   # DELETE /soil_textures/1
-  # DELETE /soil_textures/1.json
   def destroy
     @soil_texture.destroy
-
-    respond_to do |format|
-      format.html { redirect_to admin_soil_textures_path, notice: 'Soil texture was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:notice] = 'Soil texture was successfully destroyed.'
+    redirect_to admin_soil_textures_path
   end
 
 end
