@@ -10,7 +10,7 @@ Fasdac::Application.routes.draw do
     resources :regression_coefficients, :only => [:index, :edit, :update]
   end
 
-  scope '(:locale)' do
+  scope '(:locale)', :locale => /metric|imperial/ do
     resource :calculator, :only => [:index]
     match 'calculator' => 'calculator#index', :via => :post
     match 'calculator' => 'calculator#index', :via => :get
