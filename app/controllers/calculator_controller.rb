@@ -4,20 +4,8 @@ class CalculatorController < ApplicationController
 
     redirect_to calculator_path(:locale => params[:set_locale], :calculator => params[:calculator]) if params[:set_locale]
 
-    if params[:calculator]
-      @calculator = Calculator.new(params[:calculator])
-      @result = @calculator.calculate_result
-      @sbu = @calculator.calculate_sbu
-      @liquid_weight = @calculator.calculate_liquid_weight(@result)
-      @nitrogen = @calculator.calculate_nitrogen(@result)
-      @phosphorus = @calculator.calculate_phosphorus(@result)
-      @potassium = @calculator.calculate_potassium(@result)
-      @sulphur = @calculator.calculate_sulphur(@result)
-      @magnesium = @calculator.calculate_magnesium(@result)
-      @result = @result.round(1) if !@result.nil?    #rounded here so precision of other results is not affected
-    else
-      @calculator = Calculator.new
-    end
+    @calculator = Calculator.new
+    @calculator = Calculator.new(params[:calculator]) if params[:calculator]
     @crops = Crop.all
     @fertilisers = Fertiliser.all
     @soil_moistures = SoilMoisture.all
@@ -26,7 +14,7 @@ class CalculatorController < ApplicationController
     if request.post? && params[:calculator]
       respond_to do |format|
         if @calculator.valid?
-          format.html { redirect_to root_path(:calculator => params[:calculator]), notice: 'Calculation was successfully completed.' }
+          format.html { redirect_to root_path(:locale => params[:set_locale], :calculator => params[:calculator]), notice: 'Calculation was successfully completed.' }
         else
           # This will have to be redone, need a better way of showing errors in the calculator form
           errors = ''

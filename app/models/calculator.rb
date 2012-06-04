@@ -5,7 +5,9 @@ class Calculator
   extend ActiveModel::Naming
 
   attr_accessor :crop_id, :fertiliser_id, :soil_moisture_id, :soil_texture_id,
-                :seed_furrow_opening_width, :row_spacing, :tolerated_stand_loss
+                :seed_furrow_opening_width, :row_spacing, :tolerated_stand_loss,
+                :result, :sbu, :liquid_weight, :nitrogen, :phosphorus, :potassium,
+                :sulphur, :magnesium
 
   attr_accessible :crop_id, :fertiliser_id, :soil_moisture_id, :soil_texture_id,
                   :seed_furrow_opening_width, :row_spacing, :tolerated_stand_loss
@@ -16,6 +18,17 @@ class Calculator
   def initialize(attributes = {})
     attributes.each do |name, value|
       send("#{name}=", value)
+    end
+    if self.valid?
+      calculate_result
+      calculate_sbu
+      calculate_liquid_weight
+      calculate_nitrogen
+      calculate_phosphorus
+      calculate_potassium
+      calculate_sulphur
+      calculate_magnesium
+      self.result = self.result.round(1)
     end
     self.persisted?
   end
@@ -29,70 +42,57 @@ class Calculator
     soil_coefficient = SoilCoefficient.where(:soil_moisture_id => self.soil_moisture_id, :soil_texture_id => self.soil_texture_id).first.value
     numerator = 30 * self.seed_furrow_opening_width.to_i * -1 * self.tolerated_stand_loss.to_i
     denominator = regression_coefficient * self.row_spacing.to_i * soil_coefficient
-    if self.valid?
-      result = numerator / denominator
-      result = result * 1.1208511 if I18n.locale == :metric
-    end
-    return result
+    result = numerator / denominator
+    self.result = result * 1.1208511 if I18n.locale == :metric
+    self.result = result unless I18n.locale == :metric
   end
 
   def calculate_sbu
-    if self.valid?
-      sbu = (self.seed_furrow_opening_width.to_f / self.row_spacing.to_f) * 100
-      sbu = sbu.round(0)
-    end
-    return sbu
+    sbu = (self.seed_furrow_opening_width.to_f / self.row_spacing.to_f) * 100
+    self.sbu = sbu.round(0)
   end
 
-  def calculate_liquid_weight(result)
+  def calculate_liquid_weight
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
-    if fertiliser.liquid_weight.to_f > 0 && self.valid?
-      liquid_weight = (result / fertiliser.liquid_weight).round(1)
-    end
-    return liquid_weight
+    liquid_weight = (self.result / fertiliser.liquid_weight).round(1) if fertiliser.liquid_weight.to_f > 0
+    self.liquid_weight = liquid_weight
   end
 
-  def calculate_nitrogen(result)
+  def calculate_nitrogen
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
-    if fertiliser.N.to_f > 0 && self.valid?
-      nitrogen = (result * fertiliser.N).round(1)
-    end
-    return nitrogen
+    nitrogen = (self.result * fertiliser.N).round(1) if fertiliser.N.to_f > 0
+    self.nitrogen = nitrogen
   end
 
-  def calculate_phosphorus(result)
+  def calculate_phosphorus
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
-    if fertiliser.P.to_f > 0 && self.valid?
-      phosphorus = result * fertiliser.P
+    if fertiliser.P.to_f > 0
+      phosphorus = self.result * fertiliser.P
       phosphorus = phosphorus * 0.4364 if I18n.locale == :metric
       phosphorus = phosphorus.round(1)
+      self.phosphorus = phosphorus
     end
-    return phosphorus
   end
 
-  def calculate_potassium(result)
+  def calculate_potassium
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
-    if fertiliser.K.to_f > 0 && self.valid?
-      potassium = result * fertiliser.K
+    if fertiliser.K.to_f > 0
+      potassium = self.result * fertiliser.K
       potassium = potassium * 0.83 if I18n.locale == :metric
       potassium = potassium.round(1)
+      self.potassium = potassium
     end
-    return potassium
   end
 
-  def calculate_sulphur(result)
+  def calculate_sulphur
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
-    if fertiliser.S.to_f > 0 && self.valid?
-      sulphur = (result * fertiliser.S).round(1)
-    end
-    return sulphur
+    sulphur = (self.result * fertiliser.S).round(1) if fertiliser.S.to_f > 0
+    self.sulphur = sulphur
   end
 
-  def calculate_magnesium(result)
+  def calculate_magnesium
     fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
-    if fertiliser.Mg.to_f > 0 && self.valid?
-      magnesium = (result * fertiliser.Mg).round(1)
-    end
-    return magnesium
+    magnesium = (self.result * fertiliser.Mg).round(1) if fertiliser.Mg.to_f > 0
+    self.magnesium = magnesium
   end
 end
