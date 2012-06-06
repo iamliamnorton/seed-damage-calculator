@@ -12,7 +12,7 @@ gem 'newrelic_rpm'
 gem 'roodi'
 gem 'rails_best_practices'
 gem 'simplecov'
-gem 'flog'
+gem 'metric_abc'
 gem 'flay'
 
 group :development, :test do

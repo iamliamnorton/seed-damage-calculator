@@ -4,8 +4,7 @@ class CalculatorController < ApplicationController
 
     redirect_to calculator_path(:locale => params[:set_locale], :calculator => params[:calculator]) if params[:set_locale]
 
-    @calculator = Calculator.new
-    @calculator = Calculator.new(params[:calculator]) if params[:calculator]
+    @calculator = Calculator.new(params[:calculator])
     @crops = Crop.all
     @fertilisers = Fertiliser.all
     @soil_moistures = SoilMoisture.all

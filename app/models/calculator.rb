@@ -16,8 +16,10 @@ class Calculator
   validates :terms_of_service, :acceptance => true
 
   def initialize(attributes = {})
-    attributes.each do |name, value|
-      send("#{name}=", value)
+    if !attributes.nil?
+      attributes.each do |name, value|
+        send("#{name}=", value)
+      end
     end
     if self.valid?
       calculate_result
