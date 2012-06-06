@@ -10,7 +10,7 @@ puts "\n* Checking code for design issues with roodi"
 system('roodi app/**/*.rb')
 # exit 1 if $?.exitstatus > 0
 
-puts "\n* Checking code for over complexity with metric_abc"
+puts "\n* Checking code for over complexity with metric_abc (score over 20 needs refactoring)"
 system('metric_abc app/**/*.rb')
 # exit 1 if $?.exitstatus > 0
 
