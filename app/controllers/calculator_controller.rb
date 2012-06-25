@@ -1,14 +1,18 @@
 class CalculatorController < ApplicationController
 
-  def index
+  before_filter :load_vars
 
-    redirect_to calculator_path(:locale => params[:set_locale], :calculator => params[:calculator]) if params[:set_locale]
-
-    @calculator = Calculator.new(params[:calculator])
+  def load_vars
     @crops = Crop.all
     @fertilisers = Fertiliser.all
     @soil_moistures = SoilMoisture.all
     @soil_textures = SoilTexture.all
+  end
+
+  def index
+    redirect_to calculator_path(:locale => params[:set_locale], :calculator => params[:calculator]) if params[:set_locale]
+
+    @calculator = Calculator.new(params[:calculator])
 
     if request.post? && params[:calculator]
       if @calculator.valid?
