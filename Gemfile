@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,12 +11,6 @@ gem 'prawn_rails'
 gem 'newrelic_rpm'
 gem 'twitter-bootstrap-rails'
 
-gem 'roodi'
-gem 'rails_best_practices'
-gem 'simplecov'
-gem 'metric_abc'
-gem 'flay'
-
 group :development, :test do
   gem 'ruby-debug19'
   gem 'rspec-rails'
@@ -24,6 +18,11 @@ group :development, :test do
   gem 'launchy'
   gem 'machinist'
   gem 'faker'
+  gem 'roodi'
+  gem 'rails_best_practices'
+  gem 'simplecov'
+  gem 'metric_abc'
+  gem 'flay'
 end
 
 # Gems used only for assets and not required
