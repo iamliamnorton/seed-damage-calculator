@@ -9,6 +9,8 @@ gem 'pg'
 gem 'best_in_place'
 gem 'prawn_rails'
 gem 'newrelic_rpm'
+gem 'twitter-bootstrap-rails'
+
 gem 'roodi'
 gem 'rails_best_practices'
 gem 'simplecov'

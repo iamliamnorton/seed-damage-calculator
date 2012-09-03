@@ -1,10 +1,18 @@
-<%= form_for(@calculator, :url => calculator_path) do |f| %>
-  <fieldset>
-    <legend><strong>Calculation Variables:</strong></legend>
-      <ol>
+<fieldset>
+    <legend><strong>Input</strong></legend>
+        <ol>
+            <li class='locale'>
+            <%= label_tag "Measurement Unit" %>
+            <%= form_tag calculator_path, class: 'locale' do %>
+                <%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.locale.to_s), onchange: 'this.form.submit()' %><br />
+                <%= submit_tag 'submit' %>
+                <%= javascript_tag "$('.locale input').hide()" %>
+            <% end %>
+        </li>
+        <%= form_for(@calculator, :url => calculator_path) do |f| %>
         <li>
           <%= f.label :crop_id %>
-          <%= f.select :crop_id, options_from_collection_for_select(@crops, 'id', 'name', @calculator.crop_id) %><br /><br />
+          <%= f.select :crop_id, options_from_collection_for_select(@crops, 'id', 'name', @calculator.crop_id) %><br />
         </li>
         <li>
           <%= f.label :fertiliser_id, t('.fert') %>
@@ -13,27 +21,27 @@
           <% else %>
             <%= f.select :fertiliser_id, options_from_collection_for_select(@fertilisers, 'id', 'imperial_name', @calculator.fertiliser_id) %>
           <% end %>
-          <%= link_to image_tag('info_button.png'), definitions_path(:anchor => "Fertilizer Names and Types"), :target => "_blank" %><br /><br />
+          <%= link_to image_tag('info_button.png'), definitions_path(:anchor => "Fertilizer Names and Types"), :target => "_blank" %><br />
         </li>
         <li>
           <%= f.label :soil_moisture_id %>
-          <%= f.select :soil_moisture_id, options_from_collection_for_select(@soil_moistures, 'id', 'name', @calculator.soil_moisture_id) %> <%= link_to image_tag('info_button.png'), definitions_path(:anchor => "Soil Moisture"), :target => "_blank" %><br /><br />
+          <%= f.select :soil_moisture_id, options_from_collection_for_select(@soil_moistures, 'id', 'name', @calculator.soil_moisture_id) %> <%= link_to image_tag('info_button.png'), definitions_path(:anchor => "Soil Moisture"), :target => "_blank" %><br />
         </li>
         <li>
           <%= f.label :soil_texture_id %>
-          <%= f.select :soil_texture_id, options_from_collection_for_select(@soil_textures, 'id', 'name', @calculator.soil_texture_id) %> <%= link_to image_tag('info_button.png'), definitions_path(:anchor => "Soil Texture"), :target => "_blank" %><br /><br />
+          <%= f.select :soil_texture_id, options_from_collection_for_select(@soil_textures, 'id', 'name', @calculator.soil_texture_id) %> <%= link_to image_tag('info_button.png'), definitions_path(:anchor => "Soil Texture"), :target => "_blank" %><br />
         </li>
         <li>
           <%= f.label :seed_furrow_opening_width, t('.furrow') %>
-          <%= f.number_field :seed_furrow_opening_width %> <%= link_to image_tag('info_button.png'), definitions_path(:anchor => "Seed Furrow Opening"), :target => "_blank" %><br /><br />
+          <%= f.number_field :seed_furrow_opening_width %> <%= link_to image_tag('info_button.png'), definitions_path(:anchor => "Seed Furrow Opening"), :target => "_blank" %><br />
         </li>
         <li>
           <%= f.label :row_spacing, t('.spacing') %>
-          <%= f.number_field :row_spacing %><br /><br />
+          <%= f.number_field :row_spacing %><br />
         </li>
         <li>
           <%= f.label :tolerated_stand_loss, "Tolerated stand loss (%)" %>
-          <%= f.number_field :tolerated_stand_loss %> <%= link_to image_tag('info_button.png'), definitions_path(:anchor => "Tolerated Stand Loss"), :target => "_blank" %><br /><br />
+          <%= f.number_field :tolerated_stand_loss %> <%= link_to image_tag('info_button.png'), definitions_path(:anchor => "Tolerated Stand Loss"), :target => "_blank" %><br />
         </li>
         <li>
           <%= f.check_box :terms_of_service %>

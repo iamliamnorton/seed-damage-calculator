@@ -2,7 +2,7 @@ html, body {
   height: 100%;
 }
 
-header#page_header { 
+header#page_header {
 	background-color: #000;
 	color: #fff; 
 	height: 75px; 
@@ -14,57 +14,39 @@ header#page_header {
 		float: right; 
 		font-size: 1.0em;
 	}
-
-	#sdsu_logo { 
-		position: absolute; 
-		left: 20px;
-    top: 10px;
-	}
-	
-	#ipni_logo { 
-  	position: absolute; 
-  	left: 270px;
-    top: 10px;
-	}
-}
-
-div.container { 
-	min-height: 100%;
-	width: 100%;
 }
 
 section#alerts {
   padding: 10px 10px 10px 10px;
 }
 
+div.social_links {
+	display: inline;
+}
+
 section#content {
   overflow:auto;
   padding-bottom: 70px;
-  padding-left: 20px;
 }
 
 section#input {
-	float: left;
-	margin-left: 20px;
-	width: 50%;
+
 }
 
 section#output {
-	float: right;
-	margin-right: -20px;
-	width: 50%;
+
 }
 
 footer#page_footer {
-	text-align: center;
+  text-align: center;
   background-color: #807c77;
   color: #fff;
   font-size: 0.7em;
   height: 70px;
   padding: 10px 20px;
   margin-top: -70px;
-	clear:both;
-	position: relative;
+  clear:both;
+  position: relative;
 
   ul {
 		text-align: center;
