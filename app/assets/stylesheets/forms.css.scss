@@ -24,11 +24,21 @@ fieldset li a#print-pdf-link {
 	border-radius: 10px;
 	&:hover {
 	    color:#000;
-	    background:#eee;
+	    background:#ccc;
 	    -webkit-transition: all 0.3s ease-in-out;
 	    -moz-transition: all 0.3s ease-in-out;
 	    transition: all 0.3s ease-in-out;
 	}
+}
+
+fieldset li a img.info_icon {
+    opacity:0.5;
+    &:hover {
+        opacity: 1.0;
+        -webkit-transition:  all 0.3s ease-in-out;
+        -moz-transition:  all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
 }
 
 fieldset div.field_with_errors {

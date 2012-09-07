@@ -8,7 +8,7 @@
   </li>
   <li>
     <%= label_tag :sbu, t('.sbu') %>
-    <%= text_field_tag :sbu, @calculator.sbu, :disabled => true %> <%= link_to image_tag('info_button.png'), definitions_path(:anchor => "Seed Bed Utilization"), :target => "_blank" %><br />
+    <%= text_field_tag :sbu, @calculator.sbu, :disabled => true %> <%= link_to image_tag('info_button.png', :class => "info_icon"), definitions_path(:anchor => "Seed Bed Utilization"), :target => "_blank" %><br />
   </li>
   <li>
     <%= label_tag :liquid_weight, t('.liquid_weight') %>
