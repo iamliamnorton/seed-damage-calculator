@@ -32,16 +32,16 @@ prawn_document() do |pdf|
     end
     
     output_data = [
-      [t('.result'), @result.round(1).to_s],
-      [t('.sbu'), @calculator.calculate_sbu.to_s],
-      [t('.liquid_weight'), @calculator.calculate_liquid_weight(@result).to_s],
-      [t('.nitrogen'), @calculator.calculate_nitrogen(@result).to_s],
+      [t('.result'), @calculator.result.round(1).to_s],
+      [t('.sbu'), @calculator.sbu.to_s],
+      [t('.liquid_weight'), @calculator.liquid_weight.to_s],
+      [t('.nitrogen'), @calculator.nitrogen.to_s],
       [Prawn::Table::Cell::Text.new( pdf, [0,0], :content => t('.phosphorus'), :inline_format => true), 
-        @calculator.calculate_phosphorus(@result).to_s],
+        @calculator.phosphorus.to_s],
       [Prawn::Table::Cell::Text.new( pdf, [0,0], :content => t('.potassium'), :inline_format => true), 
-        @calculator.calculate_potassium(@result).to_s],
-      [t('.sulphur'), @calculator.calculate_sulphur(@result).to_s],
-      [t('.magnesium'), @calculator.calculate_magnesium(@result).to_s]    
+        @calculator.potassium.to_s],
+      [t('.sulphur'), @calculator.sulphur.to_s],
+      [t('.magnesium'), @calculator.magnesium.to_s]    
     ]
     
     pdf.text "Calculator input:", :size => 15, :style => :bold
