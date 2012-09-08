@@ -1,50 +1,73 @@
 fieldset {
   margin-bottom: 10px;
-}
 
-fieldset legend {
-  text-align: center;
-  font-size: 150%;
-}
+  legend {
+    text-align: center;
+    font-size: 150%;
+    }
 
-fieldset label {
-  display: block;
-}
+  label {
+    display: block;
+  }
 
-fieldset label.terms {
-  display: inline;
-}
-
-fieldset li a#print-pdf-link {
+  label.terms {
+    display: inline;
+  }
+  
+  input[type="submit"] {
+    background: #444;
+    display: inline-block;
+    padding: 5px 10px 6px;
+    color: #fff;
+    text-decoration: none;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    position: relative;
+    cursor: pointer;
+    &:hover {
+      color:#fff;
+	    background:#000;
+	    -webkit-transition: all 0.3s ease-in-out;
+	    -moz-transition: all 0.3s ease-in-out;
+	    transition: all 0.3s ease-in-out;
+    }
+  }
+    
+  li a#print-pdf-link {
     color:#fff;
     background:#444;
     padding:5px 10px 5px 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
-	border-radius: 10px;
-	&:hover {
-	    color:#000;
-	    background:#ccc;
+	  border-radius: 10px;
+	  &:hover {
+	    color:#fff;
+	    background:#000;
 	    -webkit-transition: all 0.3s ease-in-out;
 	    -moz-transition: all 0.3s ease-in-out;
 	    transition: all 0.3s ease-in-out;
+  	}
 	}
-}
-
-fieldset li a img.info_icon {
+  	
+  li a img.info_icon {
     opacity:0.5;
     &:hover {
-        opacity: 1.0;
-        -webkit-transition:  all 0.3s ease-in-out;
-        -moz-transition:  all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
+      opacity: 1.0;
+      -webkit-transition:  all 0.3s ease-in-out;
+      -moz-transition:  all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
     }
-}
+  }
 
-fieldset div.field_with_errors {
-  display: inline;
-}
+  div.field_with_errors {
+    display: inline;
+  }
 
-ol {
-  list-style-type: none;
+  ol {
+    list-style-type: none;
+  }  
 }
