@@ -50,6 +50,10 @@ imperial:
       less_than_or_equal_to:    "must be less than or equal to %{count}"
       invalid:                  "is invalid"
       accepted:                 "is not accepted"
+  support:
+    array:
+      words_connector:          ", "
+      last_word_connector:      " & "
 
   layouts:
     application:

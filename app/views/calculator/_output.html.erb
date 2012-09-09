@@ -35,7 +35,7 @@
     <%= text_field_tag :magnesium, @calculator.magnesium, :disabled => true %><br />
   </li>
   <li>
-    <br /><%= link_to "Download PDF Ouput", calculator_path(:calculator => params[:calculator], :format => "pdf"), :id => "print-pdf-link", :class => "print-pdf-link" %>
+    <br /><%= link_to "Download (PDF)", calculator_path(:calculator => params[:calculator], :format => "pdf"), :id => "print-pdf-link", :class => "print-pdf-link" %>
   </li>
 </ol>
 </fieldset>
