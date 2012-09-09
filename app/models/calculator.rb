@@ -40,61 +40,54 @@ class Calculator
   end
 
   def calculate_result
-    regression_coefficient = RegressionCoefficient.where(:crop_id => self.crop_id, :fertiliser_id => self.fertiliser_id).first.value
-    soil_coefficient = SoilCoefficient.where(:soil_moisture_id => self.soil_moisture_id, :soil_texture_id => self.soil_texture_id).first.value
-    numerator = 30 * self.seed_furrow_opening_width.to_i * -1 * self.tolerated_stand_loss.to_i
-    denominator = regression_coefficient * self.row_spacing.to_i * soil_coefficient
-    result = numerator / denominator
+    regression_coefficient = RegressionCoefficient.where(:crop_id => crop_id, :fertiliser_id => fertiliser_id).first.value
+    soil_coefficient = SoilCoefficient.where(:soil_moisture_id => soil_moisture_id, :soil_texture_id => soil_texture_id).first.value
+    numerator = 30 * seed_furrow_opening_width.to_i * -1 * tolerated_stand_loss.to_i
+    denominator = regression_coefficient * row_spacing.to_i * soil_coefficient
+    self.result = numerator / denominator
     self.result = result * 1.1208511 if I18n.locale == :metric
-    self.result = result unless I18n.locale == :metric
   end
 
   def calculate_sbu
-    sbu = (self.seed_furrow_opening_width.to_f / self.row_spacing.to_f) * 100
+    sbu = (seed_furrow_opening_width.to_f / row_spacing.to_f) * 100
     self.sbu = sbu.round(0)
   end
 
   def calculate_liquid_weight
-    fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
-    liquid_weight = (self.result / fertiliser.liquid_weight).round(1) if fertiliser.liquid_weight.to_f > 0
-    self.liquid_weight = liquid_weight
+    fertiliser = Fertiliser.find_by_id(fertiliser_id)
+    self.liquid_weight = (self.result / fertiliser.liquid_weight).round(1) if fertiliser.liquid_weight.to_f > 0
   end
 
   def calculate_nitrogen
-    fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
-    nitrogen = (self.result * fertiliser.N).round(1) if fertiliser.N.to_f > 0
-    self.nitrogen = nitrogen
+    fertiliser = Fertiliser.find_by_id(fertiliser_id)
+    self.nitrogen = (self.result * fertiliser.N).round(1) if fertiliser.N.to_f > 0
   end
 
   def calculate_phosphorus
-    fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
+    fertiliser = Fertiliser.find_by_id(fertiliser_id)
     if fertiliser.P.to_f > 0
       phosphorus = self.result * fertiliser.P
       phosphorus = phosphorus * 0.4364 if I18n.locale == :metric
-      phosphorus = phosphorus.round(1)
-      self.phosphorus = phosphorus
+      self.phosphorus = phosphorus.round(1)
     end
   end
 
   def calculate_potassium
-    fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
+    fertiliser = Fertiliser.find_by_id(fertiliser_id)
     if fertiliser.K.to_f > 0
       potassium = self.result * fertiliser.K
       potassium = potassium * 0.83 if I18n.locale == :metric
-      potassium = potassium.round(1)
-      self.potassium = potassium
+      self.potassium = potassium.round(1)
     end
   end
 
   def calculate_sulphur
-    fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
-    sulphur = (self.result * fertiliser.S).round(1) if fertiliser.S.to_f > 0
-    self.sulphur = sulphur
+    fertiliser = Fertiliser.find_by_id(fertiliser_id)
+    self.sulphur = (self.result * fertiliser.S).round(1) if fertiliser.S.to_f > 0
   end
 
   def calculate_magnesium
-    fertiliser = Fertiliser.find_by_id(self.fertiliser_id)
-    magnesium = (self.result * fertiliser.Mg).round(1) if fertiliser.Mg.to_f > 0
-    self.magnesium = magnesium
+    fertiliser = Fertiliser.find_by_id(fertiliser_id)
+    self.magnesium = (self.result * fertiliser.Mg).round(1) if fertiliser.Mg.to_f > 0
   end
 end
