@@ -28,14 +28,6 @@ namespace :quality do
   task :coverage => :environment do
     puts "\nChecking specs for code coverage with SimpleCov\n"
     Rake::Task['spec'].invoke
-    #ensure_test_coverage 100
     puts "\n"
-  end
-
-  def ensure_test_coverage(threshold)
-    doc = Nokogiri::HTML File.read("coverage/index.html")
-    node = doc.css("h2:first .covered_percent").first
-    covered = node.content.to_f
-    raise "The test coverage #{covered}% is below the threshold of #{threshold}%. Not good enough, sorry." if covered < threshold
   end
 end
