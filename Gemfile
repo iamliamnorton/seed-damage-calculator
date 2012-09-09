@@ -22,7 +22,6 @@ group :development, :test do
   gem 'rails_best_practices'
   gem 'simplecov'
   gem 'metric_abc'
-  gem 'flay'
 end
 
 # Gems used only for assets and not required
