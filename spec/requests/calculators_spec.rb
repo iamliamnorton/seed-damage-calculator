@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Calculator do
-
   let!(:crop_1) { Crop.make! }
   let!(:crop_2) { Crop.make! }
   let!(:fertiliser_1) { Fertiliser.make! }
@@ -101,16 +100,21 @@ describe Calculator do
     end
   end
   
-  # describe "the locale selecter", :js => true do
-  #   it "is defaulted to metric" do
-  #     # select "Metric", :from => "set_locale"  
-  #     page.should have_content("Fertiliser")
-  #     page.should_not have_content("Fertilizer")
-  #   end
-  #   it "can be changed to imperial" do
-  #     select "Imperial", :from => "set_locale"
-  #     page.should have_content("Fertilizer")
-  #     page.should_not have_content("Fertiliser")
-  #   end
-  # end
+  describe "can change locales within the app" do
+    it "can choose the metric locale" do
+      I18n.locale = :metric
+      #select "Metric", :from => "set_locale"
+      visit calculator_path
+      page.should have_content("Fertiliser")
+      page.should_not have_content("Fertilizer")
+    end
+
+    it "can choose the imperial locale" do
+      I18n.locale = :imperial
+      #select "Imperial", :from => "set_locale"
+      visit calculator_path
+      page.should have_content("Fertilizer")
+      page.should_not have_content("Fertiliser")
+    end
+  end
 end
