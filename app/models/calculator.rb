@@ -40,11 +40,7 @@ class Calculator
   end
 
   def calculate_result
-    regression_coefficient = RegressionCoefficient.where(:crop_id => crop_id, :fertiliser_id => fertiliser_id).first.value
-    soil_coefficient = SoilCoefficient.where(:soil_moisture_id => soil_moisture_id, :soil_texture_id => soil_texture_id).first.value
-    numerator = 30 * seed_furrow_opening_width.to_i * -1 * tolerated_stand_loss.to_i
-    denominator = regression_coefficient * row_spacing.to_i * soil_coefficient
-    self.result = numerator / denominator
+    self.result = (30 * seed_furrow_opening_width.to_i * -1 * tolerated_stand_loss.to_i) / (regression_coefficient * row_spacing.to_i * soil_coefficient)
     self.result = result * 1.1208511 if I18n.locale == :metric
   end
 
@@ -89,5 +85,13 @@ class Calculator
 
   def fertiliser
     Fertiliser.find_by_id(fertiliser_id)
+  end
+
+  def regression_coefficient
+    RegressionCoefficient.where(:crop_id => crop_id, :fertiliser_id => fertiliser_id).first.value
+  end
+
+  def soil_coefficient
+    SoilCoefficient.where(:soil_moisture_id => soil_moisture_id, :soil_texture_id => soil_texture_id).first.value
   end
 end
