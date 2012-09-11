@@ -33,19 +33,19 @@
         </li>
         <li>
           <%= f.label :seed_furrow_opening_width, t('.furrow') %>
-          <%= f.number_field :seed_furrow_opening_width %> <%= link_to image_tag('info_button.png', :class => "info_icon"), definitions_path(:anchor => "Seed Furrow Opening"), :target => "_blank" %><span id="error_seed_furrow_opening_width"></span><br />
+          <%= f.number_field :seed_furrow_opening_width, :placeholder => "1-100" %> <%= link_to image_tag('info_button.png', :class => "info_icon"), definitions_path(:anchor => "Seed Furrow Opening"), :target => "_blank" %><br />
         </li>
         <li>
           <%= f.label :row_spacing, t('.spacing') %>
-          <%= f.number_field :row_spacing %><span id="error_row_spacing"></span><br />
+          <%= f.number_field :row_spacing, :placeholder => "1-100" %><br />
         </li>
         <li>
           <%= f.label :tolerated_stand_loss, "Tolerated stand loss (%)" %>
-          <%= f.number_field :tolerated_stand_loss %> <%= link_to image_tag('info_button.png', :class => "info_icon"), definitions_path(:anchor => "Tolerated Stand Loss"), :target => "_blank" %><span id="error_tolerated_stand_loss"></span><br /><br />
+          <%= f.number_field :tolerated_stand_loss, :placeholder => "1-100" %> <%= link_to image_tag('info_button.png', :class => "info_icon"), definitions_path(:anchor => "Tolerated Stand Loss"), :target => "_blank" %><br /><br />
         </li>
         <li>
           <%= f.check_box :terms_of_service %>
-          <%= f.label :terms_of_service, t('.terms'), :class => 'terms' %><span id="error_terms_of_service"></span><br /><br /><br />
+          <%= f.label :terms_of_service, t('.terms'), :class => 'terms' %><br /><br /><br />
         </li>
         <li>
           <%= f.submit "Calculate", :class => 'calc_btn' %>

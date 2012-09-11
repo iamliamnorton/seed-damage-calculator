@@ -1,37 +1,39 @@
 <% if @calculator.valid? %>
 
-$('#result').val('<%= @calculator.result %>');
-$('#sbu').val('<%= @calculator.sbu %>');
-$('#liquid_weight').val('<%= @calculator.liquid_weight %>');
-$('#nitrogen').val('<%= @calculator.nitrogen %>');
-$('#phosphorus').val('<%= @calculator.phosphorus %>');
-$('#potassium').val('<%= @calculator.potassium %>');
-$('#sulphur').val('<%= @calculator.sulphur %>');
-$('#magnesium').val('<%= @calculator.magnesium %>');
-
-$('#error_seed_furrow_opening_width').text('');
-$('#error_row_spacing').text('');
-$('#error_tolerated_stand_loss').text('');
-$('#error_terms_of_service').text('');
+$('#result').val('<%= @calculator.result %>').effect("highlight", {color: "green"}, 1000);
+$('#sbu').val('<%= @calculator.sbu %>').effect("highlight", {color: "green"}, 1000);
+$('#liquid_weight').val('<%= @calculator.liquid_weight %>').effect("highlight", {color: "green"}, 1000);
+$('#nitrogen').val('<%= @calculator.nitrogen %>').effect("highlight", {color: "green"}, 1000);
+$('#phosphorus').val('<%= @calculator.phosphorus %>').effect("highlight", {color: "green"}, 1000);
+$('#potassium').val('<%= @calculator.potassium %>').effect("highlight", {color: "green"}, 1000);
+$('#sulphur').val('<%= @calculator.sulphur %>').effect("highlight", {color: "green"}, 1000);
+$('#magnesium').val('<%= @calculator.magnesium %>').effect("highlight", {color: "green"}, 1000);
 
 <% else %>
 
-// <% unless @calculator.errors[:seed_furrow_opening_width].empty? %>
-$('#field_with_errors').effect("highlight", {}, 3000);
-$('#error_seed_furrow_opening_width').text('Must be 0-100');
-// <% end %>
+$('#result').val('');
+$('#sbu').val('');
+$('#liquid_weight').val('');
+$('#nitrogen').val('');
+$('#phosphorus').val('');
+$('#potassium').val('');
+$('#sulphur').val('');
+$('#magnesium').val('');
+
+<% unless @calculator.errors[:seed_furrow_opening_width].empty? %>
+$('#calculator_seed_furrow_opening_width').effect("highlight", {color: "red"}, 1000);
+<% end %>
 
 <% unless @calculator.errors[:row_spacing].empty? %>
-// $('#error_row_spacing').text('<%= @calculator.errors[:row_spacing].to_sentence.html_safe %>');
-$('#error_row_spacing').text('Must be 0-100');
+$('#calculator_row_spacing').effect("highlight", {color: "red"}, 1000);
 <% end %>
 
 <% unless @calculator.errors[:tolerated_stand_loss].empty? %>
-$('#error_tolerated_stand_loss').text('Must be 0-100');
+$('#calculator_tolerated_stand_loss').effect("highlight", {color: "red"}, 1000);
 <% end %>
 
 <% unless @calculator.errors[:terms_of_service].empty? %>
-$('#error_terms_of_service').text('Must agree');
+$('#calculator_terms_of_service').effect("pulsate", {color: "red"}, 1000);
 <% end %>
 
 <% end %>
