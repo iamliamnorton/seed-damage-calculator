@@ -10,15 +10,22 @@ class CalculatorController < ApplicationController
 
   def index
     redirect_to calculator_path(:locale => params[:set_locale], :calculator => params[:calculator]) if params[:set_locale]
+
     @calculator = Calculator.new(params[:calculator])
 
     if request.get?
       render :index
     else
       if @calculator.valid?
-        redirect_to calculator_path(:calculator => params[:calculator]), :notice => 'Calculation was successfully completed.'
+        respond_to do |format|
+          format.html { redirect_to calculator_path(:calculator => params[:calculator]), :notice => 'Calculation was successfully completed.' }
+          format.js
+        end
       else
-        redirect_to calculator_path(:calculator => params[:calculator]), :alert => "Calculation was not successfully completed. #{@calculator.errors.full_messages.to_sentence}"
+        respond_to do |format|
+          format.html { redirect_to calculator_path(:calculator => params[:calculator]), :alert => "Calculation was not successfully completed. #{@calculator.errors.full_messages.to_sentence}" }
+          format.js
+        end
       end
     end
   end
