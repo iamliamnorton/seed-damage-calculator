@@ -13,6 +13,7 @@
 //= require modernizr.custom.91493
 //= require google_analytics
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require jquery.purr

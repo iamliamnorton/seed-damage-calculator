@@ -89,6 +89,30 @@ fieldset {
     }
   }
 
+  span#error_seed_furrow_opening_width {
+    padding-left: 5px;
+    color:red;
+    font-size:75%;
+  }
+
+  span#error_row_spacing {
+    padding-left: 5px;
+    color:red;
+    font-size:75%;
+  }
+
+  span#error_tolerated_stand_loss {
+    padding-left: 5px;
+    color:red;
+    font-size:75%;
+  }
+
+  span#error_terms_of_service {
+    padding-left: 5px;
+    color:red;
+    font-size:75%;
+  }
+
   div.field_with_errors {
     display: inline;
   }

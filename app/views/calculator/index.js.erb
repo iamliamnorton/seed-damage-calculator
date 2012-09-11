@@ -1,3 +1,5 @@
+<% if @calculator.valid? %>
+
 $('#result').val('<%= @calculator.result %>');
 $('#sbu').val('<%= @calculator.sbu %>');
 $('#liquid_weight').val('<%= @calculator.liquid_weight %>');
@@ -6,3 +8,30 @@ $('#phosphorus').val('<%= @calculator.phosphorus %>');
 $('#potassium').val('<%= @calculator.potassium %>');
 $('#sulphur').val('<%= @calculator.sulphur %>');
 $('#magnesium').val('<%= @calculator.magnesium %>');
+
+$('#error_seed_furrow_opening_width').text('');
+$('#error_row_spacing').text('');
+$('#error_tolerated_stand_loss').text('');
+$('#error_terms_of_service').text('');
+
+<% else %>
+
+// <% unless @calculator.errors[:seed_furrow_opening_width].empty? %>
+$('#field_with_errors').effect("highlight", {}, 3000);
+$('#error_seed_furrow_opening_width').text('Must be 0-100');
+// <% end %>
+
+<% unless @calculator.errors[:row_spacing].empty? %>
+// $('#error_row_spacing').text('<%= @calculator.errors[:row_spacing].to_sentence.html_safe %>');
+$('#error_row_spacing').text('Must be 0-100');
+<% end %>
+
+<% unless @calculator.errors[:tolerated_stand_loss].empty? %>
+$('#error_tolerated_stand_loss').text('Must be 0-100');
+<% end %>
+
+<% unless @calculator.errors[:terms_of_service].empty? %>
+$('#error_terms_of_service').text('Must agree');
+<% end %>
+
+<% end %>
