@@ -8,7 +8,7 @@ gem 'rails', '3.2.8'
 gem 'pg'
 gem 'best_in_place'
 gem 'prawn_rails'
-gem 'newrelic_rpm'
+gem 'newrelic_rpm', "3.4.1"
 gem 'twitter-bootstrap-rails'
 
 group :development, :test do
