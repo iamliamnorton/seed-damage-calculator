@@ -1,14 +1,14 @@
 fieldset {
-  margin-bottom: 10px;
-  height: 660px;
+  margin-bottom: 15px;
+  height: 645px;
 
   legend {
     text-align: center;
     font-size: 150%;
     }
 
-  label {
-    display: block;
+  label.input-form {
+    padding-top: 5px;
   }
 
   label.terms {
@@ -32,6 +32,7 @@ fieldset {
     font-family:arial;
     font-size:15px;
     font-weight:bold;
+    margin-top:15px;
     padding:6px 24px;
     text-decoration:none;
     text-shadow:1px 1px 0px #ffffff;
@@ -65,6 +66,7 @@ fieldset {
     font-size:15px;
     font-weight:bold;
     padding:6px 24px;
+    margin-top:23px;
     text-decoration:none;
     text-shadow:1px 1px 0px #ffffff;
     &:hover {

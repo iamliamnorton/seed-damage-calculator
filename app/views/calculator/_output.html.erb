@@ -4,38 +4,38 @@
 <ol>
   <li>
     <%= label_tag :result, t('.result') %>
-    <%= text_field_tag :result, @calculator.result, :disabled => true %><br />
+    <%= text_field_tag :result, @calculator.result, :disabled => true %>
   </li>
   <li>
     <%= label_tag :sbu, t('.sbu') %>
-    <%= text_field_tag :sbu, @calculator.sbu, :disabled => true %> <%= link_to image_tag('info_button.png', :class => "info_icon"), definitions_path(:anchor => "Seed Bed Utilization"), :target => "_blank" %><br />
+    <%= text_field_tag :sbu, @calculator.sbu, :disabled => true %> <%= link_to image_tag('info_button.png', :class => "info_icon"), definitions_path(:anchor => "Seed Bed Utilization"), :target => "_blank" %>
   </li>
   <li>
     <%= label_tag :liquid_weight, t('.liquid_weight') %>
-    <%= text_field_tag :liquid_weight, @calculator.liquid_weight, :disabled => true %><br /><br />
+    <%= text_field_tag :liquid_weight, @calculator.liquid_weight, :disabled => true %>
   </li>
   <li>
     <%= label_tag :nitrogen, t('.nitrogen') %>
-    <%= text_field_tag :nitrogen, @calculator.nitrogen, :disabled => true %><br />
+    <%= text_field_tag :nitrogen, @calculator.nitrogen, :disabled => true %>
   </li>
   <li>
     <%= label_tag :phosphorus, t('.phosphorus').html_safe %>
-    <%= text_field_tag :phosphorus, @calculator.phosphorus, :disabled => true %><br />
+    <%= text_field_tag :phosphorus, @calculator.phosphorus, :disabled => true %>
   </li>
   <li>
     <%= label_tag :potassium, t('.potassium').html_safe %>
-    <%= text_field_tag :potassium, @calculator.potassium, :disabled => true %><br />
+    <%= text_field_tag :potassium, @calculator.potassium, :disabled => true %>
   </li>
   <li>
     <%= label_tag :sulphur, t('.sulphur') %>
-    <%= text_field_tag :sulphur, @calculator.sulphur, :disabled => true %><br />
+    <%= text_field_tag :sulphur, @calculator.sulphur, :disabled => true %>
   </li>
   <li>
     <%= label_tag :magnesium, t('.magnesium') %>
-    <%= text_field_tag :magnesium, @calculator.magnesium, :disabled => true %><br />
+    <%= text_field_tag :magnesium, @calculator.magnesium, :disabled => true %>
   </li>
   <li>
-    <br /><%= link_to "Download (PDF)", calculator_path(:calculator => params[:calculator], :format => :pdf), :id => "print-pdf-link", :class => "print-pdf-link" %>
+    <%= link_to "Download (PDF)", calculator_path(:calculator => params[:calculator], :format => :pdf), :id => "print-pdf-link" %>
   </li>
 </ol>
 </fieldset>
