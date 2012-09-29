@@ -1,36 +1,36 @@
 <h1>Listing fertilisers</h1>
 
 <p>Conversion calculator used from original US data; lb/gal (US) to kg/l at
-  <%= link_to 'unitconversion.org', "http://www.unitconversion.org/unit_converter/concentration-solution.html", :target => '_blank' %>.
+<%= link_to 'unitconversion.org', "http://www.unitconversion.org/unit_converter/concentration-solution.html", :target => '_blank' %>.
 </p>
 
 <table>
-  <tr>
-    <th>Metric name</th>
-    <th>Imperial name</th>
-    <th>N</th>
-    <th>P</th>
-    <th>K</th>
-    <th>S</th>
-    <th>Mg</th>
-    <th>Liquid weight</th>
-    <th></th>
-    <th></th>
-  </tr>
+<tr>
+  <th>Metric name</th>
+  <th>Imperial name</th>
+  <th>N</th>
+  <th>P</th>
+  <th>K</th>
+  <th>S</th>
+  <th>Mg</th>
+  <th>Liquid weight</th>
+  <th></th>
+  <th></th>
+</tr>
 
 <% @fertilisers.each do |fertiliser| %>
-  <tr>
-    <td><%= fertiliser.metric_name %></td>
-    <td><%= fertiliser.imperial_name %></td>
-    <td><%= fertiliser.N %></td>
-    <td><%= fertiliser.P %></td>
-    <td><%= fertiliser.K %></td>
-    <td><%= fertiliser.S %></td>
-    <td><%= fertiliser.Mg %></td>
-    <td><%= fertiliser.liquid_weight %></td>
-    <td><%= link_to 'Edit', edit_admin_fertiliser_path(fertiliser) %></td>
-    <td><%= link_to 'Destroy', [:admin, fertiliser], confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<tr>
+  <td><%= fertiliser.metric_name %></td>
+  <td><%= fertiliser.imperial_name %></td>
+  <td><%= fertiliser.N %></td>
+  <td><%= fertiliser.P %></td>
+  <td><%= fertiliser.K %></td>
+  <td><%= fertiliser.S %></td>
+  <td><%= fertiliser.Mg %></td>
+  <td><%= fertiliser.liquid_weight %></td>
+  <td><%= link_to 'Edit', edit_admin_fertiliser_path(fertiliser) %></td>
+  <td><%= link_to 'Destroy', [:admin, fertiliser], confirm: 'Are you sure?', method: :delete %></td>
+</tr>
 <% end %>
 </table>
 

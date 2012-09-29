@@ -3,21 +3,21 @@
 <p>Click on a value to change it. Valid values are between -10 and 10 and will round to 3 digits of precision.</p>
 
 <table>
+<tr>
+  <th></th>
+  <% @crops.each do |crop| %>
+    <th><%= crop.name %></th>
+  <% end %>
+</tr>
+<% @fertilisers.each do |fertiliser| %>
   <tr>
-    <th></th>
+    <td><strong><%= fertiliser.metric_name %></strong></td>
     <% @crops.each do |crop| %>
-      <th><%= crop.name %></th>
+      <% #the below code will need refactoring %>
+      <td><%= best_in_place RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first, :value, :path => [:admin, RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first]%></td>
     <% end %>
   </tr>
-  <% @fertilisers.each do |fertiliser| %>
-    <tr>
-      <td><strong><%= fertiliser.metric_name %></strong></td>
-      <% @crops.each do |crop| %>
-        <% #the below code will need refactoring %>
-        <td><%= best_in_place RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first, :value, :path => [:admin, RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first]%></td>
-      <% end %>
-    </tr>
-  <% end %>
+<% end %>
 </table>
 
 <br />
@@ -28,22 +28,22 @@
 <br /><br />
 
 <table>
-  <tr>
-    <th>Value</th>
-    <th>Crop</th>
-    <th>Fertiliser</th>
-    <th></th>
-    <th></th>
-  </tr>
+<tr>
+  <th>Value</th>
+  <th>Crop</th>
+  <th>Fertiliser</th>
+  <th></th>
+  <th></th>
+</tr>
 
 <% @regression_coefficients.each do |regression_coefficient| %>
-  <tr>
-    <td><%= regression_coefficient.value %></td>
-    <td><%= regression_coefficient.crop_name %></td>
-    <td><%= regression_coefficient.fertiliser_metric_name %></td>
-    <td><%= link_to 'Edit', edit_admin_regression_coefficient_path(regression_coefficient) %></td>
-    <td><%= link_to 'Destroy', [:admin, regression_coefficient], confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<tr>
+  <td><%= regression_coefficient.value %></td>
+  <td><%= regression_coefficient.crop_name %></td>
+  <td><%= regression_coefficient.fertiliser_metric_name %></td>
+  <td><%= link_to 'Edit', edit_admin_regression_coefficient_path(regression_coefficient) %></td>
+  <td><%= link_to 'Destroy', [:admin, regression_coefficient], confirm: 'Are you sure?', method: :delete %></td>
+</tr>
 <% end %>
 </table>
 

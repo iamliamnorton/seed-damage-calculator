@@ -1,29 +1,29 @@
 <%= form_for([:admin, @soil_coefficient]) do |f| %>
-  <% if @soil_coefficient.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@soil_coefficient.errors.count, "error") %> prohibited this soil_coefficient from being saved:</h2>
+<% if @soil_coefficient.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@soil_coefficient.errors.count, "error") %> prohibited this soil_coefficient from being saved:</h2>
 
-      <ul>
-      <% @soil_coefficient.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <ul>
+    <% @soil_coefficient.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :value %><br />
-    <%= f.text_field :value %>
-  </div>
-  <div class="field">
-    <%= f.label :soil_texture_id %><br />
-    <%= f.select :soil_texture_id, options_from_collection_for_select(@soil_textures, 'id', 'name', @soil_coefficient.soil_texture_id) %>
-  </div>
-  <div class="field">
-    <%= f.label :soil_moisture_id %><br />
-    <%= f.select :soil_moisture_id, options_from_collection_for_select(@soil_moistures, 'id', 'name', @soil_coefficient.soil_moisture_id) %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="field">
+  <%= f.label :value %><br />
+  <%= f.text_field :value %>
+</div>
+<div class="field">
+  <%= f.label :soil_texture_id %><br />
+  <%= f.select :soil_texture_id, options_from_collection_for_select(@soil_textures, 'id', 'name', @soil_coefficient.soil_texture_id) %>
+</div>
+<div class="field">
+  <%= f.label :soil_moisture_id %><br />
+  <%= f.select :soil_moisture_id, options_from_collection_for_select(@soil_moistures, 'id', 'name', @soil_coefficient.soil_moisture_id) %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>

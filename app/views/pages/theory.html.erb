@@ -47,16 +47,16 @@
   <tr>
     <th></th>
     <% @crops.each do |crop| %>
-      <th><%= crop.name %></th>
+    <th><%= crop.name %></th>
     <% end %>
   </tr>
   <% @fertilisers.each do |fertiliser| %>
-    <tr>
-      <td><strong><%= fertiliser.metric_name %></strong></td>
-      <% @crops.each do |crop| %>
-        <td><%= RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first.value %></td>
-      <% end %>
-    </tr>
+  <tr>
+    <td><strong><%= fertiliser.metric_name %></strong></td>
+    <% @crops.each do |crop| %>
+    <td><%= RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first.value %></td>
+    <% end %>
+  </tr>
   <% end %>
 </table>
 
@@ -65,16 +65,16 @@
   <tr>
     <th></th>
     <% @soil_moistures.each do |soil_moisture| %>
-      <th><%= soil_moisture.name %></th>
+    <th><%= soil_moisture.name %></th>
     <% end %>
   </tr>
   <% @soil_textures.each do |soil_texture| %>
-    <tr>
-      <td><strong><%= soil_texture.name %></strong></td>
-      <% @soil_moistures.each do |soil_moisture| %>
-        <td><%= SoilCoefficient.where(:soil_moisture_id => soil_moisture.id, :soil_texture_id => soil_texture.id).first.value %></td>
-      <% end %>
-    </tr>
+  <tr>
+    <td><strong><%= soil_texture.name %></strong></td>
+    <% @soil_moistures.each do |soil_moisture| %>
+    <td><%= SoilCoefficient.where(:soil_moisture_id => soil_moisture.id, :soil_texture_id => soil_texture.id).first.value %></td>
+    <% end %>
+  </tr>
   <% end %>
 </table>
 
