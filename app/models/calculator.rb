@@ -5,9 +5,9 @@ class Calculator
   extend ActiveModel::Naming
 
   attr_accessor :crop_id, :fertiliser_id, :soil_moisture_id, :soil_texture_id,
-                :seed_furrow_opening_width, :row_spacing, :tolerated_stand_loss,
-                :result, :sbu, :liquid_weight, :nitrogen, :phosphorus, :potassium,
-                :sulphur, :magnesium
+    :seed_furrow_opening_width, :row_spacing, :tolerated_stand_loss,
+    :result, :sbu, :liquid_weight, :nitrogen, :phosphorus, :potassium,
+    :sulphur, :magnesium
 
   validates :seed_furrow_opening_width, :row_spacing, :tolerated_stand_loss, :presence => true, :numericality => { :greater_than_or_equal_to => 0, :less_than_or_equal_to => 100 }
   validates :terms_of_service, :acceptance => true
