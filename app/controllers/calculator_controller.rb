@@ -13,9 +13,7 @@ class CalculatorController < ApplicationController
 
     @calculator = Calculator.new(params[:calculator])
 
-    if request.get?
-      render :index
-    else
+    if request.post? && params[:calculator]
       if @calculator.valid?
         respond_to do |format|
           format.html { redirect_to calculator_path(:calculator => params[:calculator]), :notice => 'Calculation was successfully completed.' }
@@ -30,4 +28,3 @@ class CalculatorController < ApplicationController
     end
   end
 end
-  
