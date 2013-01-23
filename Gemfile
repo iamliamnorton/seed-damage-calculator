@@ -8,9 +8,10 @@ gem 'rails', '3.2.8'
 gem 'pg'
 gem 'best_in_place'
 gem 'prawn_rails'
-gem 'newrelic_rpm', "3.4.1"
+gem 'newrelic_rpm', '3.4.1'
 gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
+gem 'rack', '1.4.1' # this is a temp fix for a security warning
 
 group :development, :test do
   gem 'ruby-debug19'
