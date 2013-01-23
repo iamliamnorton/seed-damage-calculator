@@ -10,6 +10,7 @@ gem 'best_in_place'
 gem 'prawn_rails'
 gem 'newrelic_rpm', "3.4.1"
 gem 'twitter-bootstrap-rails'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'ruby-debug19'
@@ -32,12 +33,11 @@ group :assets do
   gem 'jquery-ui-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
+  gem 'therubyracer', :platform => :ruby
+  gem 'less-rails'
 
   gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
