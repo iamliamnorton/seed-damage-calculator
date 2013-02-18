@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -13,6 +13,7 @@ gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
 gem 'rack', '1.4.1' # this is a temp fix for a security warning
 gem 'json', '1.7.7'
+gem 'google-analytics-rails'
 
 group :development, :test do
   gem 'ruby-debug19'

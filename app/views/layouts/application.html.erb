@@ -13,6 +13,7 @@
   <%= javascript_include_tag "application" %>
   <%= favicon_link_tag %>
   <%= csrf_meta_tags %>
+  <%= analytics_init if Rails.env.production? %>
 </head>
 <body>
   <%= render 'layouts/header' %>

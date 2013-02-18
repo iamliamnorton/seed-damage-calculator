@@ -11,7 +11,6 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require modernizr.custom.91493
-//= require google_analytics
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs

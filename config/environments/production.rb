@@ -20,6 +20,9 @@ Fasdac::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  # Google tracking code
+  GA.tracker = "UA-32798272-1"
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
