@@ -9,8 +9,7 @@
   <% if !yield(:keywords).blank? %>
   <meta name="keywords" content="<%= yield(:keywords) %>" />
   <% end %>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= favicon_link_tag %>
   <%= csrf_meta_tags %>
   <%= analytics_init if Rails.env.production? %>
@@ -24,5 +23,6 @@
     </section>
   </div>
   <%= render 'layouts/footer' %>
+  <%= javascript_include_tag "application" %>
 </body>
 </html>

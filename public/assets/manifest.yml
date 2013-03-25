@@ -1,14 +1,14 @@
 ---
-info_button.png: info_button-a9e5e90a64eafa1f064a9663f4003ccb.png
-info_button/index.png: info_button-a9e5e90a64eafa1f064a9663f4003ccb.png
-ipni_logo.jpg: ipni_logo-d77c3acb85186f60650c2e5713a3edc0.jpg
-ipni_logo/index.jpg: ipni_logo-d77c3acb85186f60650c2e5713a3edc0.jpg
-pdf_header.jpg: pdf_header-a4dc8860a455acd3e29f373f11f5de80.jpg
-pdf_header/index.jpg: pdf_header-a4dc8860a455acd3e29f373f11f5de80.jpg
-pdficon_large.png: pdficon_large-4129fd1a5d8f10cc8309dec84f749252.png
-pdficon_large/index.png: pdficon_large-4129fd1a5d8f10cc8309dec84f749252.png
-sdsu_logo.jpg: sdsu_logo-a28ac0ec989e4258a33e6552aeadc3a6.jpg
-sdsu_logo/index.jpg: sdsu_logo-a28ac0ec989e4258a33e6552aeadc3a6.jpg
+info_button.png: info_button-7e963d7f3e964ea97458b3d7ab925196.png
+info_button/index.png: info_button-7e963d7f3e964ea97458b3d7ab925196.png
+ipni_logo.png: ipni_logo-234f25ab33f49776fafe71e7225196c1.png
+ipni_logo/index.png: ipni_logo-234f25ab33f49776fafe71e7225196c1.png
+pdf_header.png: pdf_header-a21fe0f57d665b4c7805c478ea65605b.png
+pdf_header/index.png: pdf_header-a21fe0f57d665b4c7805c478ea65605b.png
+pdficon_large.png: pdficon_large-1a7437bb3d062926767f0cad7aeace55.png
+pdficon_large/index.png: pdficon_large-1a7437bb3d062926767f0cad7aeace55.png
+sdsu_logo.png: sdsu_logo-fe80c6a3a0053aef5be651d0394bd474.png
+sdsu_logo/index.png: sdsu_logo-fe80c6a3a0053aef5be651d0394bd474.png
 application.js: application-b76e86fa27f6a67b302faa978c98ef80.js
 application/index.js: application-b76e86fa27f6a67b302faa978c98ef80.js
 application.css: application-ac47756ebb09c0158d25f9ecb9016d9c.css

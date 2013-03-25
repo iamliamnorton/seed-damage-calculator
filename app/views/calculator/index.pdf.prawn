@@ -1,6 +1,6 @@
 prawn_document() do |pdf|
 
-  pdf.image "#{Rails.root}/app/assets/images/pdf_header.jpg", :position => :center
+  pdf.image "#{Rails.root}/app/assets/images/pdf_header.png", :position => :center
   pdf.move_down(20)
 
   pdf.text t('.title') + " Output", :size => 20, :style => :bold, :align => :center
