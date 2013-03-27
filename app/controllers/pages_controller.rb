@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  caches_page :theory, :disclaimer, :definitions
+
   def theory
     @crops = Crop.order('name')
     @fertilisers = Fertiliser.all

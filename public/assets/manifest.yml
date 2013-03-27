@@ -9,10 +9,10 @@ pdficon_large.png: pdficon_large-1a7437bb3d062926767f0cad7aeace55.png
 pdficon_large/index.png: pdficon_large-1a7437bb3d062926767f0cad7aeace55.png
 sdsu_logo.png: sdsu_logo-fe80c6a3a0053aef5be651d0394bd474.png
 sdsu_logo/index.png: sdsu_logo-fe80c6a3a0053aef5be651d0394bd474.png
-application.js: application-b76e86fa27f6a67b302faa978c98ef80.js
-application/index.js: application-b76e86fa27f6a67b302faa978c98ef80.js
-application.css: application-ac47756ebb09c0158d25f9ecb9016d9c.css
-application/index.css: application-ac47756ebb09c0158d25f9ecb9016d9c.css
+application.js: application-14ca33001959ab5b369f0f86831714c3.js
+application/index.js: application-14ca33001959ab5b369f0f86831714c3.js
+application.css: application-095bde25f05711992436778a57ea2e7f.css
+application/index.css: application-095bde25f05711992436778a57ea2e7f.css
 jquery-ui/animated-overlay.gif: jquery-ui/animated-overlay-602eee4c79a4796b02bb6442948c9e28.gif
 jquery-ui/animated-overlay/index.gif: jquery-ui/animated-overlay-602eee4c79a4796b02bb6442948c9e28.gif
 jquery-ui/ui-bg_flat_0_aaaaaa_40x100.png: jquery-ui/ui-bg_flat_0_aaaaaa_40x100-7d1197a52442bc56fcad60d0390f4b32.png

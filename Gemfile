@@ -8,11 +8,11 @@ gem 'rails'
 gem 'pg'
 gem 'best_in_place'
 gem 'prawn_rails'
-gem 'newrelic_rpm', '3.4.1'
+gem 'newrelic_rpm'
 gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
-gem 'rack', '1.4.1' # this is a temp fix for a security warning
-gem 'json', '1.7.7'
+gem 'rack'
+gem 'json'
 gem 'google-analytics-rails'
 
 group :development, :test do
