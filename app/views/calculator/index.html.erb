@@ -1,4 +1,4 @@
-<% content_for :title, "Seed Damage Calculator - Home" %>
+<% content_for :title, "Seed Damage Calculator Home" %>
 <% content_for :description, "Seed damage calculator for calculating the maximum fertilizer material to apply with seed." %>
 <% content_for :keywords, "seed damage calculator, fertilizer, seed, seed damage, fertilizer seed damage, estimating fertilizer rates, fertilizer decision aid, fertilizer rates, fertilizer seed ratio, fertilizer calculator, safe rates of fertilizer applied with seed" %>
 <%= currently_at 'Calculator' %>
@@ -24,55 +24,3 @@
     </div>
   </div>
 </div>
-
-<% if @calculator.valid? %>
-
-<script>
-$('#result').val('<%= @calculator.result %>').effect("highlight", {color: "green"}, 1000);
-$('#sbu').val('<%= @calculator.sbu %>').effect("highlight", {color: "green"}, 1000);
-$('#liquid_weight').val('<%= @calculator.liquid_weight %>').effect("highlight", {color: "green"}, 1000);
-$('#nitrogen').val('<%= @calculator.nitrogen %>').effect("highlight", {color: "green"}, 1000);
-$('#phosphorus').val('<%= @calculator.phosphorus %>').effect("highlight", {color: "green"}, 1000);
-$('#potassium').val('<%= @calculator.potassium %>').effect("highlight", {color: "green"}, 1000);
-$('#sulphur').val('<%= @calculator.sulphur %>').effect("highlight", {color: "green"}, 1000);
-$('#magnesium').val('<%= @calculator.magnesium %>').effect("highlight", {color: "green"}, 1000);
-</script>
-
-<% else %>
-
-<script>
-$('#result').val('');
-$('#sbu').val('');
-$('#liquid_weight').val('');
-$('#nitrogen').val('');
-$('#phosphorus').val('');
-$('#potassium').val('');
-$('#sulphur').val('');
-$('#magnesium').val('');
-</script>
-
-<% unless @calculator.errors[:seed_furrow_opening_width].empty? %>
-<script>
-$('#calculator_seed_furrow_opening_width').effect("highlight", {color: "red"}, 1000);
-</script>
-<% end %>
-
-<% unless @calculator.errors[:row_spacing].empty? %>
-<script>
-$('#calculator_row_spacing').effect("highlight", {color: "red"}, 1000);
-</script>
-<% end %>
-
-<% unless @calculator.errors[:tolerated_stand_loss].empty? %>
-<script>
-$('#calculator_tolerated_stand_loss').effect("highlight", {color: "red"}, 1000);
-</script>
-<% end %>
-
-<% unless @calculator.errors[:terms_of_service].empty? %>
-<script>
-$('#calculator_terms_of_service').effect("pulsate", {color: "red"}, 1000);
-</script>
-<% end %>
-
-<% end %>
