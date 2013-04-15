@@ -8,7 +8,7 @@
       <%= javascript_tag "$('.locale input').hide()" %>
     <% end %>
     </li>
-    <%= form_for(@calculator, :url => calculator_path, :remote => true, :id => "inputform") do |f| %>
+    <%= form_for(@calculator, :url => calculator_path, :id => "inputform") do |f| %>
       <li>
       <%= f.label :crop_id, :class => 'input-form' %>
       <%= f.select :crop_id, options_from_collection_for_select(@crops, 'id', 'name', @calculator.crop_id) %>

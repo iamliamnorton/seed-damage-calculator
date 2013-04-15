@@ -10,9 +10,9 @@ class CalculatorController < ApplicationController
 
     if request.post? && params[:calculator]
       if @calculator.valid?
-        redirect_to calculator_path(:calculator => params[:calculator]), :notice => 'Calculation was successfully completed.'
+        redirect_to calculator_path(calculator: params[:calculator]), notice: "Calculation successful."
       else
-        redirect_to calculator_path(:calculator => params[:calculator]), :alert => "Calculation was not successfully completed. #{@calculator.errors.full_messages.to_sentence}"
+        redirect_to calculator_path(calculator: params[:calculator]), alert: "Calculation unsuccessful. Please fill in all fields appropriately."
       end
     end
   end
