@@ -1,6 +1,4 @@
 class CalculatorController < ApplicationController
-  caches_page :index
-
   before_filter :load_vars
 
   def index
