@@ -1,16 +1,7 @@
 Seed Damage Calculator
 ======
 
-[Seed Damage Calculator](http://seed-damage-calculator.herokuapp.com)
+[![Circle CI](https://circleci.com/gh/iamliamnorton/seed-damage-calculator.png?style=shield&circle-token=b657e8a80560d44eef279665d59d9393bf8d54eb)](https://circleci.com/gh/iamliamnorton/seed-damage-calculator)
 
-A calculation tool used to find the optimum fertiliser to seed ratio when sowing crops. Hosted on Heroku via the link above.
 
-[/] rails 3.2 / ruby 1.9
-
-[/] html5 and css3 valid
-
-[/] ajax remote form submission
-
-[/] javascript client side form validation
-
-[ ] mobile device app creation using titanium
+A calculation tool used to find the optimum fertiliser to seed ratio when sowing crops [hosted on Heroku](http://seed-damage-calculator.herokuapp.com).
