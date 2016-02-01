@@ -17,7 +17,7 @@ describe Calculator do
   let!(:soil_coefficient_2) { SoilCoefficient.make!(:soil_moisture => soil_moist, :soil_texture => soil_coarse) }
   let!(:soil_coefficient_3) { SoilCoefficient.make!(:soil_moisture => soil_dry, :soil_texture => soil_fine) }
   let!(:soil_coefficient_4) { SoilCoefficient.make!(:soil_moisture => soil_dry, :soil_texture => soil_coarse) }
-  
+
   before(:each) do
     I18n.locale = :imperial
     visit root_path
@@ -30,52 +30,52 @@ describe Calculator do
     fill_in "calculator_tolerated_stand_loss", :with => 5
     check('calculator_terms_of_service')
   end
-  
+
   context "when valid input is selected" do
     before(:each) do
       click_button "Calculate"
     end
-    
+
     it "success notification is shown" do
       page.should have_content("Calculation was successfully completed.")
     end
-    
+
     it "should print some results" do
       find(:css, 'input#result').value.should_not be_nil
       find(:css, 'input#result').value.should_not == ""
     end
   end
-  
+
   context "when invalid input is selected" do
     describe "for range of integers" do
       before(:each) do
-        fill_in "calculator_seed_furrow_opening_width", :with => -3
-        click_button "Calculate"
+	fill_in "calculator_seed_furrow_opening_width", :with => -3
+	click_button "Calculate"
       end
-      
+
       it "should alert the user" do
-        page.should have_content("Calculation was not successfully completed.")
+	page.should have_content("Calculation was not successfully completed.")
       end
-      
+
       it "should not print results" do
-        find(:css, 'input#result').value.should be_nil
-        find(:css, 'input#result').value.should_not == ""
+	find(:css, 'input#result').value.should be_nil
+	find(:css, 'input#result').value.should_not == ""
       end
     end
-    
+
     describe "for terms of service non-acceptance" do
       before(:each) do
-        uncheck('calculator_terms_of_service')
-        click_button "Calculate"
+	uncheck('calculator_terms_of_service')
+	click_button "Calculate"
       end
 
       it "should alert the user" do
-        page.should have_content("Terms of service is not accepted")
+	page.should have_content("Terms of service is not accepted")
       end
 
       it "should not print results" do
-        find(:css, 'input#result').value.should be_nil
-        find(:css, 'input#result').value.should_not == ""
+	find(:css, 'input#result').value.should be_nil
+	find(:css, 'input#result').value.should_not == ""
       end
     end
   end
@@ -86,20 +86,20 @@ describe Calculator do
       visit calculator_path
       page.should have_content("This calculator can be used as a guide to the maximum amount of fertiliser that can be applied in the same furrow as seed.")
     end
-    
+
     it "can choose the imperial locale" do
       I18n.locale = :imperial
       visit calculator_path
       page.should have_content("This calculator can be used as a guide to the maximum amount of fertilizer that can be applied in the same furrow as seed.")
     end
-    
+
     it "defaults to metric if no locale is set" do
       I18n.locale = nil
       visit calculator_path
       page.should have_content("This calculator can be used as a guide to the maximum amount of fertiliser that can be applied in the same furrow as seed.")
     end
   end
-  
+
   describe "can change locales within the app" do
     it "can choose the metric locale" do
       I18n.locale = :metric

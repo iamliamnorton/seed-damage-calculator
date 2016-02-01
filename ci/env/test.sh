@@ -6,7 +6,7 @@ export RAILS_ENV="test"
 
 export POSTGRES_USER="postgres"
 export POSTGRES_PASS="password"
-export POSTGRES_HOST="postgres"
+export POSTGRES_HOST="localhost"
 export POSTGRES_PORT="5432"
 export DATABASE_NAME="fasdac_test"
 
