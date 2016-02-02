@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe "SoilCoefficients" do
+describe "SoilCoefficients", type: :feature do
   before(:each) do
     @valid_soil_coefficient = SoilCoefficient.make!
     page.driver.browser.authorize 'admin', 'admin'
     visit admin_soil_coefficients_path
   end
-  
+
   describe "- when admin attempts to update a soil_coefficient -" do
     before(:each) do
       visit edit_admin_soil_coefficient_path(@valid_soil_coefficient)

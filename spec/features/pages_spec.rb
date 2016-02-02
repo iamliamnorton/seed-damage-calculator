@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Pages" do
+describe "Pages", type: :feature do
 
   describe "- when a user visits the definitions page -" do
     it "page is rendered" do

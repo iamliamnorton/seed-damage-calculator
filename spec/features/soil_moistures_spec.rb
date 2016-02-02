@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe "SoilMoistures" do
+describe "SoilMoistures", type: :feature do
   before(:each) do
     @valid_soil_moisture = SoilMoisture.make!
     page.driver.browser.authorize 'admin', 'admin'
     visit admin_soil_moistures_path
   end
-  
+
   describe "- when admin attempts to create a soil_moisture -" do
     before(:each) do
       click_link "New Soil moisture"
@@ -30,23 +30,21 @@ describe "SoilMoistures" do
     end
 
     it "valid input is accepted" do
-      new_valid_soil_moisture = SoilMoisture.make
-      fill_in "Name", :with => new_valid_soil_moisture.name
+      fill_in "Name", :with => "dry"
       click_button "Create Soil moisture"
       page.should have_content("Soil moisture was successfully created.")
     end
 
-    it "a new soil_moisture should produce corresponding soil_coefficients" do      
+    it "a new soil_moisture should produce corresponding soil_coefficients" do
       assert_equal(0, SoilCoefficient.count)
       soil_texture = SoilTexture.make!
-      new_soil_moisture = SoilMoisture.make
-      fill_in "Name", :with => new_soil_moisture.name
+      fill_in "Name", :with => "dry"
       click_button "Create Soil moisture"
       page.should have_content("Soil moisture was successfully created.")
       assert_equal(1, SoilCoefficient.count)
     end
   end
-  
+
   describe "- when admin attempts to update a soil_moisture -" do
     before(:each) do
       visit edit_admin_soil_moisture_path(@valid_soil_moisture)
@@ -76,18 +74,12 @@ describe "SoilMoistures" do
       page.should have_content("Soil moisture was successfully updated.")
     end
   end
-  
-  describe "- when admin attempts to destroy a soil_moisture -" do
-    it "cannot destroy a soil_moisture name that doesn't exist" do
-      invalid_soil_moisture = SoilMoisture.make
-      get 'admin/soil_moistures#destroy', :id => invalid_soil_moisture.id
-      response.should raise_error
-    end
 
-    it "can destroy a soil_moisture that exists in the system" do
+  describe "- when admin attempts to destroy a soil_moisture -" do
+    it "is removed from the database" do
       click_link "Destroy"
-      page.should_not have_content(@valid_soil_moisture.name)
       page.should have_content("Soil moisture was successfully destroyed.")
+      assert_equal(0, SoilMoisture.count)
     end
 
     it "destroys all corresponding soil_coefficients" do

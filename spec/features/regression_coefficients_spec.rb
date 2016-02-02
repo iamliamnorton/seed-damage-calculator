@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe "RegressionCoefficients" do
+describe "RegressionCoefficients", type: :feature do
   before(:each) do
     @valid_regression_coefficient = RegressionCoefficient.make!
     page.driver.browser.authorize 'admin', 'admin'
     visit admin_regression_coefficients_path
   end
-  
+
   describe "- when admin attempts to update a regression_coefficient -" do
     before(:each) do
       visit edit_admin_regression_coefficient_path(@valid_regression_coefficient)

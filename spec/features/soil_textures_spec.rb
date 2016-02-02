@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe "SoilTextures" do
+describe "SoilTextures", type: :feature do
   before(:each) do
     @valid_soil_texture = SoilTexture.make!
     page.driver.browser.authorize 'admin', 'admin'
     visit admin_soil_textures_path
   end
-  
+
   describe "- when admin attempts to create a soil_texture -" do
     before(:each) do
       click_link "New Soil texture"
@@ -30,8 +30,7 @@ describe "SoilTextures" do
     end
 
     it "valid input is accepted" do
-      new_valid_soil_texture = SoilTexture.make
-      fill_in "Name", :with => new_valid_soil_texture.name
+      fill_in "Name", :with => "medium"
       click_button "Create Soil texture"
       page.should have_content("Soil texture was successfully created.")
     end
@@ -39,14 +38,13 @@ describe "SoilTextures" do
     it "a new soil_texture should produce corresponding soil_coefficients" do
       assert_equal(0, SoilCoefficient.count)
       soil_moisture = SoilMoisture.make!
-      new_soil_texture = SoilTexture.make
-      fill_in "Name", :with => new_soil_texture.name
+      fill_in "Name", :with => "medium"
       click_button "Create Soil texture"
       page.should have_content("Soil texture was successfully created.")
       assert_equal(1, SoilCoefficient.count)
     end
   end
-  
+
   describe "- when admin attempts to update a soil_texture -" do
     before(:each) do
       visit edit_admin_soil_texture_path(@valid_soil_texture)
@@ -76,15 +74,9 @@ describe "SoilTextures" do
       page.should have_content("Soil texture was successfully updated.")
     end
   end
-  
-  describe "- when admin attempts to destroy a soil_texture -" do
-    it "cannot destroy a soil_texture name that doesn't exist" do
-      invalid_soil_texture = SoilTexture.make
-      get 'admin/soil_textures#destroy', :id => invalid_soil_texture.id
-      response.should raise_error
-    end
 
-    it "can destroy a soil_texture that exists in the system" do
+  describe "- when admin attempts to destroy a soil_texture -" do
+    it "is removed from the database" do
       click_link "Destroy"
       page.should_not have_content(@valid_soil_texture.name)
       page.should have_content("Soil texture was successfully destroyed.")

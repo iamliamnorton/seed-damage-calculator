@@ -20,9 +20,11 @@ gem 'twitter-bootstrap-rails'
 gem 'uglifier', '>= 1.0.3'
 
 group :development, :test do
-  gem 'rspec-rails'
   gem 'capybara'
+  gem 'database_cleaner'
+  gem 'faker'
   gem 'launchy'
   gem 'machinist'
-  gem 'faker'
+  gem 'poltergeist'
+  gem 'rspec-rails'
 end

@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe "Crops" do
+describe "Crops", type: :feature do
   before(:each) do
     @valid_crop = Crop.make!
     page.driver.browser.authorize 'admin', 'admin'
     visit admin_crops_path
   end
-  
+
   describe "- when admin attempts to create a crop -" do
     before(:each) do
       click_link "New Crop"
@@ -46,7 +46,7 @@ describe "Crops" do
       assert_equal(1, RegressionCoefficient.count)
     end
   end
-  
+
   describe "- when admin attempts to update a crop -" do
     before(:each) do
       visit edit_admin_crop_path(@valid_crop)
@@ -76,15 +76,9 @@ describe "Crops" do
       page.should have_content("Crop was successfully updated.")
     end
   end
-  
-  describe "- when admin attempts to destroy a crop -" do
-    it "cannot destroy a crop name that doesn't exist" do
-      invalid_crop = Crop.make
-      get 'admin/crops#destroy', :id => invalid_crop.id
-      response.should raise_error
-    end
 
-    it "can destroy a crop that exists in the system" do
+  describe "- when admin attempts to destroy a crop -" do
+    it "is removed from the database" do
       click_link "Destroy"
       page.should_not have_content(@valid_crop.name)
       page.should have_content("Crop was successfully destroyed.")
