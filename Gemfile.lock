@@ -190,7 +190,6 @@ DEPENDENCIES
   pg
   poltergeist
   prawn_rails
-  rack
   rails (= 3.2.22.1)
   rspec-rails
   sass-rails

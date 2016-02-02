@@ -12,7 +12,6 @@ gem 'less-rails'
 gem 'newrelic_rpm'
 gem 'pg'
 gem 'prawn_rails'
-gem 'rack' # needed?
 gem 'rails', '3.2.22.1'
 gem 'sass-rails'
 gem 'test-unit'
