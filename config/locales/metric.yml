@@ -78,7 +78,7 @@ metric:
       spacing:        "Row spacing (cm)"
       terms:          "I agree to the terms of use for this web site"
     output:
-      result:         "Maximium kg/ha of fertilizer product with seed"
+      result:         "Maximium kg/ha of fertiliser product with seed"
       sbu:            "seed bed utilization (%)"
       liquid_weight:  "litres/ha"
       nitrogen:       "kg/ha of Nitrogen (N)"

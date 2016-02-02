@@ -6,10 +6,12 @@
     <%= form_tag calculator_path, class: 'locale' do %>
       <%= select_tag 'set_locale',
 	options_for_select(LANGUAGES, I18n.locale.to_s),
+        selected: params[:locale] || METRIC,
 	onchange: 'this.form.submit()' %>
     <% end %>
     </li>
     <%= form_for(@calculator, :url => calculator_path, :id => "inputform") do |f| %>
+      <%= f.hidden_field :locale, value: params[:locale] || METRIC %>
       <li>
       <%= f.label :crop_id, :class => 'input-form' %>
       <%= f.select :crop_id, options_from_collection_for_select(@crops, 'id', 'name', @calculator.crop_id) %>

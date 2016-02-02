@@ -41,8 +41,30 @@ describe "Calculation", type: :feature do
       end
 
       it "should print some results" do
+        page.should have_content("Maximium kg/ha of fertiliser product with seed")
         find(:css, 'input#result').value.should_not be_nil
         find(:css, 'input#result').value.should_not == ""
+      end
+
+      context "when changing locales" do
+        it "should return results in that locale" do
+          select "Imperial", from: "set_locale"
+
+          page.should have_content("Fertilizer")
+          page.should_not have_content("Fertiliser")
+
+          select crop_1.name, :from => "calculator_crop_id"
+          select fertiliser_1.imperial_name, :from => "calculator_fertiliser_id"
+          select soil_moist.name, :from => "calculator_soil_moisture_id"
+          select soil_fine.name, :from => "calculator_soil_texture_id"
+          fill_in "calculator_seed_furrow_opening_width", :with => 3
+          fill_in "calculator_row_spacing", :with => 10
+          fill_in "calculator_tolerated_stand_loss", :with => 5
+          check('calculator_terms_of_service')
+
+          click_button "Calculate"
+          page.should have_content("Maximium lbs/ac of fertilizer product with seed")
+        end
       end
     end
 
@@ -79,7 +101,6 @@ describe "Calculation", type: :feature do
     end
 
     describe "can change locales within the app" do
-
       it "defaults to metric if no locale is set" do
         visit calculator_path
         page.should have_content("This calculator can be used as a guide to the maximum amount of fertiliser that can be applied in the same furrow as seed.")

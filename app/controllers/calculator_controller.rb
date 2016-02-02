@@ -11,10 +11,14 @@ class CalculatorController < ApplicationController
 
     if request.post? && params[:calculator]
       if @calculator.valid?
-        redirect_to calculator_path(calculator: params[:calculator]), notice: "Calculation successful."
+        flash[:notice] = "Calculation successful."
       else
-        redirect_to calculator_path(calculator: params[:calculator]), alert: "Calculation unsuccessful. Please fill in all fields appropriately."
+        flash[:alert] = "Calculation unsuccessful. Please fill in all fields appropriately."
       end
+      redirect_to calculator_path(
+        calculator: params[:calculator],
+        locale: @calculator.locale
+      )
     end
   end
 

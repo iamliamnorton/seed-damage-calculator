@@ -4,6 +4,7 @@ class Calculator
   include ActiveModel::MassAssignmentSecurity
   extend ActiveModel::Naming
 
+  attr_accessor :locale
   attr_accessor :crop_id, :fertiliser_id, :soil_moisture_id, :soil_texture_id,
     :seed_furrow_opening_width, :row_spacing, :tolerated_stand_loss,
     :result, :sbu, :liquid_weight, :nitrogen, :phosphorus, :potassium,
@@ -38,7 +39,7 @@ class Calculator
 
   def calculate_result
     self.result = (30 * seed_furrow_opening_width.to_i * -1 * tolerated_stand_loss.to_i) / (regression_coefficient * row_spacing.to_i * soil_coefficient)
-    self.result = result * 1.1208511 if I18n.locale == :metric
+    self.result = result * 1.1208511 if metric?
   end
 
   def calculate_sbu
@@ -57,7 +58,7 @@ class Calculator
   def calculate_phosphorus
     if fertiliser.P.to_f > 0
       phosphorus = self.result * fertiliser.P
-      phosphorus = phosphorus * 0.4364 if I18n.locale == :metric
+      phosphorus = phosphorus * 0.4364 if metric?
       self.phosphorus = phosphorus.round(1)
     end
   end
@@ -65,7 +66,7 @@ class Calculator
   def calculate_potassium
     if fertiliser.K.to_f > 0
       potassium = self.result * fertiliser.K
-      potassium = potassium * 0.83 if I18n.locale == :metric
+      potassium = potassium * 0.83 if metric?
       self.potassium = potassium.round(1)
     end
   end
@@ -79,6 +80,10 @@ class Calculator
   end
 
   private
+
+  def metric?
+    locale == "metric"
+  end
 
   def fertiliser
     Fertiliser.find_by_id(fertiliser_id)
