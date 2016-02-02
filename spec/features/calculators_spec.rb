@@ -58,8 +58,7 @@ describe "Calculation", type: :feature do
         end
 
         it "should not print results" do
-          find(:css, 'input#result').value.should be_nil
-          find(:css, 'input#result').value.should_not == ""
+          find(:css, 'input#result').value.should == ""
         end
       end
 
@@ -74,47 +73,39 @@ describe "Calculation", type: :feature do
         end
 
         it "should not print results" do
-          find(:css, 'input#result').value.should be_nil
-          find(:css, 'input#result').value.should_not == ""
+          find(:css, 'input#result').value.should == ""
         end
       end
     end
 
     describe "can change locales within the app" do
+
+      it "defaults to metric if no locale is set" do
+        visit calculator_path
+        page.should have_content("This calculator can be used as a guide to the maximum amount of fertiliser that can be applied in the same furrow as seed.")
+      end
       it "can choose the metric locale" do
-        I18n.locale = :metric
         visit calculator_path
         select "Metric", :from => "set_locale"
         page.should have_content("This calculator can be used as a guide to the maximum amount of fertiliser that can be applied in the same furrow as seed.")
       end
 
       it "can choose the imperial locale" do
-        I18n.locale = :imperial
         visit calculator_path
         select "Imperial", :from => "set_locale"
         page.should have_content("This calculator can be used as a guide to the maximum amount of fertilizer that can be applied in the same furrow as seed.")
-      end
-
-      it "defaults to metric if no locale is set" do
-        I18n.locale = nil
-        visit calculator_path
-        page.should have_content("This calculator can be used as a guide to the maximum amount of fertiliser that can be applied in the same furrow as seed.")
       end
     end
 
     describe "can change locales within the app" do
       it "can choose the metric locale" do
-        I18n.locale = :metric
         select "Metric", :from => "set_locale"
-        visit calculator_path
         page.should have_content("Fertiliser")
         page.should_not have_content("Fertilizer")
       end
 
       it "can choose the imperial locale" do
-        I18n.locale = :imperial
         select "Imperial", :from => "set_locale"
-        visit calculator_path
         page.should have_content("Fertilizer")
         page.should_not have_content("Fertiliser")
       end

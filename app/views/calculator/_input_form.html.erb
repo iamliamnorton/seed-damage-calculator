@@ -4,8 +4,9 @@
     <li class='locale'>
     <%= label_tag "Measurement Unit" %>
     <%= form_tag calculator_path, class: 'locale' do %>
-      <%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.locale.to_s), onchange: 'this.form.submit()' %>
-      <%= javascript_tag "$('.locale input').hide()" %>
+      <%= select_tag 'set_locale',
+	options_for_select(LANGUAGES, I18n.locale.to_s),
+	onchange: 'this.form.submit()' %>
     <% end %>
     </li>
     <%= form_for(@calculator, :url => calculator_path, :id => "inputform") do |f| %>
