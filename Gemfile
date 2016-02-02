@@ -17,7 +17,6 @@ gem 'rails', '3.2.22.1'
 gem 'sass-rails'
 gem 'test-unit'
 gem 'therubyracer', platform: :ruby
-gem 'twitter-bootstrap-rails'
 gem 'uglifier'
 
 group :development, :test do

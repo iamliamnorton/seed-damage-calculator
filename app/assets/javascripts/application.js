@@ -13,7 +13,10 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require twitter/bootstrap
 //= require jquery.purr
 //= require best_in_place
+//= require bootstrap
+//= require bootstrap.min
+//= require admin/regression_coefficients
+//= require admin/soil_coefficients
 //= require_tree .

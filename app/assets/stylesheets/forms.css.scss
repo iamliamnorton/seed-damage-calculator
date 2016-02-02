@@ -5,7 +5,7 @@ fieldset {
   legend {
     text-align: center;
     font-size: 150%;
-    }
+  }
 
   label.input-form {
     padding-top: 5px;
@@ -14,7 +14,7 @@ fieldset {
   label.terms {
     display: inline;
   }
-  
+
   input[type="submit"] {
     -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
     -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -80,7 +80,7 @@ fieldset {
       top:1px;
     }
   }
-  	
+
   li a img.info_icon {
     opacity:0.5;
     &:hover {
@@ -97,5 +97,5 @@ fieldset {
 
   ol {
     list-style-type: none;
-  }  
+  }
 }
