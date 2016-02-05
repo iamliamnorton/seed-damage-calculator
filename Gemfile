@@ -7,7 +7,6 @@ gem 'coffee-rails'
 gem 'google-analytics-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'json'
 gem 'less-rails'
 gem 'newrelic_rpm'
 gem 'pg'
@@ -16,6 +15,7 @@ gem 'rails', '3.2.22.1'
 gem 'sass-rails'
 gem 'test-unit'
 gem 'therubyracer', platform: :ruby
+gem "twitter-bootstrap-rails"
 gem 'uglifier'
 
 group :development, :test do

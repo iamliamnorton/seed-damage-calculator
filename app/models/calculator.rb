@@ -10,8 +10,16 @@ class Calculator
     :result, :sbu, :liquid_weight, :nitrogen, :phosphorus, :potassium,
     :sulphur, :magnesium
 
-  validates :seed_furrow_opening_width, :row_spacing, :tolerated_stand_loss, :presence => true, :numericality => { :greater_than_or_equal_to => 0, :less_than_or_equal_to => 100 }
-  validates :terms_of_service, :acceptance => true
+  validates :seed_furrow_opening_width,
+    :row_spacing,
+    :tolerated_stand_loss,
+    presence: true,
+    numericality: {
+      greater_than_or_equal_to: 0,
+      less_than_or_equal_to: 100
+    }
+
+  validates :terms_of_service, acceptance: true
 
   def initialize(attributes = {})
     if !attributes.nil?
@@ -82,7 +90,7 @@ class Calculator
   private
 
   def metric?
-    locale == "metric"
+    self.locale == "metric"
   end
 
   def fertiliser

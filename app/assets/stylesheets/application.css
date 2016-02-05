@@ -8,16 +8,11 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+
+ *= require bootstrap_and_overrides
  *= require_self
- *= require bootstrap
- *= require bootstrap.min
- *= require heroic_features
- *= require layout
- *= require navigation
- *= require notifications
- *= require forms
- *= require tables
- *= require admin/home
- *= require admin/soil_coefficients
- *= require admin/regression_coefficients
+
 */
+
+.top-buffer-lg { margin-top: 70px; }
+.top-buffer-sm { margin-top: 30px; }

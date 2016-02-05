@@ -1,149 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title><%= yield(:title) %></title>
+  <title><%= content_for?(:title) ? yield(:title) : "Seed Damage Calculator" %></title>
 
-<% if !yield(:description).blank? %>
-  <meta name="description" content="<%= yield(:description) %>" />
-<% end %>
+  <% if content_for?(:description) %>
+    <meta name="description" content="<%= yield(:description) %>" />
+  <% end %>
 
-<%= stylesheet_link_tag "application", :media => "all" %>
-<%= favicon_link_tag %>
-<%= csrf_meta_tags %>
-<%= analytics_init if Rails.env.production? %>
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag %>
+  <%= analytics_init if Rails.env.production? %>
 </head>
 
+
 <body>
-
-<!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	<span class="sr-only">Toggle navigation</span>
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
-      </button>
-      <%= link_to "Seed Damage Calculator", root_path, class: "navbar-brand" %>
-    </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-	<li>
-        <%= link_to 'Theory', theory_path %>
-	</li>
-	<li>
-        <%= link_to 'Definitions', definitions_path %>
-	</li>
-	<li>
-        <%= link_to 'Disclaimer', disclaimer_path %>
-	</li>
-      </ul>
-    </div>
-    <!-- /.navbar-collapse -->
-  </div>
-  <!-- /.container -->
-</nav>
-
-<!-- Page Content -->
-<div class="container">
-
-  <!-- Jumbotron Header -->
-  <header class="jumbotron hero-spacer">
-    <h2>Welcome!</h2>
-    <p>
-    This decision aid calculator is designed to assist crop planners in
-    selecting the maximum safe fertilizer rate that can be applied with the
-    seed for various crops.
-    </p>
-    <p>
-    The aid uses regression coefficients (crop stand upon fertilizer rate) that
-    were developed using published studies from the North Central region of the
-    U.S. and adjacent Canadian provinces.
-    <%= link_to "Read more...", theory_path %>
-    </p>
-  </header>
-
-  <hr>
-
-  <div class="row text-center">
-    <div class="col-md-6 col-sm-6 hero-feature">
-      <div class="thumbnail">
-	<div class="caption">
-	  <h3>Feature Label</h3>
-	  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-	  <p>
-	  <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-	  </p>
-	</div>
-      </div>
-    </div>
-
-    <div class="col-md-6 col-sm-6 hero-feature">
-      <div class="thumbnail">
-	<div class="caption">
-	  <h3>Feature Label</h3>
-	  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-	  <p>
-	  <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-	  </p>
-	</div>
-      </div>
-    </div>
-  </div>
-
-  <hr>
-
-  <div class="row text-center">
-    <div class="container">
-      <section id="content">
-        <%= render 'layouts/notifications' %>
-        <%= yield %>
-      </section>
-    </div>
-    <%= javascript_include_tag "application" %>
-  </div>
-
-  <div class="row text-center">
-    <div class="col-lg-12">
-      <%= render 'layouts/header' %>
-    </div>
-  </div>
-
-  <hr>
-
-  <footer>
-    <div class="row">
-      <div class="col-lg-12">
-        <p>
-        &copy; <%= Time.now.strftime("%Y") %> International Plant Nutrition
-        Institute. All rights reserved. |
-        <em>
-          <%= link_to "Site by",
-            "http://www.linkedin.com/pub/liam-norton/47/966/703",
-            target: '_blank' %>
-        </em>
-        </p>
-      </div>
-    </div>
-  </footer>
-
-</div>
-
+<%= render 'shared/navigation' %>
+<%= render 'shared/header' %>
+<%= yield %>
+<%= render 'shared/footer' %>
 </body>
 </html>

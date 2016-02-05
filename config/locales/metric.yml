@@ -60,7 +60,6 @@ metric:
   calculator:
     index:
       title:          "Seed Damage Calculator"
-      description:    "This calculator can be used as a guide to the maximum amount of fertiliser that can be applied in the same furrow as seed. It is a guide only."
       fert:           "Fertiliser"
       furrow:         "Seed furrow opening width (cm)"
       spacing:        "Row spacing (cm)"
@@ -72,7 +71,7 @@ metric:
       potassium:      "kg/ha of Potassium (K)"
       sulphur:        "kg/ha of Sulphur (S)"
       magnesium:      "kg/ha of Magnesium (Mg)"
-    input_form:
+    input:
       fert:           "Fertiliser"
       furrow:         "Seed furrow opening width (cm)"
       spacing:        "Row spacing (cm)"

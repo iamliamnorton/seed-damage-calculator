@@ -1,25 +1,40 @@
 <% content_for :title, "Seed Damage Calculator" %>
-<% content_for :description, "Calculate the optimal fertilizer material to apply with seed." %>
-<%= currently_at 'Calculator' %>
+<% content_for :description, "Calculate the optimal fertilizer material to apply with seed" %>
 
-<h1><%= t('.title') %></h1>
-<hr>
-
-<%= render 'layouts/social_links' %>
-
-<p><%= t('.description')%></p>
+<div class="container top-buffer-sm">
+  <div class="jumbotron">
+    <p>
+    A decision aid to assist crop planners in selecting the maximum safe
+    <%= t('models.fertiliser').downcase %> rate that can be applied with the
+    seed for various crops.
+    </p>
+    <p>
+    The aid uses regression coefficients (crop stand upon
+    <%= t('models.fertiliser').downcase %> rate) that were developed using
+    published studies from the <%= link_to "read more...", theory_path %>
+    </p>
+  </div>
+</div>
 
 <div class="container">
   <div class="row">
-    <div class="span6">
-      <section id="input">
-      <%= render 'input_form' %>
-      </section>
+    <div class="col-md-12">
+      <%= render 'shared/notifications' %>
     </div>
-    <div class="span6">
-      <section id='output'>
-      <%= render 'output' %>
-      </section>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="well">
+        <%= render 'input' %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="well">
+        <%= render 'output' %>
+      </div>
     </div>
   </div>
 </div>

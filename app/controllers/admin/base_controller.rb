@@ -18,10 +18,8 @@ class Admin::BaseController < ApplicationController
   end
 
   def clear_cache
-    expire_page root_path
     expire_page "/"
-    expire_page "/metric/calculator"
-    expire_page "/imperial/calculator"
+    expire_page "/calculator"
     expire_page theory_path
     expire_page disclaimer_path
     expire_page definitions_path
