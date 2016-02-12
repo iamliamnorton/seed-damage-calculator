@@ -41,7 +41,7 @@
 
   <% if @calculator.result.present? %>
     <div class="text-center">
-      <%= link_to "Download (PDF)",
+      <%= link_to "Download PDF",
         calculator_path(calculator: params[:calculator], format: :pdf),
         class: "btn btn-primary" %>
     </div>
