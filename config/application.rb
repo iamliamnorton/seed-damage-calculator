@@ -18,6 +18,26 @@ end
 module Fasdac
   class Application < Rails::Application
 
+    config.backpaddock = {
+      url: "http://www.backpaddock.com.au",
+    }
+
+    config.footer_url = "https://www.linkedin.com/pub/liam-norton/47/966/703"
+
+    config.ipni = {
+      alt: "IPNI Logo",
+      image: "ipni_logo.png",
+      title: "International Plant Nutrition Institue",
+      url: "https://www.ipni.net",
+    }
+
+    config.sdsu = {
+      alt: "SDSU Logo",
+      image: "sdsu_logo.png",
+      title: "South Dakota State University",
+      url: "https://www.sdstate.edu",
+    }
+
     # Setup Machinist to auto add blueprints for generated models
     config.generators do |g|
       g.fixture_replacement :machinist
@@ -42,8 +62,10 @@ module Fasdac
     # config.time_zone = 'Central Time (US & Canada)'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.enforce_available_locales = false
+    config.i18n.available_locales = ['metric', 'imperial']
+    config.i18n.default_locale = :"imperial"
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

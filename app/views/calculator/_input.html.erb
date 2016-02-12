@@ -1,0 +1,86 @@
+<div class="form-group">
+  <%= form_tag locale_path do %>
+    <%= select_tag 'locale',
+      options_for_select(
+        LANGUAGES,
+        params[:calculator] && params[:calculator][:locale] || "imperial"),
+      onchange: 'this.form.submit()',
+      class: "form-control" %>
+  <% end %>
+</div>
+
+<%= form_for @calculator, url: calculator_path do |f| %>
+  <%= f.hidden_field :locale,
+    value: params[:calculator] && params[:calculator][:locale] || "imperial" %>
+
+  <div class="form-group">
+    <%= f.label :fertiliser_id, t('models.fertiliser') %>
+    <%= f.select \
+      :fertiliser_id,
+      options_from_collection_for_select(@fertilisers, 'id', "#{I18n.locale}_name", @calculator.fertiliser_id),
+      {},
+      class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :crop_id %>
+    <%= f.select \
+      :crop_id,
+      options_from_collection_for_select(@crops, 'id', 'name', @calculator.crop_id),
+      {},
+      class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :soil_moisture_id %>
+    <%= f.select \
+      :soil_moisture_id,
+      options_from_collection_for_select(@soil_moistures, 'id', 'name', @calculator.soil_moisture_id),
+      {},
+      class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :soil_texture_id %>
+    <%= f.select \
+      :soil_texture_id,
+      options_from_collection_for_select(@soil_textures, 'id', 'name', @calculator.soil_texture_id),
+      {},
+      class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :seed_furrow_opening_width, t('.furrow') %>
+    <%= f.number_field \
+      :seed_furrow_opening_width,
+      placeholder: "1 - 100",
+      class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :row_spacing, t('.spacing') %>
+    <%= f.number_field \
+      :row_spacing,
+      placeholder: "1 - 100",
+      class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :tolerated_stand_loss, 'Tolerated stand loss (%)' %>
+    <%= f.number_field \
+      :tolerated_stand_loss,
+      placeholder: "1 - 100",
+      class: "form-control" %>
+  </div>
+
+  <div class="checkbox text-center">
+    <label class="checkbox-inline">
+      <%= f.check_box :terms_of_service %>
+      <%= t('.terms') %>
+    </label>
+  </div>
+
+  <div class="text-center">
+    <%= f.submit "Calculate", class: 'btn btn-success' %>
+  </div>
+<% end %>

@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <hr>
+      <footer>
+        <p>
+        &copy; <%= Time.now.strftime("%Y") %> International Plant Nutrition
+        Institute. All rights reserved. |
+        <em>
+          <%= link_to "Site by",
+            Fasdac::Application.config.footer_url,
+            target: '_blank' %>
+        </em>
+        </p>
+      </footer>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,9 @@
 #encoding: utf-8
-I18n.default_locale = :metric
+
+METRIC = 'metric'
+IMPERIAL = 'imperial'
 
 LANGUAGES = [
-  ['Metric', 'metric'],
-  ['Imperial', 'imperial']
+  ['Metric', METRIC],
+  ['Imperial', IMPERIAL]
 ]

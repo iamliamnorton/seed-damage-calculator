@@ -1,95 +1,137 @@
-<% content_for :title, "Seed Damage Calculator Theory" %>
-<% content_for :description, "Theory for the seed damage calculator." %>
-<% content_for :keywords, "seed damage calculator, fertilizer, seed, seed damage, fertilizer seed damage, estimating fertilizer rates, fertilizer decision aid, fertilizer rates, fertilizer seed ratio, fertilizer calculator, safe rates of fertilizer applied with seed" %>
-<%= currently_at 'Theory' %>
+<% content_for :title, "Theory - Seed Damage Calculator" %>
+<% content_for :description, "Theory behind the seed damage calculator." %>
 
-<h1>Theory</h1>
-<hr>
-<%= render 'layouts/social_links' %>
+<div class="container top-buffer-sm">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Theory</h1>
 
-<p>
-  The data and calculations used on this website are taken from the report
-  <strong>
-    Decision Aid for Estimating Seed-Placed Fertilizer Rates
-  </strong>
-  published on December 31, 2008 by
-  <strong>
-    R.H. Gelderman
-  </strong>
-  from the
-  <strong>
-    Plant Science Department, South Dakota State University.
-  </strong>
-  The document is available for download below.
-</p>
+      <hr>
 
-<p>
-  <%= link_to image_tag("pdficon_large.png"), "/Gelderman_Report.pdf" %>
-  <strong>Decision Aid for Estimating Seed-Placed Fertilizer Rates - Final Report</strong>
-  can be downloaded <%= link_to "here", "/Gelderman_Report.pdf" %>.
-</p>
+      <p>
+      The data and calculations used on this website are taken from the report
+      <strong>
+        Decision Aid for Estimating Seed-Placed Fertilizer Rates
+      </strong>
+      published on December 31, 2008 by
+      <strong>
+        R.H. Gelderman
+      </strong>
+      from the
+      <strong>
+        Plant Science Department, South Dakota State University.
+      </strong>
+      The document is available for download below.
+      </p>
 
-<p>
-  This tool uses regression coefficients (crop stand upon fertilizer rate) that were developed using published studies from North America. Coefficients are adjusted for soil texture and soil moisture based on data collected under standardised conditions.<br />
-  The tool uses the equation:<br /><br />
-  <strong>F = 30S (-T)/CRMX</strong><br /><br />
-  Where:<br />
-  F = fertilizer material (lb/ac or kg/ha).<br />
-  S = seed furrow opening (in or cm).<br />
-  T = tolerated stand loss, as a percent, due to fertilizer applied with seed over typical stands, where no fertilizer is applied.<br />
-  C = negative regression coefficient for the selected crop X fertilizer (%/lb/ac or %/kg/ha).<br />
-  R = row spacing (in or cm).<br />
-  MX = planting soil moisture and soil texture coefficients.<br />
-</p>
+      <p>
+      <%= link_to image_tag("pdficon_large.png"), "/Gelderman_Report.pdf" %>
+      <strong>Decision Aid for Estimating Seed-Placed Fertilizer Rates - Final Report</strong>
+      can be downloaded <%= link_to "here", "/Gelderman_Report.pdf" %>.
+      </p>
 
-<h2>Negative Regression Coefficients Table</h2>
-<table>
-  <tr>
-    <th></th>
-    <% @crops.each do |crop| %>
-    <th><%= crop.name %></th>
-    <% end %>
-  </tr>
-  <% @fertilisers.each do |fertiliser| %>
-  <tr>
-    <td><strong><%= fertiliser.metric_name %></strong></td>
-    <% @crops.each do |crop| %>
-    <td><%= RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first.value %></td>
-    <% end %>
-  </tr>
-  <% end %>
-</table>
+      <div class="well top-buffer-sm">
+        <p>
+        This tool uses regression coefficients (crop stand upon fertilizer rate) that were developed using published studies from North America. Coefficients are adjusted for soil texture and soil moisture based on data collected under standardised conditions. The tool uses the equation:
+        </p>
+        <br /><br />
+        <span class="text-center">
+          <h1>F = 30S (-T)/CRMX</h1>
+        </span>
+        <br /><br />
+        <strong>F</strong> = fertilizer material (lb/ac or kg/ha).<br />
+        <strong>S</strong> = seed furrow opening (in or cm).<br />
+        <strong>T</strong> = tolerated stand loss, as a percent, due to fertilizer applied with seed over typical stands, where no fertilizer is applied.<br />
+        <strong>C</strong> = negative regression coefficient for the selected crop X fertilizer (%/lb/ac or %/kg/ha).<br />
+        <strong>R</strong> = row spacing (in or cm).<br />
+        <strong>MX</strong> = planting soil moisture and soil texture coefficients.<br />
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
-<h2>Soil Moisture and Texture Coefficients Table</h2>
-<table>
-  <tr>
-    <th></th>
-    <% @soil_moistures.each do |soil_moisture| %>
-    <th><%= soil_moisture.name %></th>
-    <% end %>
-  </tr>
-  <% @soil_textures.each do |soil_texture| %>
-  <tr>
-    <td><strong><%= soil_texture.name %></strong></td>
-    <% @soil_moistures.each do |soil_moisture| %>
-    <td><%= SoilCoefficient.where(:soil_moisture_id => soil_moisture.id, :soil_texture_id => soil_texture.id).first.value %></td>
-    <% end %>
-  </tr>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row top-buffer-sm">
+    <div class="col-md-12">
+      <h3>Negative Regression Coefficients</h3>
+      <div class="table-responsive">
+        <table class="table table-striped table-condensed">
+          <thead>
+            <th></th>
+            <% @crops.each do |crop| %>
+              <th><%= crop.name %></th>
+            <% end %>
+          </thead>
+          <tbody>
+          <% @fertilisers.each do |fertiliser| %>
+            <tr>
+              <td><strong><%= fertiliser.metric_name %></strong></td>
+              <% @crops.each do |crop| %>
+                <td><%= RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first.value %></td>
+              <% end %>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
-<h2>Acknowledgements</h2>
-<ul>
-  <li>
-    The International Plant Nutrient Institute (IPNI) for its support with this work.
-  </li>
-  <li>
-    Joseph Schumacher (SDSU) for his help with assembling this program.
-  </li>
-  <li>
-    D. Andrews, C. Morris, A. Bly (SDSU) for their very capable technical support.
-  </li>
-  <li>
-    Dr C Dowling (Backpaddock P/L) for adapting the units to a metric format.
-  </li>
-</ul>
+<div class="container">
+  <div class="row top-buffer-sm">
+    <div class="col-md-12">
+      <h3>Soil Coefficients</h3>
+      <div class="table-responsive">
+        <table class="table table-striped table-condensed">
+          <thead>
+            <th></th>
+            <% @soil_moistures.each do |soil_moisture| %>
+              <th><%= soil_moisture.name %></th>
+            <% end %>
+          </thead>
+          <tbody>
+          <% @soil_textures.each do |soil_texture| %>
+            <tr>
+              <td><strong><%= soil_texture.name %></strong></td>
+              <% @soil_moistures.each do |soil_moisture| %>
+                <td><%= SoilCoefficient.where(:soil_moisture_id => soil_moisture.id, :soil_texture_id => soil_texture.id).first.value %></td>
+              <% end %>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row top-buffer-sm">
+    <div class="col-md-12">
+      <h3>Acknowledgements</h3>
+      <ul>
+        <li>
+        The
+        <%= link_to "International Plant Nutrient Institute (IPNI)", Fasdac::Application.config.ipni[:url] %>
+        for its support with this work
+        </li>
+        <li>
+        Joseph Schumacher (<%= link_to "SDSU", Fasdac::Application.config.sdsu[:url] %>) for
+        his help with assembling this program
+        </li>
+        <li>
+        D. Andrews, C. Morris, A. Bly (
+        <%= link_to "SDSU", Fasdac::Application.config.sdsu[:url] %>) for their very capable
+        technical support
+        </li>
+        <li>
+        Dr C Dowling (
+        <%= link_to "Backpaddock", Fasdac::Application.config.backpaddock[:url] %>) for
+        adapting the units to a metric format
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

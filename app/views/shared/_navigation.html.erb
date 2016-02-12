@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <%= nav_bar fixed: :top, brand: "Seed Damage Calculator", responsive: true do %>
+        <%= menu_group pull: :right do %>
+          <%= menu_item "Theory", theory_path %>
+          <%= menu_divider %>
+          <%= menu_item "Definitions", definitions_path %>
+          <%= menu_divider %>
+          <%= menu_item "Disclaimer", disclaimer_path %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

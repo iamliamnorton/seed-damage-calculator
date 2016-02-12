@@ -1,26 +1,30 @@
 class CalculatorController < ApplicationController
-  before_filter :load_vars
+  before_filter :load_variables
 
   def index
-    return redirect_to calculator_path(
-      locale: params[:set_locale],
-      calculator: params[:calculator]
-    ) if params[:set_locale]
+    I18n.locale = params[:calculator] && params[:calculator][:locale] || "imperial"
 
     @calculator = Calculator.new(params[:calculator])
 
-    if request.post? && params[:calculator]
+    if request.post?
       if @calculator.valid?
-        redirect_to calculator_path(calculator: params[:calculator]), notice: "Calculation successful."
+        flash[:notice] = "Calculation successful."
       else
-        redirect_to calculator_path(calculator: params[:calculator]), alert: "Calculation unsuccessful. Please fill in all fields appropriately."
+        flash[:alert] = "Calculation unsuccessful. Please fill in all fields appropriately."
       end
+      redirect_to calculator_path({
+        calculator: calculator_params
+      })
     end
+  end
+
+  def calculator_params
+    (params[:calculator] || {}).merge(locale: I18n.locale)
   end
 
   private
 
-  def load_vars
+  def load_variables
     @crops = Crop.all
     @fertilisers = Fertiliser.all
     @soil_moistures = SoilMoisture.all

@@ -1,5 +1,13 @@
 <h1>Listing regression_coefficients</h1>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <%= render 'shared/notifications' %>
+    </div>
+  </div>
+</div>
+
 <p>Click on a value to change it. Valid values are between -10 and 10 and will round to 3 digits of precision.</p>
 
 <table>
@@ -14,7 +22,7 @@
     <td><strong><%= fertiliser.metric_name %></strong></td>
     <% @crops.each do |crop| %>
       <% #the below code will need refactoring %>
-      <td><%= best_in_place RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first, :value, :path => [:admin, RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first]%></td>
+      <td><%= best_in_place RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first, :value, :url => [:admin, RegressionCoefficient.where(:crop_id => crop.id, :fertiliser_id => fertiliser.id).first]%></td>
     <% end %>
   </tr>
 <% end %>

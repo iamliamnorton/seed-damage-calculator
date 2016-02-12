@@ -1,0 +1,10 @@
+machine:
+  ruby:
+    version: 2.2.4
+  timezone: 'Australia/Melbourne'
+  services:
+      - postgresql
+
+test:
+  override:
+    - ./ci/env/circle.sh ./ci/test.sh

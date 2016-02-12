@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title><%= yield(:title) %></title>
-  <% if !yield(:description).blank? %>
-  <meta name="description" content="<%= yield(:description) %>" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title><%= content_for?(:title) ? yield(:title) : "Seed Damage Calculator" %></title>
+
+  <% if content_for?(:description) %>
+    <meta name="description" content="<%= yield(:description) %>" />
   <% end %>
-  <% if !yield(:keywords).blank? %>
-  <meta name="keywords" content="<%= yield(:keywords) %>" />
-  <% end %>
-  <%= stylesheet_link_tag "application", :media => "all" %>
-  <%= favicon_link_tag %>
+
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag %>
   <%= analytics_init if Rails.env.production? %>
 </head>
+
+
 <body>
-  <%= render 'layouts/header' %>
-  <div class="container">
-    <section id="content">
-      <%= render 'layouts/notifications' %>
-      <%= yield %>
-    </section>
-  </div>
-  <%= render 'layouts/footer' %>
-  <%= javascript_include_tag "application" %>
+<%= render 'shared/navigation' %>
+<%= render 'shared/header' %>
+<%= yield %>
+<%= render 'shared/footer' %>
 </body>
 </html>
