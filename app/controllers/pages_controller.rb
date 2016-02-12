@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   caches_page :theory, :disclaimer, :definitions
 
+  before_filter :satellite_page
+
   def theory
     @crops = Crop.order('name')
     @fertilisers = Fertiliser.all
@@ -12,5 +14,9 @@ class PagesController < ApplicationController
   end
 
   def definitions
+  end
+
+  def satellite_page
+    @satellite_page ||= true
   end
 end

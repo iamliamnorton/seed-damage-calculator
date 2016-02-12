@@ -3,6 +3,10 @@
     <div class="col-xs-12">
       <%= nav_bar fixed: :top, brand: "Seed Damage Calculator", responsive: true do %>
         <%= menu_group pull: :right do %>
+          <% if @satellite_page %>
+            <%= menu_item "Calculator", root_path %>
+            <%= menu_divider %>
+          <% end %>
           <%= menu_item "Theory", theory_path %>
           <%= menu_divider %>
           <%= menu_item "Definitions", definitions_path %>
