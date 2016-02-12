@@ -22,7 +22,7 @@ module Fasdac
       url: "http://www.backpaddock.com.au",
     }
 
-    config.footer_url = "https://www.linkedin.com/pub/liam-norton/47/966/703"
+    config.footer_url = "https://github.com/iamliamnorton"
 
     config.ipni = {
       alt: "IPNI Logo",
