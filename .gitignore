@@ -1,6 +1,3 @@
-# Ignore the database setup file
-config/database.yml
-
 # Ignore all coverage, logfiles and tempfiles.
 /coverage
 /log/*.log

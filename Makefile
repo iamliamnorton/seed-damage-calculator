@@ -1,8 +1,9 @@
 PROJECT = seed-damage-calculator
 
-.PHONY: db
-db:
-	rake db:create && \
+.PHONY: build
+build:
+	bundle && \
+	  rake db:create && \
 	  rake db:migrate && \
 	  rake db:seed
 

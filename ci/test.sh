@@ -1,13 +1,8 @@
-#!/bin/bash
-
-set -ex
+#!/bin/bash -ex
 
 bundle config --delete without
 bundle config --delete frozen
 
-bundle
+make build
 
-bundle exec rake db:drop
-bundle exec rake db:create
-bundle exec rake db:migrate
 bundle exec rake
