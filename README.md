@@ -7,14 +7,18 @@ Calculation app used to find the [optimum fertilizer to seed ratio](http://seed-
 
 #### Rails
 
-Setup project and run tests
+Setup project and run tests...
 
 ```
 make build test
 ```
 
-Run a rails server
+Run a rails server...
 
 ```
 make build run
 ```
+
+#### Deploy
+
+Latest passing master is continously deployed.

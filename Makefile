@@ -14,3 +14,7 @@ run:
 .PHONY: test
 test:
 	./ci/env/test.sh ./ci/test.sh
+
+.PHONY: deploy
+deploy:
+	# Latest passing master branch already deployed
