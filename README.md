@@ -21,4 +21,4 @@ make build run
 
 #### Deploy
 
-Latest passing master is continously deployed.
+Latest passing master is **continuously deployed**.
