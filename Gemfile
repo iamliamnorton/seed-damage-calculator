@@ -12,7 +12,7 @@ gem 'newrelic_rpm'
 gem 'pg'
 gem 'prawn', '0.12.0'
 gem 'prawn_rails', '0.0.11'
-gem 'rails', '3.2.22.1'
+gem 'rails', '3.2.22.2'
 gem 'sass-rails'
 gem 'test-unit'
 gem 'therubyracer', platform: :ruby

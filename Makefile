@@ -3,13 +3,13 @@ PROJECT = seed-damage-calculator
 .PHONY: build
 build:
 	bundle && \
-	  rake db:create && \
-	  rake db:migrate && \
-	  rake db:seed
+	  bundle exec rake db:create && \
+	  bundle exec rake db:migrate && \
+	  bundle exec rake db:seed
 
 .PHONY: run
 run:
-	rails server
+	bundle exec rails server
 
 .PHONY: test
 test:
