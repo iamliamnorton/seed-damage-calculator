@@ -4,6 +4,6 @@ METRIC = 'metric'
 IMPERIAL = 'imperial'
 
 LANGUAGES = [
-  ['Metric', METRIC],
-  ['Imperial', IMPERIAL]
+  ['Metric units', METRIC],
+  ['Imperial units', IMPERIAL]
 ]

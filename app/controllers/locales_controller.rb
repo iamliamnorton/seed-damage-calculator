@@ -1,8 +1,8 @@
 class LocalesController < ApplicationController
   def create
-    redirect_to calculator_path({
+    redirect_to calculator_path(
       calculator: calculator_params
-    })
+    )
   end
 
   private
