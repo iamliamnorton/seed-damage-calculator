@@ -4,11 +4,26 @@ class Calculator
   include ActiveModel::MassAssignmentSecurity
   extend ActiveModel::Naming
 
+  METRIC_RESULT_MULIPLIER = 1.1208511
+  METRIC_PHOSPHORUS_MULTIPLIER = 0.4364
+  METRIC_POTASSIUM_MULTIPLIER = 0.83
+
   attr_accessor :locale
-  attr_accessor :crop_id, :fertiliser_id, :soil_moisture_id, :soil_texture_id,
-    :seed_furrow_opening_width, :row_spacing, :tolerated_stand_loss,
-    :result, :sbu, :liquid_weight, :nitrogen, :phosphorus, :potassium,
-    :sulphur, :magnesium
+  attr_accessor :crop_id
+  attr_accessor :fertiliser_id
+  attr_accessor :soil_moisture_id
+  attr_accessor :soil_texture_id
+  attr_accessor :seed_furrow_opening_width
+  attr_accessor :row_spacing
+  attr_accessor :tolerated_stand_loss
+  attr_accessor :result
+  attr_accessor :sbu
+  attr_accessor :liquid_weight
+  attr_accessor :nitrogen
+  attr_accessor :phosphorus
+  attr_accessor :potassium
+  attr_accessor :sulphur
+  attr_accessor :magnesium
 
   validates :seed_furrow_opening_width,
     :row_spacing,
@@ -22,12 +37,11 @@ class Calculator
   validates :terms_of_service, acceptance: true
 
   def initialize(attributes = {})
-    if !attributes.nil?
-      attributes.each do |name, value|
-        send("#{name}=", value)
-      end
+    attributes.to_h.each do |name, value|
+      send("#{name}=", value)
     end
-    if self.valid?
+
+    if valid?
       calculate_result
       calculate_sbu
       calculate_liquid_weight
@@ -38,7 +52,6 @@ class Calculator
       calculate_magnesium
       self.result = self.result.round(1)
     end
-    self.persisted?
   end
 
   def persisted?
@@ -46,8 +59,9 @@ class Calculator
   end
 
   def calculate_result
-    self.result = (30 * seed_furrow_opening_width.to_i * -1 * tolerated_stand_loss.to_i) / (regression_coefficient * row_spacing.to_i * soil_coefficient)
-    self.result = result * 1.1208511 if metric?
+    self.result = (30 * seed_furrow_opening_width.to_i * -1 * tolerated_stand_loss.to_i)
+    self.result = result / (regression_coefficient * row_spacing.to_i * soil_coefficient)
+    self.result = result * METRIC_RESULT_MULIPLIER if metric?
   end
 
   def calculate_sbu
@@ -56,17 +70,21 @@ class Calculator
   end
 
   def calculate_liquid_weight
-    self.liquid_weight = (self.result / fertiliser.liquid_weight).round(1) if fertiliser.liquid_weight.to_f > 0
+    if fertiliser.liquid_weight.to_f > 0
+      self.liquid_weight = (self.result / fertiliser.liquid_weight).round(1)
+    end
   end
 
   def calculate_nitrogen
-    self.nitrogen = (self.result * fertiliser.N).round(1) if fertiliser.N.to_f > 0
+    if fertiliser.N.to_f > 0
+      self.nitrogen = (self.result * fertiliser.N).round(1)
+    end
   end
 
   def calculate_phosphorus
     if fertiliser.P.to_f > 0
       phosphorus = self.result * fertiliser.P
-      phosphorus = phosphorus * 0.4364 if metric?
+      phosphorus = phosphorus * METRIC_PHOSPHORUS_MULTIPLIER if metric?
       self.phosphorus = phosphorus.round(1)
     end
   end
@@ -74,17 +92,21 @@ class Calculator
   def calculate_potassium
     if fertiliser.K.to_f > 0
       potassium = self.result * fertiliser.K
-      potassium = potassium * 0.83 if metric?
+      potassium = potassium * METRIC_POTASSIUM_MULTIPLIER if metric?
       self.potassium = potassium.round(1)
     end
   end
 
   def calculate_sulphur
-    self.sulphur = (self.result * fertiliser.S).round(1) if fertiliser.S.to_f > 0
+     if fertiliser.S.to_f > 0
+       self.sulphur = (self.result * fertiliser.S).round(1)
+     end
   end
 
   def calculate_magnesium
-    self.magnesium = (self.result * fertiliser.Mg).round(1) if fertiliser.Mg.to_f > 0
+    if fertiliser.Mg.to_f > 0
+      self.magnesium = (self.result * fertiliser.Mg).round(1)
+    end
   end
 
   private
@@ -94,14 +116,23 @@ class Calculator
   end
 
   def fertiliser
-    Fertiliser.find_by_id(fertiliser_id)
+    @_fertiliser ||= Fertiliser
+      .find(fertiliser_id)
   end
 
   def regression_coefficient
-    RegressionCoefficient.where(:crop_id => crop_id, :fertiliser_id => fertiliser_id).first.value
+    @_regression_coefficient ||= RegressionCoefficient
+      .where(crop_id: crop_id)
+      .where(fertiliser_id: fertiliser_id)
+      .first
+      .value
   end
 
   def soil_coefficient
-    SoilCoefficient.where(:soil_moisture_id => soil_moisture_id, :soil_texture_id => soil_texture_id).first.value
+    @_soil_coefficient ||= SoilCoefficient
+      .where(soil_moisture_id: soil_moisture_id)
+      .where(soil_texture_id: soil_texture_id)
+      .first
+      .value
   end
 end
