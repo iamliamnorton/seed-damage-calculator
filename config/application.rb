@@ -18,6 +18,8 @@ end
 module Fasdac
   class Application < Rails::Application
 
+    config.calculator_disabled = false
+
     config.backpaddock = {
       url: "http://www.backpaddock.com.au",
     }
