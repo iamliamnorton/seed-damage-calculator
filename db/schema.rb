@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120423022943) do
+ActiveRecord::Schema.define(:version => 20170306112748) do
 
   create_table "crops", :force => true do |t|
     t.string   "name",       :null => false
@@ -22,14 +22,15 @@ ActiveRecord::Schema.define(:version => 20120423022943) do
   create_table "fertilisers", :force => true do |t|
     t.string   "metric_name"
     t.string   "imperial_name"
-    t.decimal  "N",             :precision => 3, :scale => 2, :default => 0.0, :null => false
-    t.decimal  "P",             :precision => 3, :scale => 2, :default => 0.0, :null => false
-    t.decimal  "K",             :precision => 3, :scale => 2, :default => 0.0, :null => false
-    t.decimal  "S",             :precision => 3, :scale => 2, :default => 0.0, :null => false
-    t.decimal  "Mg",            :precision => 3, :scale => 2, :default => 0.0, :null => false
-    t.decimal  "liquid_weight", :precision => 7, :scale => 6, :default => 0.0, :null => false
-    t.datetime "created_at",                                                   :null => false
-    t.datetime "updated_at",                                                   :null => false
+    t.decimal  "N",               :precision => 3, :scale => 2, :default => 0.0, :null => false
+    t.decimal  "P",               :precision => 3, :scale => 2, :default => 0.0, :null => false
+    t.decimal  "K",               :precision => 3, :scale => 2, :default => 0.0, :null => false
+    t.decimal  "S",               :precision => 3, :scale => 2, :default => 0.0, :null => false
+    t.decimal  "Mg",              :precision => 3, :scale => 2, :default => 0.0, :null => false
+    t.decimal  "metric_weight",   :precision => 7, :scale => 6, :default => 0.0, :null => false
+    t.datetime "created_at",                                                     :null => false
+    t.datetime "updated_at",                                                     :null => false
+    t.decimal  "imperial_weight", :precision => 4, :scale => 2, :default => 0.0, :null => false
   end
 
   create_table "regression_coefficients", :force => true do |t|

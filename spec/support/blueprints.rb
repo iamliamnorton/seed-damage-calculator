@@ -13,7 +13,8 @@ Fertiliser.blueprint do
   K               { 0.33 }
   S               { 0.33 }
   Mg              { 0.33 }
-  liquid_weight   { 0.334329 }
+  metric_weight   { 0.334329 }
+  imperial_weight { 10.50 }
 end
 
 SoilTexture.blueprint do

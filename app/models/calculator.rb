@@ -70,8 +70,10 @@ class Calculator
   end
 
   def calculate_liquid_weight
-    if fertiliser.liquid_weight.to_f > 0
-      self.liquid_weight = (self.result / fertiliser.liquid_weight).round(1)
+    calculation_weight = metric? ? fertiliser.metric_weight : fertiliser.imperial_weight
+
+    if calculation_weight.to_f > 0
+      self.liquid_weight = (self.result / calculation_weight).round(1)
     end
   end
 
