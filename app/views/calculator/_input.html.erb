@@ -5,7 +5,6 @@
         LANGUAGES,
         params[:calculator] && params[:calculator][:locale] || "imperial"),
       onchange: 'this.form.submit()',
-      disabled: Fasdac::Application.config.calculator_disabled,
       class: "form-control" %>
   <% end %>
 </div>
@@ -20,7 +19,6 @@
       :fertiliser_id,
       options_from_collection_for_select(@fertilisers, 'id', "#{I18n.locale}_name", @calculator.fertiliser_id),
       {},
-      disabled: Fasdac::Application.config.calculator_disabled,
       class: "form-control" %>
   </div>
 
@@ -30,7 +28,6 @@
       :crop_id,
       options_from_collection_for_select(@crops, 'id', 'name', @calculator.crop_id),
       {},
-      disabled: Fasdac::Application.config.calculator_disabled,
       class: "form-control" %>
   </div>
 
@@ -40,7 +37,6 @@
       :soil_moisture_id,
       options_from_collection_for_select(@soil_moistures, 'id', 'name', @calculator.soil_moisture_id),
       {},
-      disabled: Fasdac::Application.config.calculator_disabled,
       class: "form-control" %>
   </div>
 
@@ -50,7 +46,6 @@
       :soil_texture_id,
       options_from_collection_for_select(@soil_textures, 'id', 'name', @calculator.soil_texture_id),
       {},
-      disabled: Fasdac::Application.config.calculator_disabled,
       class: "form-control" %>
   </div>
 
@@ -59,7 +54,6 @@
     <%= f.number_field \
       :seed_furrow_opening_width,
       placeholder: "1 - 100",
-      disabled: Fasdac::Application.config.calculator_disabled,
       class: "form-control" %>
   </div>
 
@@ -68,7 +62,6 @@
     <%= f.number_field \
       :row_spacing,
       placeholder: "1 - 100",
-      disabled: Fasdac::Application.config.calculator_disabled,
       class: "form-control" %>
   </div>
 
@@ -77,7 +70,6 @@
     <%= f.number_field \
       :tolerated_stand_loss,
       placeholder: "1 - 100",
-      disabled: Fasdac::Application.config.calculator_disabled,
       class: "form-control" %>
   </div>
 
@@ -89,8 +81,6 @@
   </div>
 
   <div class="text-center">
-    <%= f.submit "Calculate",
-      class: 'btn btn-success',
-      disabled: Fasdac::Application.config.calculator_disabled %>
+    <%= f.submit "Calculate", class: 'btn btn-success' %>
   </div>
 <% end %>
