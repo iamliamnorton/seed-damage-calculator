@@ -114,7 +114,7 @@ class Calculator
   private
 
   def metric?
-    self.locale == "metric"
+    self.locale.to_s == "metric"
   end
 
   def fertiliser
