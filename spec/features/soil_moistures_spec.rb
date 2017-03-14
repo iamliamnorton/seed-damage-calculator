@@ -14,25 +14,25 @@ describe "SoilMoistures", type: :feature do
 
     it "empty input is not accepted" do
       click_button "Create Soil moisture"
-      page.should have_content("Name can't be blank")
+      expect(page).to have_content("Name can't be blank")
     end
 
     it "invalid input is not accepted" do
       fill_in "Name", :with => " "
       click_button "Create Soil moisture"
-      page.should have_content("Name can't be blank")
+      expect(page).to have_content("Name can't be blank")
     end
 
     it "a duplicate soil_moisture is not accepted" do
       fill_in "Name", :with => @valid_soil_moisture.name
       click_button "Create Soil moisture"
-      page.should have_content("Name has already been taken")
+      expect(page).to have_content("Name has already been taken")
     end
 
     it "valid input is accepted" do
       fill_in "Name", :with => "dry"
       click_button "Create Soil moisture"
-      page.should have_content("Soil moisture was successfully created.")
+      expect(page).to have_content("Soil moisture was successfully created.")
     end
 
     it "a new soil_moisture should produce corresponding soil_coefficients" do
@@ -40,7 +40,7 @@ describe "SoilMoistures", type: :feature do
       soil_texture = SoilTexture.make!
       fill_in "Name", :with => "dry"
       click_button "Create Soil moisture"
-      page.should have_content("Soil moisture was successfully created.")
+      expect(page).to have_content("Soil moisture was successfully created.")
       assert_equal(1, SoilCoefficient.count)
     end
   end
@@ -53,32 +53,32 @@ describe "SoilMoistures", type: :feature do
     it "empty input is not accepted" do
       fill_in "Name", :with => ""
       click_button "Update Soil moisture"
-      page.should have_content("Name can't be blank")
+      expect(page).to have_content("Name can't be blank")
     end
 
     it "invalid input is not accepted" do
       fill_in "Name", :with => " "
       click_button "Update Soil moisture"
-      page.should have_content("Name can't be blank")
+      expect(page).to have_content("Name can't be blank")
     end
 
     it "unchanged input is accepted" do
       click_button "Update Soil moisture"
-      page.should have_content("Soil moisture was successfully updated.")
+      expect(page).to have_content("Soil moisture was successfully updated.")
     end
 
     it "valid input is accepted" do
       valid = SoilMoisture.make
       fill_in "Name", :with => valid.name
       click_button "Update Soil moisture"
-      page.should have_content("Soil moisture was successfully updated.")
+      expect(page).to have_content("Soil moisture was successfully updated.")
     end
   end
 
   describe "- when admin attempts to destroy a soil_moisture -" do
     it "is removed from the database" do
       click_link "Destroy"
-      page.should have_content("Soil moisture was successfully destroyed.")
+      expect(page).to have_content("Soil moisture was successfully destroyed.")
       assert_equal(0, SoilMoisture.count)
     end
 

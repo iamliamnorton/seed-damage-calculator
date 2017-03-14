@@ -28,6 +28,6 @@ describe "PDF Generation", type: :feature do
     click_link "Download PDF"
 
     # bug with rspec / prawn where exception raised for...
-    # page.should have_content("results are subject to the terms and conditions")
+    # expect(page).to have_content("results are subject to the terms and conditions")
   end
 end

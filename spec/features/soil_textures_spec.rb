@@ -14,25 +14,25 @@ describe "SoilTextures", type: :feature do
 
     it "empty input is not accepted" do
       click_button "Create Soil texture"
-      page.should have_content("Name can't be blank")
+      expect(page).to have_content("Name can't be blank")
     end
 
     it "invalid input is not accepted" do
       fill_in "Name", :with => " "
       click_button "Create Soil texture"
-      page.should have_content("Name can't be blank")
+      expect(page).to have_content("Name can't be blank")
     end
 
     it "a duplicate soil_texture is not accepted" do
       fill_in "Name", :with => @valid_soil_texture.name
       click_button "Create Soil texture"
-      page.should have_content("Name has already been taken")
+      expect(page).to have_content("Name has already been taken")
     end
 
     it "valid input is accepted" do
       fill_in "Name", :with => "medium"
       click_button "Create Soil texture"
-      page.should have_content("Soil texture was successfully created.")
+      expect(page).to have_content("Soil texture was successfully created.")
     end
 
     it "a new soil_texture should produce corresponding soil_coefficients" do
@@ -40,7 +40,7 @@ describe "SoilTextures", type: :feature do
       soil_moisture = SoilMoisture.make!
       fill_in "Name", :with => "medium"
       click_button "Create Soil texture"
-      page.should have_content("Soil texture was successfully created.")
+      expect(page).to have_content("Soil texture was successfully created.")
       assert_equal(1, SoilCoefficient.count)
     end
   end
@@ -53,33 +53,33 @@ describe "SoilTextures", type: :feature do
     it "empty input is not accepted" do
       fill_in "Name", :with => ""
       click_button "Update Soil texture"
-      page.should have_content("Name can't be blank")
+      expect(page).to have_content("Name can't be blank")
     end
 
     it "invalid input is not accepted" do
       fill_in "Name", :with => " "
       click_button "Update Soil texture"
-      page.should have_content("Name can't be blank")
+      expect(page).to have_content("Name can't be blank")
     end
 
     it "unchanged input is accepted" do
       click_button "Update Soil texture"
-      page.should have_content("Soil texture was successfully updated.")
+      expect(page).to have_content("Soil texture was successfully updated.")
     end
 
     it "valid input is accepted" do
       valid = SoilTexture.make
       fill_in "Name", :with => valid.name
       click_button "Update Soil texture"
-      page.should have_content("Soil texture was successfully updated.")
+      expect(page).to have_content("Soil texture was successfully updated.")
     end
   end
 
   describe "- when admin attempts to destroy a soil_texture -" do
     it "is removed from the database" do
       click_link "Destroy"
-      page.should_not have_content(@valid_soil_texture.name)
-      page.should have_content("Soil texture was successfully destroyed.")
+      expect(page).to_not have_content(@valid_soil_texture.name)
+      expect(page).to have_content("Soil texture was successfully destroyed.")
     end
 
     it "destroys all corresponding soil_coefficients" do

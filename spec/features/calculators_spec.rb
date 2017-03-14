@@ -37,23 +37,23 @@ describe "Calculation", type: :feature do
       end
 
       it "success notification is shown" do
-        page.should have_content("Calculation successful.")
+        expect(page).to have_content("Calculation successful.")
       end
 
       it "should print some results" do
-        page.should have_content("Maximium lbs/ac of fertilizer product with seed")
-        page.should have_content("Fertilizer")
-        page.should_not have_content("Fertiliser")
-        find(:css, 'input#result').value.should_not be_nil
-        find(:css, 'input#result').value.should_not == ""
+        expect(page).to have_content("Maximium lbs/ac of fertilizer product with seed")
+        expect(page).to have_content("Fertilizer")
+        expect(page).to_not have_content("Fertiliser")
+        expect(find(:css, 'input#result').value).not_to be_nil
+        expect(find(:css, 'input#result').value).not_to eq("")
       end
 
       context "when changing locales" do
         it "should return results in that locale" do
           select "Metric", from: "locale"
 
-          page.should_not have_content("Fertilizer")
-          page.should have_content("Fertiliser")
+          expect(page).to_not have_content("Fertilizer")
+          expect(page).to have_content("Fertiliser")
 
           select crop_1.name, :from => "calculator_crop_id"
           select fertiliser_1.metric_name, :from => "calculator_fertiliser_id"
@@ -65,7 +65,7 @@ describe "Calculation", type: :feature do
           check('calculator_terms_of_service')
 
           click_button "Calculate"
-          page.should have_content("Maximium kg/ha of fertiliser product with seed")
+          expect(page).to have_content("Maximium kg/ha of fertiliser product with seed")
         end
       end
     end
@@ -78,11 +78,11 @@ describe "Calculation", type: :feature do
         end
 
         it "should alert the user" do
-          page.should have_content("Calculation unsuccessful.")
+          expect(page).to have_content("Calculation unsuccessful.")
         end
 
         it "should not print results" do
-          find(:css, 'input#result').value.should == ""
+          expect(find(:css, 'input#result').value).to eq("")
         end
       end
 
@@ -93,11 +93,11 @@ describe "Calculation", type: :feature do
         end
 
         it "should alert the user" do
-          page.should have_content("Please fill in all fields appropriately")
+          expect(page).to have_content("Please fill in all fields appropriately")
         end
 
         it "should not print results" do
-          find(:css, 'input#result').value.should == ""
+          expect(find(:css, 'input#result').value).to eq("")
         end
       end
     end
@@ -105,14 +105,14 @@ describe "Calculation", type: :feature do
     describe "can change locales within the app" do
       it "can choose the metric locale" do
         select "Metric", :from => "locale"
-        page.should have_content("Fertiliser")
-        page.should_not have_content("Fertilizer")
+        expect(page).to have_content("Fertiliser")
+        expect(page).to_not have_content("Fertilizer")
       end
 
       it "can choose the imperial locale" do
         select "Imperial", :from => "locale"
-        page.should have_content("Fertilizer")
-        page.should_not have_content("Fertiliser")
+        expect(page).to have_content("Fertilizer")
+        expect(page).to_not have_content("Fertiliser")
       end
     end
   end
