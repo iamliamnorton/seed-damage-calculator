@@ -2,9 +2,9 @@ development: &default
   adapter: postgresql
   encoding: utf8
   pool: 5
-  username: postgres
-  password: password
-  host: localhost
+  username: <%= ENV['DB_USER'] || "root" %>
+  password: <%= ENV['DB_PASS'] %>
+  host: <%= ENV['DB_HOST'] || 'localhost' %>
 
 development:
   <<: *default

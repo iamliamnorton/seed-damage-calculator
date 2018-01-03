@@ -1,21 +1,31 @@
 PROJECT = seed-damage-calculator
 
 .PHONY: build
-build:
-	bundle && \
-	  bundle exec rake db:drop && \
-	  bundle exec rake db:create && \
-	  bundle exec rake db:migrate && \
-	  bundle exec rake db:seed
+build: Dockerfile
+	docker-compose build
+
+.PHONY: db
+db:
+	docker-compose run web rake db:create db:migrate db:seed
 
 .PHONY: run
 run:
-	bundle exec rails server
+	docker-compose up
+
+.PHONY: shell
+shell:
+	docker-compose run web bash
+
+.PHONY: stop
+stop:
+	docker-compose stop && \
+	  docker-compose down && \
+	  rm -rf tmp/pids/*
 
 .PHONY: test
 test:
-	./ci/env/test.sh ./ci/test.sh
+	docker-compose run web ./ci/env/test.sh ./ci/test.sh
 
 .PHONY: deploy
 deploy:
-	# Latest passing master branch already deployed
+	git push heroku master
