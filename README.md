@@ -6,24 +6,24 @@ Seed Damage Calculator
 
 Calculation app used to find the [optimum fertilizer to seed ratio](http://seed-damage-calculator.herokuapp.com) for sowing with crops.
 
-#### Rails
-
-Setup project and run tests...
-
-```
-make build test
-```
-
-Run a rails server...
-
-```
-make build run
-```
-
 #### Development
 
-https://github.com/iamliamnorton/heroku-vm
+This app can be run with docker/compose locally with:
+
+```
+make run
+```
+
+The tests are run with:
+
+```
+make test
+```
 
 #### Deploy
 
-Latest passing master is **continuously deployed**.
+After changes have been merged to master and all tests are passing, deploy with:
+
+```
+make deploy
+```
