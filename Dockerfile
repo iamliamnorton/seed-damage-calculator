@@ -28,11 +28,11 @@ RUN \
 
 WORKDIR /srv/app
 
-COPY Gemfile* /srv/app/
+COPY Gemfile* ./
 
-RUN bundle install
+RUN bundle install --jobs 4 || bundle check
 
-ADD . .
+COPY . .
 
 VOLUME ["/srv/app/log"]
 
