@@ -1,4 +1,4 @@
-FROM ruby:2.3.6-slim
+FROM ruby:2.6.0-slim
 MAINTAINER Liam Norton <iamliamnorton@gmail.com>
 
 RUN \
