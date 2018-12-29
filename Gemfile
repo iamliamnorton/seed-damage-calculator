@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 ruby '2.6.0'
 
-gem 'active_link_to'
 gem 'best_in_place'
 gem 'bootstrap'
 gem 'coffee-rails' # required for heroku deployment
