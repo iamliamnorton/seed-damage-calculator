@@ -41,8 +41,12 @@
 
   <% if @calculator.result.present? %>
     <div class="text-center">
+    <% calculator_params = params.
+      require(:calculator).
+      permit(:locale, :fertiliser_id, :crop_id, :soil_moisture_id, :soil_texture_id, :seed_furrow_opening_width, :row_spacing, :tolerated_stand_loss, :terms_of_service).
+      merge(locale: I18n.locale).to_h %>
       <%= link_to "Download PDF",
-        calculator_path(calculator: params.permit(:calculator), format: :pdf),
+        calculator_path(calculator: calculator_params, format: :pdf),
         class: "btn btn-primary" %>
     </div>
   <% end %>

@@ -14,7 +14,7 @@ gem 'newrelic_rpm'
 gem 'pg', '~> 0.11' # locked until rails > 5
 gem 'prawn', '0.12.0'
 gem 'prawn_rails', '0.0.11'
-gem 'rails', '5.0.7.1'
+gem 'rails', '5.1.6.1'
 gem 'sass-rails'
 gem 'test-unit' # locked until rails > 5
 gem 'uglifier'
