@@ -1,6 +1,4 @@
-Fasdac::Application.routes.draw do
-  root to: "calculator#index"
-
+Rails.application.routes.draw do
   resource :calculator,
     only: [:index]
 
@@ -35,4 +33,6 @@ Fasdac::Application.routes.draw do
   match '/definitions' => "pages#definitions", via: :get
   match '/disclaimer' => "pages#disclaimer", via: :get
   match '/theory' => "pages#theory", via: :get
+
+  root to: "calculator#index"
 end

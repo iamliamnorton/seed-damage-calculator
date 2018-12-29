@@ -8,13 +8,13 @@ gem 'google-analytics-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'newrelic_rpm'
-gem 'pg', '~> 0.11' # locked for rails < 4
+gem 'pg', '~> 0.11' # locked until rails > 5
 gem 'prawn', '0.12.0'
 gem 'prawn_rails', '0.0.11'
-gem 'rails', '4.0.13'
+gem 'rails', '4.1.16'
 gem 'sass-rails'
-gem 'test-unit'
-gem 'therubyracer', platform: :ruby
+gem 'test-unit' # locked until rails > 5
+gem 'therubyracer', platform: :ruby # locked until rails > 5
 gem "twitter-bootstrap-rails"
 gem 'uglifier'
 
