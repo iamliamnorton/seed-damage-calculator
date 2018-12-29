@@ -1,6 +1,6 @@
 class CalculatorController < ApplicationController
-  before_filter :load_variables
-  before_filter :set_locale
+  before_action :load_variables
+  before_action :set_locale
 
   def index
     @calculator = Calculator.new(calculator_params)

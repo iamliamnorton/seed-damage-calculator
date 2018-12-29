@@ -1,6 +1,6 @@
 class Admin::SoilCoefficientsController < Admin::BaseController
-  before_filter :load_soil_coefficient, :only => [:edit, :update, :destroy]
-  before_filter :load_soil_attributes, :except => [:destroy]
+  before_action :load_soil_coefficient, :only => [:edit, :update, :destroy]
+  before_action :load_soil_attributes, :except => [:destroy]
 
   def index
     @soil_coefficients = SoilCoefficient.all

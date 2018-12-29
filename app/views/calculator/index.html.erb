@@ -1,7 +1,7 @@
 <% content_for :title, "Seed Damage Calculator" %>
 <% content_for :description, "Calculate the optimal fertilizer material to apply with seed" %>
 
-<div class="container top-buffer-sm">
+<div class="container mt-3">
   <div class="jumbotron">
     <p>
     A decision aid to assist crop planners in selecting the maximum safe
@@ -9,16 +9,16 @@
     seed for various crops.
     </p>
     <p>
-    The aid uses regression coefficients (crop stand upon
+    It uses regression coefficients (crop stand upon
     <%= t('models.fertiliser').downcase %> rate) that were developed using
-    published studies from the <%= link_to "read more...", theory_path %>
+    published studies. <%= link_to "Learn more...", theory_path %>
     </p>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-12">
       <%= render 'shared/notifications' %>
     </div>
   </div>
@@ -26,14 +26,18 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <div class="well">
-        <%= render 'input' %>
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <%= render 'input' %>
+        </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="well">
-        <%= render 'output' %>
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <%= render 'output' %>
+        </div>
       </div>
     </div>
   </div>

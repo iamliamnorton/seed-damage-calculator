@@ -1,5 +1,5 @@
 class Admin::FertilisersController < Admin::BaseController
-  before_filter :load_fertiliser, :only => [:edit, :update, :destroy]
+  before_action :load_fertiliser, :only => [:edit, :update, :destroy]
 
   def index
     @fertilisers = Fertiliser.all

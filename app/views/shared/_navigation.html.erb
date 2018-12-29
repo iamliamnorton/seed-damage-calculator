@@ -1,19 +1,24 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <%= nav_bar fixed: :top, brand: "Seed Damage Calculator", responsive: true do %>
-        <%= menu_group pull: :right do %>
-          <% if @satellite_page %>
-            <%= menu_item "Calculator", root_path %>
-            <%= menu_divider %>
-          <% end %>
-          <%= menu_item "Theory", theory_path %>
-          <%= menu_divider %>
-          <%= menu_item "Definitions", definitions_path %>
-          <%= menu_divider %>
-          <%= menu_item "Disclaimer", disclaimer_path %>
-        <% end %>
-      <% end %>
-    </div>
+    <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light border-bottom shadow-sm">
+      <div class="container justify-content-between">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <%= link_to "Seed Damage Calculator", root_path, class: 'navbar-brand' %>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+          <ul class="navbar-nav mr-auto mt-2 text-right mt-lg-0">
+            <% if @satellite_page %>
+              <li class="nav-item">
+                <%= link_to "Calculator", root_path, class: 'nav-link' %>
+              </li>
+            <% end %>
+            <%= link_to "Theory", theory_path, class: 'nav-link' %>
+            <%= link_to "Definitions", definitions_path, class: 'nav-link' %>
+            <%= link_to "Disclaimer", disclaimer_path, class: 'nav-link' %>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </div>
 </div>

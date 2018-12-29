@@ -1,5 +1,5 @@
 class Admin::SoilTexturesController < Admin::BaseController
-  before_filter :load_soil_texture, :only => [:edit, :update, :destroy]
+  before_action :load_soil_texture, :only => [:edit, :update, :destroy]
 
   def index
     @soil_textures = SoilTexture.all

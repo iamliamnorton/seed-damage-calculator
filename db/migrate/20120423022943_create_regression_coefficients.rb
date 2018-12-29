@@ -1,4 +1,4 @@
-class CreateRegressionCoefficients < ActiveRecord::Migration
+class CreateRegressionCoefficients < ActiveRecord::Migration[4.2]
   def change
     create_table :regression_coefficients do |t|
       t.decimal :value,         :precision => 4, :scale => 3, :null => false, :default => 0

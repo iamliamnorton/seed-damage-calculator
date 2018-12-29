@@ -1,4 +1,4 @@
-class CreateFertilisers < ActiveRecord::Migration
+class CreateFertilisers < ActiveRecord::Migration[4.2]
   def change
     create_table :fertilisers do |t|
       t.string :metric_name

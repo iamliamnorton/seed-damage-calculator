@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_filter :satellite_page
+  before_action :satellite_page
 
   def theory
     @crops = Crop.order('name')

@@ -1,5 +1,5 @@
 class Admin::CropsController < Admin::BaseController
-  before_filter :load_crop, :only => [:edit, :update, :destroy]
+  before_action :load_crop, :only => [:edit, :update, :destroy]
 
   def index
     @crops = Crop.all

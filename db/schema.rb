@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -25,38 +24,36 @@ ActiveRecord::Schema.define(version: 20170306112748) do
   create_table "fertilisers", force: :cascade do |t|
     t.string   "metric_name"
     t.string   "imperial_name"
-    t.decimal  "N",               precision: 3, scale: 2, default: 0.0, null: false
-    t.decimal  "P",               precision: 3, scale: 2, default: 0.0, null: false
-    t.decimal  "K",               precision: 3, scale: 2, default: 0.0, null: false
-    t.decimal  "S",               precision: 3, scale: 2, default: 0.0, null: false
-    t.decimal  "Mg",              precision: 3, scale: 2, default: 0.0, null: false
-    t.decimal  "metric_weight",   precision: 7, scale: 6, default: 0.0, null: false
+    t.decimal  "N",               precision: 3, scale: 2, default: "0.0", null: false
+    t.decimal  "P",               precision: 3, scale: 2, default: "0.0", null: false
+    t.decimal  "K",               precision: 3, scale: 2, default: "0.0", null: false
+    t.decimal  "S",               precision: 3, scale: 2, default: "0.0", null: false
+    t.decimal  "Mg",              precision: 3, scale: 2, default: "0.0", null: false
+    t.decimal  "metric_weight",   precision: 7, scale: 6, default: "0.0", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "imperial_weight", precision: 4, scale: 2, default: 0.0, null: false
+    t.decimal  "imperial_weight", precision: 4, scale: 2, default: "0.0", null: false
   end
 
   create_table "regression_coefficients", force: :cascade do |t|
-    t.decimal  "value",         precision: 4, scale: 3, default: 0.0, null: false
+    t.decimal  "value",         precision: 4, scale: 3, default: "0.0", null: false
     t.integer  "crop_id"
     t.integer  "fertiliser_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["crop_id"], name: "index_regression_coefficients_on_crop_id", using: :btree
+    t.index ["fertiliser_id"], name: "index_regression_coefficients_on_fertiliser_id", using: :btree
   end
 
-  add_index "regression_coefficients", ["crop_id"], name: "index_regression_coefficients_on_crop_id", using: :btree
-  add_index "regression_coefficients", ["fertiliser_id"], name: "index_regression_coefficients_on_fertiliser_id", using: :btree
-
   create_table "soil_coefficients", force: :cascade do |t|
-    t.decimal  "value",            precision: 3, scale: 2, default: 0.0, null: false
+    t.decimal  "value",            precision: 3, scale: 2, default: "0.0", null: false
     t.integer  "soil_texture_id"
     t.integer  "soil_moisture_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["soil_moisture_id"], name: "index_soil_coefficients_on_soil_moisture_id", using: :btree
+    t.index ["soil_texture_id"], name: "index_soil_coefficients_on_soil_texture_id", using: :btree
   end
-
-  add_index "soil_coefficients", ["soil_moisture_id"], name: "index_soil_coefficients_on_soil_moisture_id", using: :btree
-  add_index "soil_coefficients", ["soil_texture_id"], name: "index_soil_coefficients_on_soil_texture_id", using: :btree
 
   create_table "soil_moistures", force: :cascade do |t|
     t.string   "name"

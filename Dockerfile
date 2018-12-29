@@ -13,6 +13,7 @@ RUN \
 
 ENV PHANTOM phantomjs-2.1.1-linux-x86_64
 
+# Phantom JS for browser testing
 RUN \
   apt-get update &&\
   apt-get -y install \
@@ -25,6 +26,12 @@ RUN \
   mv "$PHANTOM" /usr/local/share &&\
   ln -sf /usr/local/share/"$PHANTOM"/bin/phantomjs /usr/local/bin &&\
   rm -rf /var/lib/apt/lists/*
+
+# Node JS Runtime
+RUN apt-get update &&\
+    apt-get -y install curl gnupg sudo &&\
+    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - &&\
+    apt-get -y install nodejs
 
 WORKDIR /srv/app
 

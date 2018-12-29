@@ -1,6 +1,6 @@
 class Admin::RegressionCoefficientsController < Admin::BaseController
-  before_filter :load_regression_coefficient, :only => [:edit, :update, :destroy]
-  before_filter :load_other_attributes, :except => [:destroy]
+  before_action :load_regression_coefficient, :only => [:edit, :update, :destroy]
+  before_action :load_other_attributes, :except => [:destroy]
 
   def index
     @regression_coefficients = RegressionCoefficient.all

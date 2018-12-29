@@ -1,9 +1,9 @@
 <% content_for :title, "Theory - Seed Damage Calculator" %>
 <% content_for :description, "Theory behind the seed damage calculator." %>
 
-<div class="container top-buffer-sm">
+<div class="container mt-3">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-12">
       <h1>Theory</h1>
 
       <hr>
@@ -30,33 +30,35 @@
       can be downloaded <%= link_to "here", "/Gelderman_Report.pdf" %>.
       </p>
 
-      <div class="well top-buffer-sm">
-        <p>
-        This tool uses regression coefficients (crop stand upon fertilizer rate) that were developed using published studies from North America. Coefficients are adjusted for soil texture and soil moisture based on data collected under standardised conditions. The tool uses the equation:
-        </p>
-        <br /><br />
-        <span class="text-center">
-          <h1>F = 30S (-T)/CRMX</h1>
-        </span>
-        <br /><br />
-        <strong>F</strong> = fertilizer material (lb/ac or kg/ha).<br />
-        <strong>S</strong> = seed furrow opening (in or cm).<br />
-        <strong>T</strong> = tolerated stand loss, as a percent, due to fertilizer applied with seed over typical stands, where no fertilizer is applied.<br />
-        <strong>C</strong> = negative regression coefficient for the selected crop X fertilizer (%/lb/ac or %/kg/ha).<br />
-        <strong>R</strong> = row spacing (in or cm).<br />
-        <strong>MX</strong> = planting soil moisture and soil texture coefficients.<br />
-        </p>
+      <div class="card mt-3">
+        <div class="card-body">
+          <p>
+          This tool uses regression coefficients (crop stand upon fertilizer rate) that were developed using published studies from North America. Coefficients are adjusted for soil texture and soil moisture based on data collected under standardised conditions. The tool uses the equation:
+          </p>
+          <br /><br />
+          <span class="text-center">
+            <h1>F = 30S (-T)/CRMX</h1>
+          </span>
+          <br /><br />
+          <strong>F</strong> = fertilizer material (lb/ac or kg/ha).<br />
+          <strong>S</strong> = seed furrow opening (in or cm).<br />
+          <strong>T</strong> = tolerated stand loss, as a percent, due to fertilizer applied with seed over typical stands, where no fertilizer is applied.<br />
+          <strong>C</strong> = negative regression coefficient for the selected crop X fertilizer (%/lb/ac or %/kg/ha).<br />
+          <strong>R</strong> = row spacing (in or cm).<br />
+          <strong>MX</strong> = planting soil moisture and soil texture coefficients.<br />
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <div class="container">
-  <div class="row top-buffer-sm">
-    <div class="col-md-12">
+  <div class="row mt-3">
+    <div class="col-12">
       <h3>Negative Regression Coefficients</h3>
       <div class="table-responsive">
-        <table class="table table-striped table-condensed">
+        <table class="table table-striped table-sm">
           <thead>
             <th></th>
             <% @crops.each do |crop| %>
@@ -80,11 +82,11 @@
 </div>
 
 <div class="container">
-  <div class="row top-buffer-sm">
-    <div class="col-md-12">
+  <div class="row mt-3">
+    <div class="col-12">
       <h3>Soil Coefficients</h3>
       <div class="table-responsive">
-        <table class="table table-striped table-condensed">
+        <table class="table table-striped table-sm">
           <thead>
             <th></th>
             <% @soil_moistures.each do |soil_moisture| %>
@@ -108,8 +110,8 @@
 </div>
 
 <div class="container">
-  <div class="row top-buffer-sm">
-    <div class="col-md-12">
+  <div class="row mt-3">
+    <div class="col-12">
       <h3>Acknowledgements</h3>
       <ul>
         <li>

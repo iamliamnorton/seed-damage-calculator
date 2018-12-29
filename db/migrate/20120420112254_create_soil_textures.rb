@@ -1,4 +1,4 @@
-class CreateSoilTextures < ActiveRecord::Migration
+class CreateSoilTextures < ActiveRecord::Migration[4.2]
   def change
     create_table :soil_textures do |t|
       t.string :name

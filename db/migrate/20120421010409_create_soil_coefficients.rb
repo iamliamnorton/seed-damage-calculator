@@ -1,4 +1,4 @@
-class CreateSoilCoefficients < ActiveRecord::Migration
+class CreateSoilCoefficients < ActiveRecord::Migration[4.2]
   def change
     create_table :soil_coefficients do |t|
       t.decimal :value,             :precision => 3, :scale => 2, :null => false, :default => 0

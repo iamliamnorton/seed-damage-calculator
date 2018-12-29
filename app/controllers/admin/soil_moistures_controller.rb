@@ -1,5 +1,5 @@
 class Admin::SoilMoisturesController < Admin::BaseController
-  before_filter :load_soil_moisture, :only => [:edit, :update, :destroy]
+  before_action :load_soil_moisture, :only => [:edit, :update, :destroy]
 
   def index
     @soil_moistures = SoilMoisture.all
