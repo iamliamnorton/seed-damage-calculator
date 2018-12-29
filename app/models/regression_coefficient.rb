@@ -1,4 +1,4 @@
-class RegressionCoefficient < ActiveRecord::Base
+class RegressionCoefficient < ApplicationRecord
   belongs_to :crop
   belongs_to :fertiliser
   delegate :name, :to => :crop, :prefix => true

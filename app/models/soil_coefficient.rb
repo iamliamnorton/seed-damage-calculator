@@ -1,4 +1,4 @@
-class SoilCoefficient < ActiveRecord::Base
+class SoilCoefficient < ApplicationRecord
   belongs_to :soil_texture
   belongs_to :soil_moisture
   delegate :name, :to => :soil_texture, :prefix => true

@@ -1,4 +1,4 @@
-class Fertiliser < ActiveRecord::Base
+class Fertiliser < ApplicationRecord
   has_many :regression_coefficients, :dependent => :destroy
   validates :metric_name, :imperial_name, :presence => true
   validates_uniqueness_of :metric_name, :imperial_name, :case_sensitive => false
