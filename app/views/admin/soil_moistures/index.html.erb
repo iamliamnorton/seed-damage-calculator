@@ -19,7 +19,7 @@
 <tr>
   <td><%= soil_moisture.name %></td>
   <td><%= link_to 'Edit', edit_admin_soil_moisture_path(soil_moisture) %></td>
-  <td><%= link_to 'Destroy', [:admin, soil_moisture], confirm: 'Are you sure?', method: :delete %></td>
+  <td><%= link_to 'Destroy', [:admin, soil_moisture], data: { confirm: 'Are you sure?' }, method: :delete %></td>
 </tr>
 <% end %>
 </table>

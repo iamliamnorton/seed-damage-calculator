@@ -16,12 +16,4 @@ class Admin::BaseController < ApplicationController
       end
     end
   end
-
-  def clear_cache
-    expire_page "/"
-    expire_page "/calculator"
-    expire_page theory_path
-    expire_page disclaimer_path
-    expire_page definitions_path
-  end
 end

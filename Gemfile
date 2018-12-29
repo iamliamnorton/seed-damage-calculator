@@ -7,12 +7,11 @@ gem 'coffee-rails'
 gem 'google-analytics-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'less-rails'
 gem 'newrelic_rpm'
 gem 'pg', '~> 0.11' # locked for rails < 4
 gem 'prawn', '0.12.0'
 gem 'prawn_rails', '0.0.11'
-gem 'rails', '~> 3.2'
+gem 'rails', '4.0.13'
 gem 'sass-rails'
 gem 'test-unit'
 gem 'therubyracer', platform: :ruby

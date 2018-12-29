@@ -11,13 +11,11 @@ class Admin::SoilCoefficientsController < Admin::BaseController
 
   def update
     respond_to do |format|
-      if @soil_coefficient.update_attributes(params[:soil_coefficient])
+      if @soil_coefficient.update_attributes(soil_coefficient_params)
         format.html do
-          clear_cache
           redirect_to admin_soil_coefficients_path, notice: 'Soil coefficient was successfully updated.'
         end
         format.json do
-          clear_cache
           respond_with_bip(@soil_coefficient)
         end
       else
@@ -36,5 +34,9 @@ class Admin::SoilCoefficientsController < Admin::BaseController
   def load_soil_attributes
     @soil_moistures = SoilMoisture.all
     @soil_textures = SoilTexture.all
+  end
+
+  def soil_coefficient_params
+    params.require(:soil_coefficient).permit(:value, :soil_texture_id, :soil_moisture_id)
   end
 end

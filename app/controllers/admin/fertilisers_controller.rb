@@ -13,14 +13,13 @@ class Admin::FertilisersController < Admin::BaseController
   end
 
   def create
-    @fertiliser = Fertiliser.new(params[:fertiliser])
+    @fertiliser = Fertiliser.new(fertiliser_params)
     @crops = Crop.all
 
     if @fertiliser.save
       @crops.each do |crop|
         RegressionCoefficient.create(:crop_id => crop.id, :fertiliser_id => @fertiliser.id)
       end
-      clear_cache
       flash[:notice] = 'Fertiliser was successfully created.'
       redirect_to admin_fertilisers_path
     else
@@ -29,8 +28,7 @@ class Admin::FertilisersController < Admin::BaseController
   end
 
   def update
-    if @fertiliser.update_attributes(params[:fertiliser])
-      clear_cache
+    if @fertiliser.update_attributes(fertiliser_params)
       flash[:notice] = 'Fertiliser was successfully updated.'
       redirect_to admin_fertilisers_path
     else
@@ -39,7 +37,6 @@ class Admin::FertilisersController < Admin::BaseController
   end
 
   def destroy
-    clear_cache
     @fertiliser.destroy
     flash[:notice] = 'Fertiliser was successfully destroyed.'
     redirect_to admin_fertilisers_path
@@ -49,5 +46,9 @@ class Admin::FertilisersController < Admin::BaseController
 
   def load_fertiliser
     @fertiliser = Fertiliser.find(params[:id])
+  end
+
+  def fertiliser_params
+    params.require(:fertiliser).permit(:imperial_name, :metric_name, :N, :P, :K, :S, :Mg, :imperial_weight, :metric_weight)
   end
 end

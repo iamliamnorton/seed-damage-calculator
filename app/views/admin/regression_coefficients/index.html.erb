@@ -50,7 +50,7 @@
   <td><%= regression_coefficient.crop_name %></td>
   <td><%= regression_coefficient.fertiliser_metric_name %></td>
   <td><%= link_to 'Edit', edit_admin_regression_coefficient_path(regression_coefficient) %></td>
-  <td><%= link_to 'Destroy', [:admin, regression_coefficient], confirm: 'Are you sure?', method: :delete %></td>
+  <td><%= link_to 'Destroy', [:admin, regression_coefficient], data: { confirm: 'Are you sure?' }, method: :delete %></td>
 </tr>
 <% end %>
 </table>

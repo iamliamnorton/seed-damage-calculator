@@ -13,14 +13,13 @@ class Admin::SoilMoisturesController < Admin::BaseController
   end
 
   def create
-    @soil_moisture = SoilMoisture.new(params[:soil_moisture])
+    @soil_moisture = SoilMoisture.new(soil_moisture_params)
     @soil_textures = SoilTexture.all
 
     if @soil_moisture.save
       @soil_textures.each do |soil_texture|
         SoilCoefficient.create(:soil_texture_id => soil_texture.id, :soil_moisture_id => @soil_moisture.id)
       end
-      clear_cache
       flash[:notice] = 'Soil moisture was successfully created.'
       redirect_to admin_soil_moistures_path
     else
@@ -29,8 +28,7 @@ class Admin::SoilMoisturesController < Admin::BaseController
   end
 
   def update
-    if @soil_moisture.update_attributes(params[:soil_moisture])
-      clear_cache
+    if @soil_moisture.update_attributes(soil_moisture_params)
       flash[:notice] = 'Soil moisture was successfully updated.'
       redirect_to admin_soil_moistures_path
     else
@@ -39,7 +37,6 @@ class Admin::SoilMoisturesController < Admin::BaseController
   end
 
   def destroy
-    clear_cache
     @soil_moisture.destroy
     flash[:notice] = 'Soil moisture was successfully destroyed.'
     redirect_to admin_soil_moistures_path
@@ -49,5 +46,9 @@ class Admin::SoilMoisturesController < Admin::BaseController
 
   def load_soil_moisture
     @soil_moisture = SoilMoisture.find(params[:id])
+  end
+
+  def soil_moisture_params
+    params.require(:soil_moisture).permit(:name)
   end
 end

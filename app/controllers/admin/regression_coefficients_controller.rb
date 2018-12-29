@@ -11,8 +11,7 @@ class Admin::RegressionCoefficientsController < Admin::BaseController
 
   def update
     respond_to do |format|
-      if @regression_coefficient.update_attributes(params[:regression_coefficient])
-        clear_cache
+      if @regression_coefficient.update_attributes(regression_coefficient_params)
         format.html { redirect_to admin_regression_coefficients_path, notice: 'Regression coefficient was successfully updated.' }
         format.json { head :no_content }
       else
@@ -31,5 +30,9 @@ class Admin::RegressionCoefficientsController < Admin::BaseController
   def load_other_attributes
     @crops = Crop.order('name')
     @fertilisers = Fertiliser.all
+  end
+
+  def regression_coefficient_params
+    params.require(:regression_coefficient).permit(:value, :crop_id, :fertiliser_id)
   end
 end

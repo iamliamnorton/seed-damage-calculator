@@ -1,6 +1,4 @@
 class PagesController < ApplicationController
-  caches_page :theory, :disclaimer, :definitions
-
   before_filter :satellite_page
 
   def theory

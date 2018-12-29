@@ -46,7 +46,7 @@
   <td><%= soil_coefficient.soil_texture_name %></td>
   <td><%= soil_coefficient.soil_moisture_name %></td>
   <td><%= link_to 'Edit', edit_admin_soil_coefficient_path(soil_coefficient) %></td>
-  <td><%= link_to 'Destroy', [:admin, soil_coefficient], confirm: 'Are you sure?', method: :delete %></td>
+  <td><%= link_to 'Destroy', [:admin, soil_coefficient], data: { confirm: 'Are you sure?' }, method: :delete %></td>
 </tr>
 <% end %>
 </table>

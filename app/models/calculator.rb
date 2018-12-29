@@ -1,7 +1,6 @@
 class Calculator
   include ActiveModel::Validations
   include ActiveModel::Conversion
-  include ActiveModel::MassAssignmentSecurity
   extend ActiveModel::Naming
 
   METRIC_RESULT_MULIPLIER = 1.1208511

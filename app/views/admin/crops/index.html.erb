@@ -19,7 +19,7 @@
 <tr>
   <td><%= crop.name %></td>
   <td><%= link_to 'Edit', edit_admin_crop_path(crop) %></td>
-  <td><%= link_to 'Destroy', [:admin, crop], confirm: 'Are you sure?', method: :delete %></td>
+  <td><%= link_to 'Destroy', [:admin, crop], data: { confirm: 'Are you sure?' }, method: :delete %></td>
 </tr>
 <% end %>
 </table>

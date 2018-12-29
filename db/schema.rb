@@ -9,62 +9,65 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170306112748) do
+ActiveRecord::Schema.define(version: 20170306112748) do
 
-  create_table "crops", :force => true do |t|
-    t.string   "name",       :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "crops", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "fertilisers", :force => true do |t|
+  create_table "fertilisers", force: true do |t|
     t.string   "metric_name"
     t.string   "imperial_name"
-    t.decimal  "N",               :precision => 3, :scale => 2, :default => 0.0, :null => false
-    t.decimal  "P",               :precision => 3, :scale => 2, :default => 0.0, :null => false
-    t.decimal  "K",               :precision => 3, :scale => 2, :default => 0.0, :null => false
-    t.decimal  "S",               :precision => 3, :scale => 2, :default => 0.0, :null => false
-    t.decimal  "Mg",              :precision => 3, :scale => 2, :default => 0.0, :null => false
-    t.decimal  "metric_weight",   :precision => 7, :scale => 6, :default => 0.0, :null => false
-    t.datetime "created_at",                                                     :null => false
-    t.datetime "updated_at",                                                     :null => false
-    t.decimal  "imperial_weight", :precision => 4, :scale => 2, :default => 0.0, :null => false
+    t.decimal  "N",               precision: 3, scale: 2, default: 0.0, null: false
+    t.decimal  "P",               precision: 3, scale: 2, default: 0.0, null: false
+    t.decimal  "K",               precision: 3, scale: 2, default: 0.0, null: false
+    t.decimal  "S",               precision: 3, scale: 2, default: 0.0, null: false
+    t.decimal  "Mg",              precision: 3, scale: 2, default: 0.0, null: false
+    t.decimal  "metric_weight",   precision: 7, scale: 6, default: 0.0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "imperial_weight", precision: 4, scale: 2, default: 0.0, null: false
   end
 
-  create_table "regression_coefficients", :force => true do |t|
-    t.decimal  "value",         :precision => 4, :scale => 3, :default => 0.0, :null => false
+  create_table "regression_coefficients", force: true do |t|
+    t.decimal  "value",         precision: 4, scale: 3, default: 0.0, null: false
     t.integer  "crop_id"
     t.integer  "fertiliser_id"
-    t.datetime "created_at",                                                   :null => false
-    t.datetime "updated_at",                                                   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "regression_coefficients", ["crop_id"], :name => "index_regression_coefficients_on_crop_id"
-  add_index "regression_coefficients", ["fertiliser_id"], :name => "index_regression_coefficients_on_fertiliser_id"
+  add_index "regression_coefficients", ["crop_id"], name: "index_regression_coefficients_on_crop_id", using: :btree
+  add_index "regression_coefficients", ["fertiliser_id"], name: "index_regression_coefficients_on_fertiliser_id", using: :btree
 
-  create_table "soil_coefficients", :force => true do |t|
-    t.decimal  "value",            :precision => 3, :scale => 2, :default => 0.0, :null => false
+  create_table "soil_coefficients", force: true do |t|
+    t.decimal  "value",            precision: 3, scale: 2, default: 0.0, null: false
     t.integer  "soil_texture_id"
     t.integer  "soil_moisture_id"
-    t.datetime "created_at",                                                      :null => false
-    t.datetime "updated_at",                                                      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "soil_coefficients", ["soil_moisture_id"], :name => "index_soil_coefficients_on_soil_moisture_id"
-  add_index "soil_coefficients", ["soil_texture_id"], :name => "index_soil_coefficients_on_soil_texture_id"
+  add_index "soil_coefficients", ["soil_moisture_id"], name: "index_soil_coefficients_on_soil_moisture_id", using: :btree
+  add_index "soil_coefficients", ["soil_texture_id"], name: "index_soil_coefficients_on_soil_texture_id", using: :btree
 
-  create_table "soil_moistures", :force => true do |t|
+  create_table "soil_moistures", force: true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "soil_textures", :force => true do |t|
+  create_table "soil_textures", force: true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

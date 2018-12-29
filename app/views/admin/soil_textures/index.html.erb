@@ -19,7 +19,7 @@
 <tr>
   <td><%= soil_texture.name %></td>
   <td><%= link_to 'Edit', edit_admin_soil_texture_path(soil_texture) %></td>
-  <td><%= link_to 'Destroy', [:admin, soil_texture], confirm: 'Are you sure?', method: :delete %></td>
+  <td><%= link_to 'Destroy', [:admin, soil_texture], data: { confirm: 'Are you sure?' }, method: :delete %></td>
 </tr>
 <% end %>
 </table>
