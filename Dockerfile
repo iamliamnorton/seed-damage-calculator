@@ -30,7 +30,7 @@ WORKDIR /srv/app
 
 COPY Gemfile* ./
 
-RUN bundle install --jobs 4 || bundle check
+RUN bundle install --jobs 10 || bundle check
 
 COPY . .
 

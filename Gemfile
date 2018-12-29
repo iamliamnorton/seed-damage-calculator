@@ -9,7 +9,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'less-rails'
 gem 'newrelic_rpm'
-gem 'pg'
+gem 'pg', '~> 0.11' # locked for rails < 4
 gem 'prawn', '0.12.0'
 gem 'prawn_rails', '0.0.11'
 gem 'rails', '~> 3.2'
