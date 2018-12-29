@@ -8,6 +8,18 @@ Calculation app used to find the [optimum fertilizer to seed ratio](http://seed-
 
 #### Development
 
+Build the docker image with:
+
+```
+make build
+```
+
+The database is seeded with:
+
+```
+make db
+```
+
 This app can be run with docker/compose locally with:
 
 ```
