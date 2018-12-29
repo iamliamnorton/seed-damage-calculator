@@ -5,6 +5,7 @@ ruby '2.3.6'
 gem 'active_link_to'
 gem 'best_in_place'
 gem 'bootstrap'
+gem 'coffee-rails' # required for heroku deployment
 gem 'font-awesome-sass'
 gem 'google-analytics-rails'
 gem 'jquery-rails'
