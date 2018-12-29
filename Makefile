@@ -24,7 +24,7 @@ stop:
 
 .PHONY: test
 test:
-	docker-compose run web ./ci/env/test.sh ./ci/test.sh
+	docker-compose run web ./script/test.sh
 
 .PHONY: deploy
 deploy:

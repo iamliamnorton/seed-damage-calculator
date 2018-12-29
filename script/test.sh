@@ -1,6 +1,5 @@
-#!/bin/bash
+#!/bin/bash -ex
 
-set -ex
 
 export RAILS_ENV="test"
 
@@ -12,4 +11,12 @@ export DATABASE_NAME="seed_test"
 
 export DATABASE_URL="postgres://${POSTGRES_USER}:${POSTGRES_PASS}@${POSTGRES_HOST}:${POSTGRES_PORT}/${DATABASE_NAME}"
 
-exec "$@"
+bundle config --delete without
+bundle config --delete frozen
+
+bundle
+
+bundle exec rails db:drop
+bundle exec rails db:create
+bundle exec rails db:migrate
+bundle exec rspec
