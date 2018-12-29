@@ -11,7 +11,7 @@ gem 'newrelic_rpm'
 gem 'pg', '~> 0.11' # locked until rails > 5
 gem 'prawn', '0.12.0'
 gem 'prawn_rails', '0.0.11'
-gem 'rails', '4.1.16'
+gem 'rails', '4.2.11'
 gem 'sass-rails'
 gem 'test-unit' # locked until rails > 5
 gem 'therubyracer', platform: :ruby # locked until rails > 5

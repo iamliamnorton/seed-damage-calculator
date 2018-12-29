@@ -10,6 +10,7 @@ require 'database_cleaner'
 require 'machinist'
 
 Capybara.javascript_driver = :poltergeist
+Capybara.server = :webrick
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 

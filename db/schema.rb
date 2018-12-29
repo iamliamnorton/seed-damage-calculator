@@ -16,13 +16,13 @@ ActiveRecord::Schema.define(version: 20170306112748) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "crops", force: true do |t|
+  create_table "crops", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "fertilisers", force: true do |t|
+  create_table "fertilisers", force: :cascade do |t|
     t.string   "metric_name"
     t.string   "imperial_name"
     t.decimal  "N",               precision: 3, scale: 2, default: 0.0, null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20170306112748) do
     t.decimal  "imperial_weight", precision: 4, scale: 2, default: 0.0, null: false
   end
 
-  create_table "regression_coefficients", force: true do |t|
+  create_table "regression_coefficients", force: :cascade do |t|
     t.decimal  "value",         precision: 4, scale: 3, default: 0.0, null: false
     t.integer  "crop_id"
     t.integer  "fertiliser_id"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20170306112748) do
   add_index "regression_coefficients", ["crop_id"], name: "index_regression_coefficients_on_crop_id", using: :btree
   add_index "regression_coefficients", ["fertiliser_id"], name: "index_regression_coefficients_on_fertiliser_id", using: :btree
 
-  create_table "soil_coefficients", force: true do |t|
+  create_table "soil_coefficients", force: :cascade do |t|
     t.decimal  "value",            precision: 3, scale: 2, default: 0.0, null: false
     t.integer  "soil_texture_id"
     t.integer  "soil_moisture_id"
@@ -58,13 +58,13 @@ ActiveRecord::Schema.define(version: 20170306112748) do
   add_index "soil_coefficients", ["soil_moisture_id"], name: "index_soil_coefficients_on_soil_moisture_id", using: :btree
   add_index "soil_coefficients", ["soil_texture_id"], name: "index_soil_coefficients_on_soil_texture_id", using: :btree
 
-  create_table "soil_moistures", force: true do |t|
+  create_table "soil_moistures", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "soil_textures", force: true do |t|
+  create_table "soil_textures", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -18,7 +18,12 @@ class CalculatorController < ApplicationController
   private
 
   def calculator_params
-    params[:calculator].to_h.merge(locale: I18n.locale)
+    params.
+      require(:calculator).
+      permit(:locale, :fertiliser_id, :crop_id, :soil_moisture_id, :soil_texture_id, :seed_furrow_opening_width, :row_spacing, :tolerated_stand_loss, :terms_of_service).
+      merge(locale: I18n.locale)
+  rescue ActionController::ParameterMissing
+    { locale: I18n.locale }
   end
 
   def load_variables
