@@ -1,5 +1,8 @@
+.byebug_history
 .git
 .gitignore
-ci
+Dockerfile
+README.md
+docker-compose.yml
 log
 tmp
