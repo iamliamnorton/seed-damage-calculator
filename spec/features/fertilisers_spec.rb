@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Fertilisers", type: :feature do
   describe "for an admin user" do
     before(:each) do
-      @valid_fertiliser = Fertiliser.make!
+      @valid_fertiliser = create(:fertiliser)
       page.driver.browser.authorize 'admin', 'admin'
       visit admin_fertilisers_path
     end
@@ -32,7 +32,7 @@ describe "Fertilisers", type: :feature do
       end
 
       it "valid input is accepted" do
-        new_valid_fertiliser = Fertiliser.make
+        new_valid_fertiliser = build(:fertiliser)
         fill_in "Metric name", :with => new_valid_fertiliser.metric_name;
         fill_in "Imperial name", :with => new_valid_fertiliser.imperial_name
         click_button "Create Fertiliser"
@@ -41,8 +41,8 @@ describe "Fertilisers", type: :feature do
 
       it "a new fertiliser should produce corresponding regression_coefficients" do
         assert_equal(0, RegressionCoefficient.count)
-        crop = Crop.make!
-        new_fertiliser = Fertiliser.make
+        crop = create(:crop)
+        new_fertiliser = build(:fertiliser)
         fill_in "Metric name", :with => new_fertiliser.metric_name
         fill_in "Imperial name", :with => new_fertiliser.imperial_name
         click_button "Create Fertiliser"
@@ -75,7 +75,7 @@ describe "Fertilisers", type: :feature do
       end
 
       it "valid input is accepted" do
-        valid = Fertiliser.make
+        valid = build(:fertiliser)
         fill_in "Metric name", :with => valid.metric_name
         fill_in "Imperial name", :with => valid.imperial_name
         click_button "Update Fertiliser"
@@ -91,8 +91,8 @@ describe "Fertilisers", type: :feature do
       end
 
       it "destroys all corresponding regression_coefficients" do
-        valid_crop = Crop.make!
-        valid_regression_coeff = RegressionCoefficient.make!(:crop => valid_crop, :fertiliser => @valid_fertiliser)
+        valid_crop = create(:crop)
+        valid_regression_coeff = create(:regression_coefficient, crop: valid_crop, fertiliser: @valid_fertiliser)
         assert_equal(1, RegressionCoefficient.count)
         click_link "Destroy"
         assert_equal(0, RegressionCoefficient.count)

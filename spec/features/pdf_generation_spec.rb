@@ -1,16 +1,12 @@
 require 'spec_helper'
 
 describe "PDF Generation", type: :feature do
-  let!(:crop) { Crop.make! }
-  let!(:fertiliser) { Fertiliser.make! }
-  let!(:regression_coeff) {
-    RegressionCoefficient.make!(crop: crop, fertiliser: fertiliser)
-  }
-  let!(:soil_moist) { SoilMoisture.make!(:name => 'moist') }
-  let!(:soil_fine) { SoilTexture.make!(:name => 'fine') }
-  let!(:soil_coefficient) {
-    SoilCoefficient.make!(soil_moisture: soil_moist, soil_texture: soil_fine)
-  }
+  let!(:crop) { create(:crop) }
+  let!(:fertiliser) { create(:fertiliser) }
+  let!(:regression_coeff) { create(:regression_coefficient, crop: crop, fertiliser: fertiliser) }
+  let!(:soil_moist) { create(:soil_moisture, name: 'moist') }
+  let!(:soil_fine) { create(:soil_texture, name: 'fine') }
+  let!(:soil_coefficient) { create(:soil_coefficient, soil_moisture: soil_moist, soil_texture: soil_fine) }
 
   it "user can download calculation as pdf" do
     visit root_path

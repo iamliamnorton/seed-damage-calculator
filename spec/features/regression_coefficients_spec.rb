@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "RegressionCoefficients", type: :feature do
   before(:each) do
-    @valid_regression_coefficient = RegressionCoefficient.make!
+    @valid_regression_coefficient = create(:regression_coefficient)
     page.driver.browser.authorize 'admin', 'admin'
     visit admin_regression_coefficients_path
   end
@@ -30,7 +30,7 @@ describe "RegressionCoefficients", type: :feature do
     end
 
     it "valid input is accepted" do
-      valid = RegressionCoefficient.make
+      valid = build(:regression_coefficient)
       fill_in "Value", :with => valid.value
       click_button "Update Regression coefficient"
       expect(page).to have_content("Regression coefficient was successfully updated.")

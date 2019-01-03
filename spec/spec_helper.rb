@@ -3,11 +3,10 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 
 require 'rspec/rails'
-
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 require 'database_cleaner'
-require 'machinist'
+require 'factory_bot'
 
 Capybara.javascript_driver = :poltergeist
 Capybara.server = :webrick
@@ -15,6 +14,7 @@ Capybara.server = :webrick
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.infer_base_class_for_anonymous_controllers = false
   config.order = :random

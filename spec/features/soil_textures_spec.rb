@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "SoilTextures", type: :feature do
   before(:each) do
-    @valid_soil_texture = SoilTexture.make!
+    @valid_soil_texture = create(:soil_texture)
     page.driver.browser.authorize 'admin', 'admin'
     visit admin_soil_textures_path
   end
@@ -37,7 +37,7 @@ describe "SoilTextures", type: :feature do
 
     it "a new soil_texture should produce corresponding soil_coefficients" do
       assert_equal(0, SoilCoefficient.count)
-      soil_moisture = SoilMoisture.make!
+      soil_moisture = create(:soil_moisture)
       fill_in "Name", :with => "medium"
       click_button "Create Soil texture"
       expect(page).to have_content("Soil texture was successfully created.")
@@ -68,7 +68,7 @@ describe "SoilTextures", type: :feature do
     end
 
     it "valid input is accepted" do
-      valid = SoilTexture.make
+      valid = build(:soil_moisture)
       fill_in "Name", :with => valid.name
       click_button "Update Soil texture"
       expect(page).to have_content("Soil texture was successfully updated.")
@@ -83,8 +83,8 @@ describe "SoilTextures", type: :feature do
     end
 
     it "destroys all corresponding soil_coefficients" do
-      valid_soil_moisture = SoilMoisture.make!
-      valid_soil_coeff = SoilCoefficient.make!(:soil_moisture => valid_soil_moisture, :soil_texture => @valid_soil_texture)
+      valid_soil_moisture = create(:soil_moisture)
+      valid_soil_coeff = create(:soil_coefficient, soil_moisture: valid_soil_moisture, soil_texture: @valid_soil_texture)
       assert_equal(1, SoilCoefficient.count)
       click_link "Destroy"
       assert_equal(0, SoilCoefficient.count)

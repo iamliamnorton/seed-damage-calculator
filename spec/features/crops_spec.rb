@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Crops", type: :feature do
   before(:each) do
-    @valid_crop = Crop.make!
+    @valid_crop = create(:crop)
     page.driver.browser.authorize 'admin', 'admin'
     visit admin_crops_path
   end
@@ -30,7 +30,7 @@ describe "Crops", type: :feature do
     end
 
     it "valid input is accepted" do
-      new_valid_crop = Crop.make
+      new_valid_crop = build(:crop)
       fill_in "Name", :with => new_valid_crop.name
       click_button "Create Crop"
       expect(page).to have_content("Crop was successfully created.")
@@ -38,8 +38,8 @@ describe "Crops", type: :feature do
 
     it "a new crop should produce corresponding regression_coefficients" do
       assert_equal(0, RegressionCoefficient.count)
-      fertiliser = Fertiliser.make!
-      new_crop = Crop.make
+      fertiliser = create(:fertiliser)
+      new_crop = build(:crop)
       fill_in "Name", :with => new_crop.name
       click_button "Create Crop"
       expect(page).to have_content("Crop was successfully created.")
@@ -70,7 +70,7 @@ describe "Crops", type: :feature do
     end
 
     it "valid input is accepted" do
-      valid = Crop.make
+      valid = build(:crop)
       fill_in "Name", :with => valid.name
       click_button "Update Crop"
       expect(page).to have_content("Crop was successfully updated.")
@@ -85,8 +85,8 @@ describe "Crops", type: :feature do
     end
 
     it "destroys all corresponding regression_coefficients" do
-      valid_fertiliser = Fertiliser.make!
-      valid_regression_coeff = RegressionCoefficient.make!(:crop => @valid_crop, :fertiliser => valid_fertiliser)
+      valid_fertiliser = create(:fertiliser)
+      valid_regression_coeff = create(:regression_coefficient, crop: @valid_crop, fertiliser: valid_fertiliser)
       assert_equal(1, RegressionCoefficient.count)
       click_link "Destroy"
       assert_equal(0, RegressionCoefficient.count)

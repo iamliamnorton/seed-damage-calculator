@@ -1,4 +1,8 @@
 imperial:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "Validation failed: %{errors}"
   models:
     calculator:                 "Calculator"
     crop:                       "Crop"

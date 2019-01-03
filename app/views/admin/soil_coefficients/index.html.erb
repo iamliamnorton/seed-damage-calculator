@@ -22,7 +22,10 @@
     <td><strong><%= soil_texture.name %></strong></td>
     <% @soil_moistures.each do |soil_moisture| %>
       <% #the below code will need refactoring %>
-      <td><%= best_in_place SoilCoefficient.where(:soil_moisture_id => soil_moisture.id, :soil_texture_id => soil_texture.id).first, :value, :url => [:admin, SoilCoefficient.where(:soil_moisture_id => soil_moisture.id, :soil_texture_id => soil_texture.id).first]%></td>
+      <td>
+        <% coefficient = SoilCoefficient.find_by(soil_moisture: soil_moisture, soil_texture: soil_texture) %>
+        <%= best_in_place(coefficient, :value, url: [:admin, coefficient]) if coefficient %>
+      </td>
     <% end %>
   </tr>
 <% end %>

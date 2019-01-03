@@ -1,22 +1,22 @@
 require 'spec_helper'
 
 describe "Calculation", type: :feature do
-  let!(:crop_1) { Crop.make! }
-  let!(:crop_2) { Crop.make! }
-  let!(:fertiliser_1) { Fertiliser.make! }
-  let!(:fertiliser_2) { Fertiliser.make! }
-  let!(:regression_1_1) { RegressionCoefficient.make!(:crop => crop_1, :fertiliser => fertiliser_1) }
-  let!(:regression_1_2) { RegressionCoefficient.make!(:crop => crop_1, :fertiliser => fertiliser_2) }
-  let!(:regression_2_1) { RegressionCoefficient.make!(:crop => crop_2, :fertiliser => fertiliser_1) }
-  let!(:regression_2_2) { RegressionCoefficient.make!(:crop => crop_2, :fertiliser => fertiliser_2) }
-  let!(:soil_moist) { SoilMoisture.make!(:name => 'moist') }
-  let!(:soil_dry) { SoilMoisture.make!(:name => 'dry') }
-  let!(:soil_fine) { SoilTexture.make!(:name => 'fine') }
-  let!(:soil_coarse) { SoilTexture.make!(:name => 'coarse') }
-  let!(:soil_coefficient_1) { SoilCoefficient.make!(:soil_moisture => soil_moist, :soil_texture => soil_fine) }
-  let!(:soil_coefficient_2) { SoilCoefficient.make!(:soil_moisture => soil_moist, :soil_texture => soil_coarse) }
-  let!(:soil_coefficient_3) { SoilCoefficient.make!(:soil_moisture => soil_dry, :soil_texture => soil_fine) }
-  let!(:soil_coefficient_4) { SoilCoefficient.make!(:soil_moisture => soil_dry, :soil_texture => soil_coarse) }
+  let!(:crop_1) { create(:crop) }
+  let!(:crop_2) { create(:crop) }
+  let!(:fertiliser_1) { create(:fertiliser) }
+  let!(:fertiliser_2) { create(:fertiliser) }
+  let!(:regression_1_1) { create(:regression_coefficient, crop: crop_1, fertiliser: fertiliser_1) }
+  let!(:regression_1_2) { create(:regression_coefficient, crop: crop_1, fertiliser: fertiliser_2) }
+  let!(:regression_2_1) { create(:regression_coefficient, crop: crop_2, fertiliser: fertiliser_1) }
+  let!(:regression_2_2) { create(:regression_coefficient, crop: crop_2, fertiliser: fertiliser_2) }
+  let!(:soil_moist) { create(:soil_moisture, name: 'moist') }
+  let!(:soil_dry) { create(:soil_moisture, name: 'dry') }
+  let!(:soil_fine) { create(:soil_texture, name: 'fine') }
+  let!(:soil_coarse) { create(:soil_texture, name: 'coarse') }
+  let!(:soil_coefficient_1) { create(:soil_coefficient, soil_moisture: soil_moist, soil_texture: soil_fine) }
+  let!(:soil_coefficient_2) { create(:soil_coefficient, soil_moisture: soil_moist, soil_texture: soil_coarse) }
+  let!(:soil_coefficient_3) { create(:soil_coefficient, soil_moisture: soil_dry, soil_texture: soil_fine) }
+  let!(:soil_coefficient_4) { create(:soil_coefficient, soil_moisture: soil_dry, soil_texture: soil_coarse) }
 
   describe "performing a calculation", js: true do
     before(:each) do

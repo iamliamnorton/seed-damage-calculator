@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "SoilCoefficients", type: :feature do
   before(:each) do
-    @valid_soil_coefficient = SoilCoefficient.make!
+    @valid_soil_coefficient = create(:soil_coefficient)
     page.driver.browser.authorize 'admin', 'admin'
     visit admin_soil_coefficients_path
   end
@@ -30,7 +30,7 @@ describe "SoilCoefficients", type: :feature do
     end
 
     it "valid input is accepted" do
-      valid = SoilCoefficient.make
+      valid = build(:soil_coefficient)
       fill_in "Value", :with => valid.value
       click_button "Update Soil coefficient"
       expect(page).to have_content("Soil coefficient was successfully updated.")
