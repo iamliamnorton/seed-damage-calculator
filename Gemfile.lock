@@ -47,7 +47,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     afm (0.2.2)
     arel (9.0.0)
-    autoprefixer-rails (9.4.3)
+    autoprefixer-rails (9.4.4)
       execjs
     best_in_place (3.1.1)
       actionpack (>= 3.2)
@@ -93,7 +93,7 @@ GEM
       activesupport (>= 4.2.0)
     google-analytics-rails (1.1.1)
     hashery (2.1.2)
-    i18n (1.3.0)
+    i18n (1.4.0)
       concurrent-ruby (~> 1.0)
     jquery-rails (4.3.3)
       rails-dom-testing (>= 1, < 3)
@@ -246,7 +246,7 @@ DEPENDENCIES
   pg
   poltergeist
   prawn (= 0.12.0)
-  prawn_rails (= 0.0.11)
+  prawn_rails
   rails (~> 5.2.2)
   rspec-rails
   sass-rails
